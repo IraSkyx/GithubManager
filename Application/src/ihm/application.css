@@ -30,37 +30,33 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
  
-root { 
-    display: block;
+@font-face {
+    -fx-font-family: Collegiate;
+    src: url("/resources/Collegiate.ttf");
 }
 
-.root {
-     -fx-background-color: #222222;
+@font-face {
+    -fx-font-family: 'Lato Hairline';
+    src: url("/resources/Lato-Hairline.ttf");
 }
 
-.label {
-    /*-fx-font-size: 12px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #333333;
-    -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );*/
+.root { 
+    -fx-background-color: #222222;
 }
 
-#welcome-text {
-   /*-fx-font-size: 32px;
-   -fx-font-family: "Arial Black";
-   -fx-fill: #818181;
-   -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.7) , 6, 0.0 , 0 , 2 );*/
+.button{
+    -fx-label-padding: 5;
+    -fx-font-family: 'Lato Hairline';
+    -fx-background-color:white;
 }
 
-
-.button {
-    /*-fx-text-fill: white;
-    -fx-font-family: "Arial Narrow";
-    -fx-font-weight: bold;
-    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );*/
+#h1, #h2 {
+    -fx-font-family: Collegiate;
+    -fx-font-size: 10em;
+    -fx-text-fill: white;
 }
 
-.button:hover {
-    /*-fx-background-color: linear-gradient(#2A5058, #61a2b1);*/
+#h2 {
+    -fx-font-family: 'Lato Hairline';
+    -fx-font-size: 3em;
 }
