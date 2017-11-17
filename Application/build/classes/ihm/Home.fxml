@@ -11,15 +11,15 @@
 
 <BorderPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
     <center>
-        <VBox alignment="CENTER">
-            <TextField fx:id="input" focusTraversable="false" maxWidth="600" promptText="Search"/>
+        <VBox alignment="CENTER" BorderPane.alignment="CENTER">
+            <TextField fx:id="input" focusTraversable="false" maxWidth="600" promptText="Search" />
             <Label id="h2" text="A better way to follow GitHub projects" />
         </VBox>
    </center>
    <top>
       <VBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
-             <Label id="h1" alignment="CENTER" contentDisplay="CENTER" text="GitHubManager"/>
+             <Label id="h1" alignment="CENTER" contentDisplay="CENTER" text="GitHubManager" />
             <ImageView fitHeight="150.0" fitWidth="200.0" preserveRatio="true">
                <image>
                   <Image url="@../resources/GitHubLogo.png" />
