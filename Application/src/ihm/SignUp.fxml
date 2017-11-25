@@ -4,28 +4,53 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.HBox?>
+
+<!--<?import controller.HeaderUCController?>-->
 
 <BorderPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignUpController">
     <stylesheets>
         <URL value="@application.css" />
     </stylesheets>
+    <top>
+        <VBox alignment="CENTER" BorderPane.alignment="CENTER">
+            <!--NE FONCTIONNE PAS : VOIR DANS HeaderUC.fxml :-->
+            <!--<HeaderUCController/>--> 
+            <!--Version équivalente qui marche mais qui est dégueue (je le referai après) :-->               
+            <children>
+                <Label id="h1" alignment="CENTER" contentDisplay="CENTER" text="GitHubManager" />
+                <ImageView fitHeight="150.0" fitWidth="200.0" preserveRatio="true">
+                    <image>
+                        <Image url="@../resources/GitHubLogo.png" />
+                    </image>
+                </ImageView>
+            </children>
+            <!--fin de la version équivalente-->
+        </VBox>
+    </top>
     <center>
-      <VBox alignment="CENTER" BorderPane.alignment="CENTER">
-         <children>
-            <Label id="h2" text="Login" />
-            <TextField maxWidth="200" />
-            <Label id="h2" text="Password" />
-            <TextField maxWidth="200" />
-            <Label id="h2" text="Password verification" />
-            <TextField maxWidth="200" />
-            <HBox alignment="CENTER" BorderPane.alignment="CENTER">
+        <VBox alignment="CENTER" BorderPane.alignment="CENTER">
+            <children>
+               <Label id="h2" text="Login" />
+               <TextField maxWidth="200" />
+               <Label id="h2" text="Password" />
+               <TextField maxWidth="200" />
+               <Label id="h2" text="Password verification" />
+               <TextField maxWidth="200" />
+            </children>
+        </VBox>
+   </center>
+    <bottom>
+        <FlowPane alignment="CENTER" columnHalignment="CENTER" BorderPane.alignment="CENTER">
+            <children>
                 <Button id="home" focusTraversable="false" onAction="#GoToHome" text="Back button" />
                 <Button id="signUp" focusTraversable="false" text="Confirm inscription" />
-            </HBox>
-         </children>
-      </VBox>
-   </center>
+            </children>
+         </FlowPane>
+    </bottom>
 </BorderPane>
