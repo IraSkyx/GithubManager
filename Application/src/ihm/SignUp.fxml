@@ -18,24 +18,29 @@
         <URL value="@application.css" />
     </stylesheets>
     <top>
-        <VBox alignment="CENTER" BorderPane.alignment="CENTER">
+        <HBox alignment="CENTER" BorderPane.alignment="CENTER">
             <!--NE FONCTIONNE PAS : VOIR DANS HeaderUC.fxml :-->
             <!--<HeaderUCController/>--> 
             <!--Version équivalente qui marche mais qui est dégueue (je le referai après) :-->               
             <children>
-                <Label id="h1" alignment="CENTER" contentDisplay="CENTER" text="GitHubManager" />
                 <ImageView fitHeight="150.0" fitWidth="200.0" preserveRatio="true">
                     <image>
                         <Image url="@../resources/GitHubLogo.png" />
                     </image>
                 </ImageView>
+                <Label id="h1" alignment="CENTER" contentDisplay="CENTER" text="GitHubManager" />
             </children>
             <!--fin de la version équivalente-->
-        </VBox>
+        </HBox>
     </top>
     <center>
         <VBox alignment="CENTER" BorderPane.alignment="CENTER">
             <children>
+                <ImageView fitHeight="150.0" fitWidth="200.0" preserveRatio="true" BorderPane.alignment="BOTTOM_CENTER">
+                    <image>
+                        <Image url="@../resources/CreateAccount.png" />
+                    </image>
+                </ImageView>
                <Label id="h2" text="Login" />
                <TextField maxWidth="200" />
                <Label id="h2" text="Password" />

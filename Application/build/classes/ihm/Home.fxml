@@ -34,7 +34,7 @@
       <FlowPane alignment="CENTER" columnHalignment="CENTER" BorderPane.alignment="CENTER">
          <children>
             <Button id="signIn" focusTraversable="false" onAction="#GoToSignIn" text="Sign in" />
-            <Button id="signUp" focusTraversable="false" onAction="#GoToSignUp" text="Sign out" />
+            <Button id="signUp" focusTraversable="false" onAction="#GoToSignUp" text="Sign up" />
          </children>
       </FlowPane>
    </bottom>
