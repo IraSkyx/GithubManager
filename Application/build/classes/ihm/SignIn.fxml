@@ -8,6 +8,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
 
 <BorderPane id="BorderPane" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
     <stylesheets>
@@ -20,7 +21,10 @@
             <TextField maxWidth="200" />
             <Label id="h2" text="Password" />
             <TextField maxWidth="200" />
-            <Button id="signIn" focusTraversable="false" text="Log in" />
+            <HBox alignment="CENTER" BorderPane.alignment="CENTER">
+                <Button id="home" focusTraversable="false" onAction="#GoToHome" text="Back button" />
+                <Button id="signIn" focusTraversable="false" text="Log in" />
+            </HBox>
          </children>
       </VBox>
    </center>

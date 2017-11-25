@@ -16,4 +16,9 @@ public class HomeController {
     private void GoToSignUp() throws IOException {
         FrontController.setScene((BorderPane)FXMLLoader.load(getClass().getResource("/ihm/SignUp.fxml")));
     }
+    
+    @FXML 
+    private void GoToHome() throws IOException {   
+        FrontController.setScene((BorderPane)FXMLLoader.load(getClass().getResource("/ihm/Home.fxml")));
+    }
 }
