@@ -60,3 +60,7 @@
     -fx-font-family: 'Lato Hairline';
     -fx-font-size: 3em;
 }
+
+#columnTitle {
+    -fx-text-fill: white;
+}

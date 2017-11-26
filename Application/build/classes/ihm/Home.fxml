@@ -15,11 +15,11 @@
             <TextField fx:id="input" focusTraversable="false" maxWidth="600" promptText="Search" />
             <Label id="h2" text="A better way to follow GitHub projects" />
         </VBox>
-   </center>
-   <top>
+    </center>
+    <top>
       <VBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
-             <Label id="h1" alignment="CENTER" contentDisplay="CENTER" text="GitHubManager" />
+            <Label id="h1" alignment="CENTER" contentDisplay="CENTER" text="GitHubManager" />
             <ImageView fitHeight="150.0" fitWidth="200.0" preserveRatio="true">
                <image>
                   <Image url="@../resources/GitHubLogo.png" />
@@ -27,15 +27,14 @@
             </ImageView>
          </children>
       </VBox>
-   </top>
-   <bottom>
-   </bottom>
-   <bottom>
-      <FlowPane alignment="CENTER" columnHalignment="CENTER" BorderPane.alignment="CENTER">
-         <children>
-            <Button id="signIn" focusTraversable="false" onAction="#GoToSignIn" text="Sign in" />
-            <Button id="signUp" focusTraversable="false" onAction="#GoToSignUp" text="Sign up" />
-         </children>
-      </FlowPane>
-   </bottom>
+    </top>
+    <bottom>
+        <FlowPane alignment="CENTER" columnHalignment="CENTER" BorderPane.alignment="CENTER">
+            <children>
+                <Button id="signIn" focusTraversable="false" onAction="#GoToSignIn" text="Sign in" />
+                <Button id="signUp" focusTraversable="false" onAction="#GoToSignUp" text="Sign up" />
+                <Button id="offlineMode" focusTraversable="false" onAction="#GoToOfflineMode" text="Test : offline mode" />
+            </children>
+        </FlowPane>
+    </bottom>
 </BorderPane>

@@ -21,4 +21,9 @@ public class HomeController {
     private void GoToHome() throws IOException {   
         FrontController.setScene((BorderPane)FXMLLoader.load(getClass().getResource("/ihm/Home.fxml")));
     }
+    
+    @FXML 
+    private void GoToOfflineMode() throws IOException {   
+        FrontController.setScene((BorderPane)FXMLLoader.load(getClass().getResource("/ihm/OfflineMode.fxml")));
+    }
 }
