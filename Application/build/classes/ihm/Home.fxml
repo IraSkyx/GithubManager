@@ -8,23 +8,19 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.VBox?>
+<?import controller.HeaderController?>
 
 <BorderPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
     <center>
         <VBox alignment="CENTER" BorderPane.alignment="CENTER">
-            <TextField fx:id="input" focusTraversable="false" maxWidth="600" promptText="Search" />
+            <TextField fx:id="input" focusTraversable="false" onAction="onEnter" maxWidth="600" promptText="Search" />
             <Label id="h2" text="A better way to follow GitHub projects" />
         </VBox>
     </center>
     <top>
       <VBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
-            <Label id="h1" alignment="CENTER" contentDisplay="CENTER" text="GitHubManager" />
-            <ImageView fitHeight="150.0" fitWidth="200.0" preserveRatio="true">
-               <image>
-                  <Image url="@../resources/GitHubLogo.png" />
-               </image>
-            </ImageView>
+            <HeaderController/>
          </children>
       </VBox>
     </top>
@@ -33,7 +29,6 @@
             <children>
                 <Button id="signIn" focusTraversable="false" onAction="#GoToSignIn" text="Sign in" />
                 <Button id="signUp" focusTraversable="false" onAction="#GoToSignUp" text="Sign up" />
-                <Button id="offlineMode" focusTraversable="false" onAction="#GoToOfflineMode" text="Test : offline mode" />
             </children>
         </FlowPane>
     </bottom>

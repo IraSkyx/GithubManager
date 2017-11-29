@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<fx:root alignment="CENTER" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <Label id="h1" alignment="CENTER" contentDisplay="CENTER" text="GitHubManager" />
+        <ImageView fitHeight="150.0" fitWidth="200.0" preserveRatio="true">
+           <image>
+              <Image url="@../resources/GitHubLogo.png" />
+           </image>
+        </ImageView>
+    </children>
+</fx:root>

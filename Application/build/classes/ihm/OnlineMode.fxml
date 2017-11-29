@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9.0.1" fx:controller="controller.OnlineModeController">
+   <left>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Résultats de la recherche" />
+            <ListView fx:id="searchResults"/>
+         </children>
+      </VBox>
+   </left>
+</BorderPane>

@@ -10,37 +10,15 @@
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.HBox?>
+<?import controller.HeaderController?>
 
-<!--<?import controller.HeaderUCController?>-->
-
-<BorderPane id="BorderPane" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
-    <stylesheets>
-        <URL value="@application.css" />
-    </stylesheets>
+<BorderPane id="BorderPane" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
     <top>
-        <HBox alignment="CENTER" BorderPane.alignment="CENTER">
-            <!--NE FONCTIONNE PAS : VOIR DANS HeaderUC.fxml :-->
-            <!--<HeaderUCController/>--> 
-            <!--Version équivalente qui marche mais qui est dégueue (je le referai après) :-->               
-            <children>
-                <ImageView fitHeight="150.0" fitWidth="200.0" preserveRatio="true">
-                    <image>
-                        <Image url="@../resources/GitHubLogo.png" />
-                    </image>
-                </ImageView>
-                <Label id="h1" alignment="CENTER" contentDisplay="CENTER" text="GitHubManager" />
-            </children>
-            <!--fin de la version équivalente-->
-        </HBox>        
+        <HeaderController/>     
     </top>
     <center>
       <VBox alignment="CENTER" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="150.0" fitWidth="200.0" preserveRatio="true" BorderPane.alignment="BOTTOM_CENTER">
-                <image>
-                    <Image url="@../resources/Avatar.png" />
-                </image>
-            </ImageView>
             <Label id="h2" text="Login" />
             <TextField maxWidth="200" />
             <Label id="h2" text="Password" />
@@ -51,8 +29,8 @@
    <bottom>
         <FlowPane alignment="CENTER" columnHalignment="CENTER" BorderPane.alignment="CENTER">
             <children>
-                <Button id="home" focusTraversable="false" onAction="#GoToHome" text="Back button" />
                 <Button id="signIn" focusTraversable="false" text="Log in" />
+                <Button id="home" focusTraversable="false" onAction="#GoToHome" text="Go back" />               
             </children>
         </FlowPane>
    </bottom>
