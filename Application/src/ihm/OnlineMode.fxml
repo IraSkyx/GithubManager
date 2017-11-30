@@ -4,17 +4,28 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TextField?>
+<?import controller.HeaderController?>
+<?import controller.ResultDisplayController?>
 
-
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9.0.1" fx:controller="controller.OnlineModeController">
-   <left>
-      <VBox BorderPane.alignment="CENTER">
-         <children>
-            <Label text="Résultats de la recherche" />
-            <ListView fx:id="searchResults">
-                <Label text="${}"/>
-            </ListView>
-         </children>
-      </VBox>
-   </left>
+<BorderPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OnlineModeController">
+    <left>
+        <VBox alignment="CENTER" BorderPane.alignment="CENTER">
+            <children>
+                <Label fx:id="h3" text="Résultats de la recherche" textAlignment="CENTER" />
+                <ListView fx:id="searchResults" />
+            </children>
+        </VBox>
+    </left>
+    <top>
+        <VBox BorderPane.alignment="CENTER">
+            <children>
+                <HeaderController/>
+                <TextField fx:id="input" focusTraversable="false" onAction="#onEnter" maxWidth="600" promptText="Search" />
+            </children>
+        </VBox>
+    </top>
+    <center>
+        <ResultDisplayController fx:id="selectedRepo"/>
+    </center>
 </BorderPane>

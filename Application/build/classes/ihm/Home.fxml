@@ -15,6 +15,7 @@
         <VBox alignment="CENTER" BorderPane.alignment="CENTER">
             <TextField fx:id="input" focusTraversable="false" onAction="#onEnter" maxWidth="600" promptText="Search" />
             <Label id="h2" text="A better way to follow GitHub projects" />
+            <Label fx:id="error" text="Problème de connexion internet" visible="false"/>
         </VBox>
     </center>
     <top>
@@ -26,7 +27,7 @@
     </top>
     <bottom>
         <FlowPane alignment="CENTER" columnHalignment="CENTER" BorderPane.alignment="CENTER">
-            <children>
+            <children>               
                 <Button id="signIn" focusTraversable="false" onAction="#GoToSignIn" text="Sign in" />
                 <Button id="signUp" focusTraversable="false" onAction="#GoToSignUp" text="Sign up" />
             </children>

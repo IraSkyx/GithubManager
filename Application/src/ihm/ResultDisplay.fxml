@@ -11,7 +11,7 @@
         
     </left>
     <top>
-        <Label text="${controller.Repository.name}"/>
+        <Label text="${controller.repository.name}"/>
     </top>
     <right>
         

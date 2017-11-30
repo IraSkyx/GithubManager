@@ -56,9 +56,20 @@
     -fx-text-fill: white;
 }
 
-#h2 {
+#h2, #h3 {
     -fx-font-family: 'Lato Hairline';
     -fx-font-size: 3em;
+}
+
+#h3 {
+    -fx-font-size: 1em;
+    -fx-text-fill: white;
+}
+
+error {
+    -fx-font-family: 'Lato Hairline';
+    -fx-font-size: 1.5em;
+    -fx-text-fill: #D91E18;
 }
 
 #columnTitle {

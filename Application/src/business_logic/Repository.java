@@ -4,7 +4,7 @@ import java.util.Date;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-public class Repository extends Follow{
+public class Repository extends Follow {
     
     private final StringProperty name = new SimpleStringProperty();
         public String getName() {return proxy.getName();}
@@ -40,14 +40,19 @@ public class Repository extends Follow{
     public Date getUpdatedAt(){
         return proxy.getUpdatedAt();
     }
+    
+    @Override
+    public String toString(){
+        return getName();
+    }
 
     @Override
     void AddFollow(Follow follow) {
-        throw new UnsupportedOperationException("Operation not allowed.");
+        throw new UnsupportedOperationException("OperationNotSupportedException");
     }
 
     @Override
     void DeleteFollow(Follow follow) {
-        throw new UnsupportedOperationException("Operation not allowed.");
+        throw new UnsupportedOperationException("OperationNotSupportedException");
     }
 }
