@@ -5,11 +5,8 @@
  */
 package controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.fxml.Initializable;
 import model.Repository;
 
 /**
@@ -17,16 +14,10 @@ import model.Repository;
  *
  * @author Adrien
  */
-public class ResultDisplayController implements Initializable {
+public class ResultDisplayController {
 
     private final ObjectProperty<Repository> repository = new SimpleObjectProperty<>();
         public final Repository getRepository()  { return repository.get(); }
         public final void setRepository(Repository value) { repository.set(value); }
-        public ObjectProperty<Repository> repositoryProperty() {return repository;}
-    
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
+        public ObjectProperty<Repository> repositoryProperty() {return repository;}  
 }

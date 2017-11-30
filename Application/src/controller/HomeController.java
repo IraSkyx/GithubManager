@@ -38,11 +38,11 @@ public class HomeController {
         FrontController.setScene((BorderPane)FXMLLoader.load(getClass().getResource("/ihm/OfflineMode.fxml")));
     }
     
-    @FXML 
-    private void onEnter(ActionEvent ae) throws IOException { 
+    @FXML
+    private void onEnter() throws IOException {
         ArrayList<model.Repository> list = new ArrayList<>();
         for(org.eclipse.egit.github.core.Repository repo : new RepositoryService().getRepositories(input.getText()))
             list.add(RepositoryMaker.Make(repo));
-        FrontController.setScene((BorderPane)new OnlineModeController(FXCollections.observableList(list)));      
+        FrontController.setScene((BorderPane)FXMLLoader.load(getClass().getResource("/ihm/OnlineMode.fxml")));
     }
 }
