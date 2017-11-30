@@ -7,7 +7,7 @@ package controller;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import model.Repository;
+import business_logic.Repository;
 
 /**
  * FXML Controller class

@@ -1,4 +1,4 @@
-package model;
+package business_logic;
 
 import java.util.Date;
 import javafx.beans.property.SimpleStringProperty;

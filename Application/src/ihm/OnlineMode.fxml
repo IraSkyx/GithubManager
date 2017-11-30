@@ -11,7 +11,9 @@
       <VBox BorderPane.alignment="CENTER">
          <children>
             <Label text="Résultats de la recherche" />
-            <ListView fx:id="searchResults"/>
+            <ListView fx:id="searchResults">
+                <Label text="${}"/>
+            </ListView>
          </children>
       </VBox>
    </left>

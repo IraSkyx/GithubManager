@@ -1,18 +1,19 @@
-package model;
+package business_logic;
 
 public class User {
-
-    public User(String password, String email) {
-        this.password = password;
-        this.email = email;
-        this.follows = new Category("Favorites");
-    }
-	
+    
     private String username;
     private String password;
     private String email;
     private final Follow follows;
 
+    public User(String username, String password, String email) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.follows = new Category("Favorites");
+    }
+    
     public String getUsername() {
         return username;
     }

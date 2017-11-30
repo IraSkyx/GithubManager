@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
+package business_logic;
 
 /**
  *
  * @author Adrien
  */
-public abstract class Follow {
-    abstract void AddFollow(Follow follow);
-    abstract void DeleteFollow(Follow follow);
+public class APIGateway {
+    
 }

@@ -5,12 +5,11 @@
  */
 package controller;
 
-import java.io.IOException;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.BorderPane;
-import model.Repository;
+import business_logic.Repository;
 
 /**
  * FXML Controller class
@@ -22,7 +21,7 @@ public class OnlineModeController extends BorderPane {
     @FXML
     ListView searchResults;      
     
-    /*public OnlineModeController(ObservableList<Repository> items ) throws IOException {
+    public void setResults(ObservableList<Repository> items ) {
         searchResults.setItems(items);
-    }*/     
+    }     
 }
