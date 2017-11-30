@@ -10,6 +10,6 @@ package business_logic;
  * @author Adrien
  */
 public abstract class Follow {
-    abstract void AddFollow(Follow follow);
-    abstract void DeleteFollow(Follow follow);
+    public abstract void AddFollow(Follow follow);
+    public abstract void DeleteFollow(Follow follow);
 }

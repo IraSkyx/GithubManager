@@ -87,12 +87,12 @@ public class Repository extends Follow {
     }
 
     @Override
-    void AddFollow(Follow follow) {
+    public void AddFollow(Follow follow) {
         throw new UnsupportedOperationException("OperationNotSupportedException");
     }
 
     @Override
-    void DeleteFollow(Follow follow) {
+    public void DeleteFollow(Follow follow) {
         throw new UnsupportedOperationException("OperationNotSupportedException");
     }
 }

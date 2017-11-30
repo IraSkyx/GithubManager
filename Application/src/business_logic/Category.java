@@ -29,13 +29,17 @@ public class Category extends Follow{
         this.name = name;
     }
     
+    public ArrayList<Follow> getListOfFollows() {
+        return listOfFollows;
+    }
+    
     @Override
-    void AddFollow(Follow follow) {
+    public void AddFollow(Follow follow) {
         listOfFollows.add(follow);
     }
 
     @Override
-    void DeleteFollow(Follow follow) {
+    public void DeleteFollow(Follow follow) {
         listOfFollows.remove(follow);
     }
     

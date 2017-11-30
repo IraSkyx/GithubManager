@@ -5,12 +5,15 @@
  */
 package controller;
 
+import business_logic.Category;
+import business_logic.Follow;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.BorderPane;
 import business_logic.Repository;
 import business_logic.RepositoryMaker;
+import business_logic.User;
 import java.io.IOException;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
@@ -29,6 +32,9 @@ public class OnlineModeController extends BorderPane {
     ListView searchResults;  
     
     @FXML
+    ListView userFollows;
+    
+    @FXML
     TextField input;
     
     @FXML
@@ -39,6 +45,7 @@ public class OnlineModeController extends BorderPane {
     
     @FXML
     Label repoReadMe; 
+    
     
     @FXML
     private void onEnter() throws IOException{
@@ -56,5 +63,31 @@ public class OnlineModeController extends BorderPane {
         repoName.textProperty().bind(Bindings.selectString(searchResults.getSelectionModel().selectedItemProperty(), "name"));
         repoDescription.textProperty().bind(Bindings.selectString(searchResults.getSelectionModel().selectedItemProperty(), "description"));
         repoReadMe.textProperty().bind(Bindings.selectString(searchResults.getSelectionModel().selectedItemProperty(), "readme"));
+        
+        //setFollows();
     }
+
+    /*private void setFollows() {
+        User user = new User("Adrien", "Lenoir", "adrien.lenoir@gmail.com");
+        user.getFollows().AddFollow(new Category("PHP"));
+        
+        for(Follow follow : ((Category)user.getFollows()).getListOfFollows()){
+            if(follow instanceof Category){
+                AddListView((Category)follow);
+            }
+            else{
+                
+            }
+        }
+    }
+
+    private void AddListView(Category categ) {
+        for(Follow follow : categ.getListOfFollows())
+            if(follow instanceof Category){
+                searchResults.getItems().add(new ListView());
+                AddListView((Category)follow);
+            }     
+            else
+                                
+    }*/
 }
