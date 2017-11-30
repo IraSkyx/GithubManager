@@ -2,16 +2,22 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.TextField?>
+
 <?import controller.HeaderController?>
 
 <BorderPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OnlineModeController">
     <left>
         <VBox alignment="CENTER" BorderPane.alignment="CENTER">
+            <padding>
+                    <Insets top="50" right="50" bottom="50" left="50"/>
+            </padding>
             <children>
-                <Label fx:id="h3" text="Résultats de la recherche" textAlignment="CENTER" />
+                <Label fx:id="h3" text="Search results" textAlignment="CENTER" />
                 <ListView fx:id="searchResults" />
             </children>
         </VBox>
@@ -25,10 +31,34 @@
         </VBox>
     </top>
     <center>
-        <BorderPane>
+            <BorderPane>
+                <padding>
+                    <Insets top="50" right="50" bottom="50" left="50"/>
+                </padding>  
+            <top>
+                <VBox>
+                    <children>
+                        <Label fx:id="repoName"/>
+                        <Label fx:id="repoDescription"/>
+                    </children>                
+                </VBox>
+            </top>
             <center>
-                <Label fx:id="repoName"/>
+                <ScrollPane>
+                    <Label fx:id="repoReadMe"/>
+                </ScrollPane>              
             </center>
         </BorderPane>
     </center>
+    <right>
+        <VBox alignment="CENTER" BorderPane.alignment="CENTER">
+            <padding>
+                    <Insets top="50" right="50" bottom="50" left="50"/>
+            </padding>
+            <children>
+                <Label fx:id="h31" text="Your follows" textAlignment="CENTER" />
+                <ListView fx:id="userFollows"/>
+            </children>    
+        </VBox> 
+    </right>
 </BorderPane>

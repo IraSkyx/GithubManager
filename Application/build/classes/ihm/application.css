@@ -50,18 +50,18 @@
     -fx-background-color:white;
 }
 
-#h1, #h2, #h3, #repoName{
+#h1, #h2, #h3, #h31, #repoName, #repoDescription{
     -fx-font-family: Collegiate;
     -fx-font-size: 10em;
     -fx-text-fill: white;
 }
 
-#h2 {
+#h2, #repoName{
     -fx-font-family: 'Lato Hairline';
     -fx-font-size: 3em;
 }
 
-#h3, #repoName{
+#h3, #h31, #repoDescription{
     -fx-font-size: 1.5em;
 }
 
@@ -69,10 +69,19 @@
     -fx-background-color:white;
 }
 
+.scroll-pane > .viewport {    
+    -fx-background-color: #222222;
+}
+
+#repoReadMe {
+    -fx-text-fill: white;
+    -fx-font-size: 1.5em;
+}
+
 #error {
     -fx-font-family: Collegiate;
     -fx-font-size: 1.5em;
-    -fx-text-fill: rgba(217, 30, 24);
+    -fx-text-fill: rgb(217, 30, 24);
 }
 
 #columnTitle {

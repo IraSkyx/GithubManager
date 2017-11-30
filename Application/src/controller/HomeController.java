@@ -11,6 +11,7 @@ import javafx.scene.layout.BorderPane;
 import business_logic.RepositoryMaker;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
+import org.eclipse.egit.github.core.service.ContentsService;
 import org.eclipse.egit.github.core.service.RepositoryService;
 
 public class HomeController {
@@ -43,9 +44,12 @@ public class HomeController {
     
     @FXML
     private void onEnter() throws IOException {
-        ObservableList<Repository> list = FXCollections.observableArrayList();
+        ObservableList<Repository> list = FXCollections.observableArrayList();              
         
-        for(org.eclipse.egit.github.core.Repository repo : new RepositoryService().getRepositories(input.getText()))
+        RepositoryService service = new RepositoryService();
+        service.getClient().setOAuth2Token("5492d1456e37ba89cc8985ccdee4a8dc028e916f");
+        
+        for(org.eclipse.egit.github.core.Repository repo : service.getRepositories(input.getText()))
             list.add(RepositoryMaker.Make(repo));
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ihm/OnlineMode.fxml"));

@@ -12,6 +12,7 @@ import javafx.scene.layout.BorderPane;
 import business_logic.Repository;
 import business_logic.RepositoryMaker;
 import java.io.IOException;
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -34,6 +35,12 @@ public class OnlineModeController extends BorderPane {
     Label repoName;
     
     @FXML
+    Label repoDescription; 
+    
+    @FXML
+    Label repoReadMe; 
+    
+    @FXML
     private void onEnter() throws IOException{
         ObservableList<Repository> list = FXCollections.observableArrayList();
         
@@ -45,10 +52,9 @@ public class OnlineModeController extends BorderPane {
 
     public void setItems(ObservableList<Repository> results) {
         searchResults.setItems(results);
-    }
-    
-    public void initialize(){
-        searchResults.getSelectionModel().select(1);        
-        repoName.textProperty().bind(searchResults.getSelectionModel().selectedItemProperty().asString());
+        searchResults.getSelectionModel().select(0);    
+        repoName.textProperty().bind(Bindings.selectString(searchResults.getSelectionModel().selectedItemProperty(), "name"));
+        repoDescription.textProperty().bind(Bindings.selectString(searchResults.getSelectionModel().selectedItemProperty(), "description"));
+        repoReadMe.textProperty().bind(Bindings.selectString(searchResults.getSelectionModel().selectedItemProperty(), "readme"));
     }
 }
