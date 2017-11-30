@@ -8,7 +8,7 @@ public class Repository extends Follow {
     
     private final StringProperty name = new SimpleStringProperty();
         public String getName() {return proxy.getName();}
-        public void setName(String name) {this.proxy.setName(name);}
+        public void setName(String name) {proxy.setName(name);}
         public StringProperty nameProperty(){return name;}
     
     private final org.eclipse.egit.github.core.Repository proxy;

@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.TextField?>
 <?import controller.HeaderController?>
-<?import controller.ResultDisplayController?>
 
 <BorderPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OnlineModeController">
     <left>
@@ -26,6 +25,10 @@
         </VBox>
     </top>
     <center>
-        <ResultDisplayController fx:id="result"/>
+        <BorderPane>
+            <center>
+                <Label fx:id="repoName"/>
+            </center>
+        </BorderPane>
     </center>
 </BorderPane>

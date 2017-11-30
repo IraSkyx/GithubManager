@@ -12,9 +12,8 @@ import javafx.scene.layout.BorderPane;
 import business_logic.Repository;
 import business_logic.RepositoryMaker;
 import java.io.IOException;
-import javafx.beans.NamedArg;
 import javafx.collections.FXCollections;
-import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import org.eclipse.egit.github.core.service.RepositoryService;
 
@@ -24,14 +23,15 @@ import org.eclipse.egit.github.core.service.RepositoryService;
  * @author Adrien
  */
 public class OnlineModeController extends BorderPane {
-    @FXML
-    ResultDisplayController result;
     
     @FXML
     ListView searchResults;  
     
     @FXML
     TextField input;
+    
+    @FXML
+    Label repoName;
     
     @FXML
     private void onEnter() throws IOException{
@@ -48,6 +48,7 @@ public class OnlineModeController extends BorderPane {
     }
     
     public void initialize(){
-        result.repositoryProperty().bind(searchResults.getSelectionModel().selectedItemProperty());
+        searchResults.getSelectionModel().select(1);        
+        repoName.textProperty().bind(searchResults.getSelectionModel().selectedItemProperty().asString());
     }
 }

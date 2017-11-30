@@ -50,7 +50,7 @@
     -fx-background-color:white;
 }
 
-#h1, #h2, #h3 {
+#h1, #h2, #h3, #repoName{
     -fx-font-family: Collegiate;
     -fx-font-size: 10em;
     -fx-text-fill: white;
@@ -61,7 +61,7 @@
     -fx-font-size: 3em;
 }
 
-#h3 {
+#h3, #repoName{
     -fx-font-size: 1.5em;
 }
 
