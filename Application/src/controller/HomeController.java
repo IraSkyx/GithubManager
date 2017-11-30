@@ -43,7 +43,6 @@ public class HomeController {
     private void onEnter() {
         try{
             error.visibleProperty().set(false);
-            error.setVisible(false);
             ArrayList<business_logic.Repository> list = new ArrayList<>();
             for(org.eclipse.egit.github.core.Repository repo : new RepositoryService().getRepositories(input.getText()))
                 list.add(RepositoryMaker.Make(repo));

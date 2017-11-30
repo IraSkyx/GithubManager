@@ -66,10 +66,10 @@
     -fx-text-fill: white;
 }
 
-error {
-    -fx-font-family: 'Lato Hairline';
+#error {
+    -fx-font-family: Collegiate;
     -fx-font-size: 1.5em;
-    -fx-text-fill: #D91E18;
+    -fx-text-fill: rgba(217, 30, 24);
 }
 
 #columnTitle {

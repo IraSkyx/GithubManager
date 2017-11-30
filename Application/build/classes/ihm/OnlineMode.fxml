@@ -26,6 +26,6 @@
         </VBox>
     </top>
     <center>
-        <ResultDisplayController fx:id="selectedRepo"/>
+        <!--<ResultDisplayController fx:id="selectedRepo"/>-->
     </center>
 </BorderPane>

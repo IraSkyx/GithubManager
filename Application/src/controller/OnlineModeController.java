@@ -20,7 +20,7 @@ import javafx.fxml.Initializable;
  *
  * @author Adrien
  */
-public class OnlineModeController extends BorderPane implements Initializable {
+public class OnlineModeController extends BorderPane {
 
     @FXML
     ListView searchResults;  
@@ -36,9 +36,8 @@ public class OnlineModeController extends BorderPane implements Initializable {
     private void onEnter(){
         
     }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+   
+    public OnlineModeController() {
        selectedRepo.repositoryProperty().bind(new SimpleObjectProperty<>((Repository)searchResults.getSelectionModel().getSelectedItem()));
     }
 }

@@ -5,13 +5,10 @@
         <group name="Exemples FX"/>
         <group>
             <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/controller/OnlineModeController.java</file>
-            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/ihm/Home.fxml</file>
             <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/controller/HomeController.java</file>
             <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/ihm/OnlineMode.fxml</file>
-            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/controller/HeaderController.java</file>
             <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/controller/ResultDisplayController.java</file>
-            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/model/Repository.java</file>
-            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/ihm/ResultDisplay.fxml</file>
+            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/ihm/application.css</file>
         </group>
     </open-files>
 </project-private>
