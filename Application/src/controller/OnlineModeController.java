@@ -10,10 +10,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.BorderPane;
 import business_logic.Repository;
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.fxml.Initializable;
+import business_logic.RepositoryMaker;
+import java.io.IOException;
+import javafx.beans.NamedArg;
+import javafx.collections.FXCollections;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.TextField;
+import org.eclipse.egit.github.core.service.RepositoryService;
 
 /**
  * FXML Controller class
@@ -21,23 +24,30 @@ import javafx.fxml.Initializable;
  * @author Adrien
  */
 public class OnlineModeController extends BorderPane {
-
+    @FXML
+    ResultDisplayController result;
+    
     @FXML
     ListView searchResults;  
-
-    @FXML
-    ResultDisplayController selectedRepo;
-    
-    public void setResults(ObservableList<Repository> items ) {
-        searchResults.setItems(items);
-    }
     
     @FXML
-    private void onEnter(){
+    TextField input;
+    
+    @FXML
+    private void onEnter() throws IOException{
+        ObservableList<Repository> list = FXCollections.observableArrayList();
         
+        for(org.eclipse.egit.github.core.Repository repo : new RepositoryService().getRepositories(input.getText()))
+            list.add(RepositoryMaker.Make(repo));
+
+        setItems(list);
     }
-   
-    public OnlineModeController() {
-       selectedRepo.repositoryProperty().bind(new SimpleObjectProperty<>((Repository)searchResults.getSelectionModel().getSelectedItem()));
+
+    public void setItems(ObservableList<Repository> results) {
+        searchResults.setItems(results);
+    }
+    
+    public void initialize(){
+        result.repositoryProperty().bind(searchResults.getSelectionModel().selectedItemProperty());
     }
 }

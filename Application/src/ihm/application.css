@@ -50,20 +50,23 @@
     -fx-background-color:white;
 }
 
-#h1, #h2 {
+#h1, #h2, #h3 {
     -fx-font-family: Collegiate;
     -fx-font-size: 10em;
     -fx-text-fill: white;
 }
 
-#h2, #h3 {
+#h2 {
     -fx-font-family: 'Lato Hairline';
     -fx-font-size: 3em;
 }
 
 #h3 {
-    -fx-font-size: 1em;
-    -fx-text-fill: white;
+    -fx-font-size: 1.5em;
+}
+
+#displayResult {
+    -fx-background-color:white;
 }
 
 #error {

@@ -1,5 +1,6 @@
 package controller;
 
+import business_logic.Repository;
 import java.io.IOException;
 import java.util.ArrayList;
 import javafx.collections.FXCollections;
@@ -8,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import business_logic.RepositoryMaker;
+import javafx.collections.ObservableList;
 import javafx.scene.control.Label;
 import org.eclipse.egit.github.core.service.RepositoryService;
 
@@ -40,18 +42,14 @@ public class HomeController {
     }
     
     @FXML
-    private void onEnter() {
-        try{
-            error.visibleProperty().set(false);
-            ArrayList<business_logic.Repository> list = new ArrayList<>();
-            for(org.eclipse.egit.github.core.Repository repo : new RepositoryService().getRepositories(input.getText()))
-                list.add(RepositoryMaker.Make(repo));
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ihm/OnlineMode.fxml"));
-            FrontController.setScene((BorderPane)loader.load());
-            loader.<OnlineModeController>getController().setResults(FXCollections.observableList(list));
-        }
-        catch(IOException ex){
-           error.visibleProperty().set(true);
-        }
+    private void onEnter() throws IOException {
+        ObservableList<Repository> list = FXCollections.observableArrayList();
+        
+        for(org.eclipse.egit.github.core.Repository repo : new RepositoryService().getRepositories(input.getText()))
+            list.add(RepositoryMaker.Make(repo));
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ihm/OnlineMode.fxml"));
+        FrontController.setScene((BorderPane)loader.load());   
+        ((OnlineModeController)loader.getController()).setItems(list);
     }
 }

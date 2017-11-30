@@ -13,8 +13,8 @@ public class FrontController {
     
     public static void setStage(Stage primaryStage, BorderPane panel){
         stage = primaryStage;
-        stage.setWidth(1080);
-        stage.setHeight(720);
+        stage.setWidth(1440);
+        stage.setHeight(920);
         stage.setTitle("GithubManager");
         setScene(panel);
         stage.show();

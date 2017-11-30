@@ -6,7 +6,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ResultDisplayController">
+<BorderPane fx:id="displayResult" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ResultDisplayController" stylesheets="application.css">
+    
     <left>
         
     </left>
@@ -14,7 +15,7 @@
         <Label text="${controller.repository.name}"/>
     </top>
     <right>
-        
+        <Label text="HELLOOOOOOOOOOOO"/>
     </right>
     <bottom>
         

@@ -18,14 +18,14 @@
         </VBox>
     </left>
     <top>
-        <VBox BorderPane.alignment="CENTER">
+        <VBox alignment="CENTER" BorderPane.alignment="CENTER">
             <children>
                 <HeaderController/>
-                <TextField fx:id="input" focusTraversable="false" onAction="#onEnter" maxWidth="600" promptText="Search" />
+                <TextField fx:id="input" focusTraversable="false" text="IraSkyx" onAction="#onEnter" maxWidth="600" promptText="Search" />
             </children>
         </VBox>
     </top>
     <center>
-        <!--<ResultDisplayController fx:id="selectedRepo"/>-->
+        <ResultDisplayController fx:id="result"/>
     </center>
 </BorderPane>
