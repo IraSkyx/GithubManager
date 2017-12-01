@@ -22,7 +22,7 @@ public class NullToBooleanConverter extends Format{
 
     @Override
     public Object parseObject(String source, ParsePosition pos) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
     }
     
 }

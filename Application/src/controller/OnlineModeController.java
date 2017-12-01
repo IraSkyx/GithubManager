@@ -13,9 +13,6 @@ import javafx.scene.control.TreeView;
 import javafx.scene.layout.BorderPane;
 import business_logic.Repository;
 import javafx.beans.binding.Bindings;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
@@ -59,6 +56,8 @@ public class OnlineModeController extends BorderPane {
         repoName.textProperty().bind(Bindings.selectString(searchResults.getSelectionModel().selectedItemProperty(), "name"));
         repoDescription.textProperty().bind(Bindings.selectString(searchResults.getSelectionModel().selectedItemProperty(), "description"));
         repoReadMe.textProperty().bind(Bindings.selectString(searchResults.getSelectionModel().selectedItemProperty(), "readme"));
+        
+        //TreeViewFollows.visibleProperty().bind(UsersManager.currentUserProperty(), new NullToBooleanConverter());
     }
     
     public void initialize(){

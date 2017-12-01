@@ -61,7 +61,6 @@
             </padding>
             <children>
                 <Label fx:id="h31" text="Your follows" textAlignment="CENTER" />
-                <!--<ListView fx:id="userFollows"/>-->
                 <TreeView fx:id="TreeViewFollows" layoutX="0" layoutY="0"/>
             </children>    
         </VBox> 

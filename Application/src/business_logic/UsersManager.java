@@ -8,6 +8,7 @@ package business_logic;
 import java.util.ArrayList;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import stub.StubUser;
 
 /**
  *
@@ -20,7 +21,8 @@ public class UsersManager {
         public static void setCurrentUser(User user) {currentUser.set(user);}
         public static ObjectProperty<User> currentUserProperty(){return currentUser;}
     
-    private static final ArrayList<User> allUsers = new ArrayList<>();
+    //private static final ArrayList<User> allUsers = new ArrayList<>();
+    private static final ArrayList<User> allUsers = StubUser.loadUsers();
 
     public static ArrayList<User> getAllUsers() {
         return allUsers;
