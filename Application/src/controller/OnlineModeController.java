@@ -9,6 +9,7 @@ import business_logic.APIGateway;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TreeView;
 import javafx.scene.layout.BorderPane;
 import business_logic.Repository;
 import javafx.beans.binding.Bindings;
@@ -43,6 +44,8 @@ public class OnlineModeController extends BorderPane {
     @FXML
     Label repoReadMe; 
     
+    @FXML
+    TreeView TreeViewFollows;
     
     @FXML
     private void onEnter() {      

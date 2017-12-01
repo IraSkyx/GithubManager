@@ -2,11 +2,15 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.control.TreeItem?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
 <?import controller.HeaderController?>
 <?import business_logic.User?>
 
@@ -57,7 +61,8 @@
             </padding>
             <children>
                 <Label fx:id="h31" text="Your follows" textAlignment="CENTER" />
-                <ListView fx:id="userFollows"/>
+                <!--<ListView fx:id="userFollows"/>-->
+                <TreeView fx:id="TreeViewFollows" layoutX="0" layoutY="0"/>
             </children>    
         </VBox> 
     </right>

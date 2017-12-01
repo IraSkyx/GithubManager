@@ -4,13 +4,25 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group name="Exemples FX"/>
         <group>
-            <file>file:/home/etud/adlenoir/githubmanager/Application/src/business_logic/Repository.java</file>
-            <file>file:/home/etud/adlenoir/githubmanager/Application/src/converters/NullToBooleanConverter.java</file>
-            <file>file:/home/etud/adlenoir/githubmanager/Application/src/ihm/OnlineMode.fxml</file>
-            <file>file:/home/etud/adlenoir/githubmanager/Application/src/business_logic/UsersManager.java</file>
-            <file>file:/home/etud/adlenoir/githubmanager/Application/src/business_logic/APIGateway.java</file>
-            <file>file:/home/etud/adlenoir/githubmanager/Application/src/controller/OnlineModeController.java</file>
-            <file>file:/home/etud/adlenoir/githubmanager/Application/src/launch/Main.java</file>
+            <file>file:/C:/Users/fsimo/Documents/IUT/DeuxiemeAnnee/Semestre3/Periode2/JavaFX/ProjetJavaFx/githubmanager/Application/src/business_logic/Repository.java</file>
+            <file>file:/C:/Users/fsimo/Documents/IUT/DeuxiemeAnnee/Semestre3/Periode2/JavaFX/ProjetJavaFx/githubmanager/Application/src/business_logic/Category.java</file>
+            <file>file:/C:/Users/fsimo/Documents/IUT/DeuxiemeAnnee/Semestre3/Periode2/JavaFX/ProjetJavaFx/githubmanager/Application/src/ihm/Header.fxml</file>
+            <file>file:/C:/Users/fsimo/Documents/IUT/DeuxiemeAnnee/Semestre3/Periode2/JavaFX/ProjetJavaFx/githubmanager/Application/src/controller/OnlineModeController.java</file>
+            <file>file:/C:/Users/fsimo/Documents/IUT/DeuxiemeAnnee/Semestre3/Periode2/JavaFX/ProjetJavaFx/githubmanager/Application/src/business_logic/RepositoryMaker.java</file>
+            <file>file:/C:/Users/fsimo/Documents/IUT/DeuxiemeAnnee/Semestre3/Periode2/JavaFX/ProjetJavaFx/githubmanager/Application/src/business_logic/Factory.java</file>
+            <file>file:/C:/Users/fsimo/Documents/IUT/DeuxiemeAnnee/Semestre3/Periode2/JavaFX/ProjetJavaFx/githubmanager/Application/src/business_logic/User.java</file>
+            <file>file:/C:/Users/fsimo/Documents/IUT/DeuxiemeAnnee/Semestre3/Periode2/JavaFX/ProjetJavaFx/githubmanager/Application/src/business_logic/APIGateway.java</file>
+            <file>file:/C:/Users/fsimo/Documents/IUT/DeuxiemeAnnee/Semestre3/Periode2/JavaFX/ProjetJavaFx/githubmanager/Application/src/ihm/Home.fxml</file>
+            <file>file:/C:/Users/fsimo/Documents/IUT/DeuxiemeAnnee/Semestre3/Periode2/JavaFX/ProjetJavaFx/githubmanager/Application/src/business_logic/UsersManager.java</file>
+            <file>file:/C:/Users/fsimo/Documents/IUT/DeuxiemeAnnee/Semestre3/Periode2/JavaFX/ProjetJavaFx/githubmanager/Application/src/controller/SignUpController.java</file>
+            <file>file:/C:/Users/fsimo/Documents/IUT/DeuxiemeAnnee/Semestre3/Periode2/JavaFX/ProjetJavaFx/githubmanager/Application/src/controller/OfflineModeController.java</file>
+            <file>file:/C:/Users/fsimo/Documents/IUT/DeuxiemeAnnee/Semestre3/Periode2/JavaFX/ProjetJavaFx/githubmanager/Application/src/controller/HomeController.java</file>
+            <file>file:/C:/Users/fsimo/Documents/IUT/DeuxiemeAnnee/Semestre3/Periode2/JavaFX/ProjetJavaFx/githubmanager/Application/src/ihm/OnlineMode.fxml</file>
+            <file>file:/C:/Users/fsimo/Documents/IUT/DeuxiemeAnnee/Semestre3/Periode2/JavaFX/ProjetJavaFx/githubmanager/Application/src/launch/Main.java</file>
+            <file>file:/C:/Users/fsimo/Documents/IUT/DeuxiemeAnnee/Semestre3/Periode2/JavaFX/ProjetJavaFx/githubmanager/Application/src/ihm/OfflineMode.fxml</file>
+            <file>file:/C:/Users/fsimo/Documents/IUT/DeuxiemeAnnee/Semestre3/Periode2/JavaFX/ProjetJavaFx/githubmanager/Application/src/business_logic/CellFactory.java</file>
+            <file>file:/C:/Users/fsimo/Documents/IUT/DeuxiemeAnnee/Semestre3/Periode2/JavaFX/ProjetJavaFx/githubmanager/Application/src/business_logic/Follow.java</file>
+            <file>file:/C:/Users/fsimo/Documents/IUT/DeuxiemeAnnee/Semestre3/Periode2/JavaFX/ProjetJavaFx/githubmanager/Application/src/business_logic/ModelGateway.java</file>
         </group>
     </open-files>
 </project-private>
