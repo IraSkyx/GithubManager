@@ -36,17 +36,10 @@ public class Repository extends Follow {
         this.proxy = proxy;        
         try {   
             setName(proxy.getName());
-            setDescription(proxy.getDescription());
-            String repoId = proxy.generateId();
-            ContentsService contents = new ContentsService();
-            contents.getClient().setOAuth2Token("5492d1456e37ba89cc8985ccdee4a8dc028e916f");  
-            
-            RepositoryContents readMe = contents.getReadme(RepositoryId.createFromId(repoId));                                   
-            
-            setReadMe(Repository.decode(readMe.getContent()));
+            setDescription(proxy.getDescription());                                                          
+            setReadMe(APIGateway.getReadMe(proxy));
         } 
         catch (Exception ex) {            
-            setReadMe("No README.md"); //No README.md found in this Repository
             System.out.println(ex.getMessage());
         }       
     }
@@ -69,17 +62,7 @@ public class Repository extends Follow {
     
     public Date getUpdatedAt(){
         return proxy.getUpdatedAt();
-    }
-    
-    public static String decode(String value) {
-        try{
-            byte[] decodedValue = Base64.getMimeDecoder().decode(value);
-            return new String(decodedValue, StandardCharsets.UTF_8);
-        }
-        catch(Exception e){
-          return "Failed to decode README.md";
-        }
-   }
+    }   
     
     @Override
     public String toString(){

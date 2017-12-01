@@ -7,8 +7,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.TextField?>
-
 <?import controller.HeaderController?>
+<?import business_logic.User?>
 
 <BorderPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OnlineModeController">
     <left>
