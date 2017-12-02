@@ -14,6 +14,10 @@
 <?import controller.HeaderController?>
 <?import business_logic.User?>
 
+<!-- 
+    OnlineMode view. It permits to consult search results, add followers (repositories or directories).
+-->
+
 <BorderPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OnlineModeController">
     <left>
         <VBox alignment="CENTER" BorderPane.alignment="CENTER">

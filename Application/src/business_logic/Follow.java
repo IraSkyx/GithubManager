@@ -5,6 +5,10 @@
  */
 package business_logic;
 
+/*
+* Abstract Class Follow : mother class in a composite pattern to make a treelike structure
+*/
+
 /**
  *
  * @author Adrien

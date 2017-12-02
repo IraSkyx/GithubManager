@@ -12,6 +12,10 @@
 <?import javafx.scene.layout.HBox?>
 <?import controller.HeaderController?>
 
+<!-- 
+    SignUp view for the creation of Users. It permits to create a new account.
+-->
+
 <BorderPane id="AnchorPane" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignUpController">
     <top>
         <HeaderController/>
