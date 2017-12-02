@@ -1,12 +1,17 @@
 package business_logic;
 
+/*
+* Class User : user has access to more functionalities than a visitor
+*/
+
 public class User {
     
     private String username;
     private String password;
     private String email;
     private final Follow follows;
-
+    
+    //
     public User(String username, String password, String email) {
         this.username = username;
         this.password = password;

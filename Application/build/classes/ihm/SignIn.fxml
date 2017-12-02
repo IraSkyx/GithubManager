@@ -14,7 +14,15 @@
 <?import javafx.scene.layout.HBox?>
 <?import controller.HeaderController?>
 
+<<<<<<< HEAD
 <BorderPane id="BorderPane" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignInController">
+=======
+<!-- 
+    SignIn view for the connection to an account. It permits to access to the online mode.
+-->
+
+<BorderPane id="BorderPane" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
+>>>>>>> e747fe9c164bcd9991acc75245e8acbf5194a35c
     <top>
         <HeaderController/>     
     </top>

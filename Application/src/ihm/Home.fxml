@@ -11,6 +11,10 @@
 <?import javafx.geometry.*?>
 <?import controller.HeaderController?>
 
+<!-- 
+    Home view. It permits to make a research, go to the connection or the creation view.
+-->
+
 <BorderPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
     <center>
         <VBox alignment="CENTER" BorderPane.alignment="CENTER">

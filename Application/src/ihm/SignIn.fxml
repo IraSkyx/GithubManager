@@ -16,7 +16,7 @@
 
 <BorderPane id="BorderPane" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignInController">
     <top>
-        <HeaderController/>     
+        <HeaderController/>
     </top>
     <center>
       <VBox alignment="CENTER" BorderPane.alignment="CENTER">
@@ -37,7 +37,7 @@
         <FlowPane alignment="CENTER" columnHalignment="CENTER" BorderPane.alignment="CENTER">
             <children>
                 <Button id="signIn" focusTraversable="false" text="Log in" onAction="#SignIn"/>
-                <Button id="home" focusTraversable="false" onAction="#GoToHome" text="Go back" />               
+                <Button id="home" focusTraversable="false" onAction="#GoToHome" text="Go back" />
             </children>
         </FlowPane>
    </bottom>

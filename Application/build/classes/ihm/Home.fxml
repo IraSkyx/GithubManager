@@ -11,7 +11,15 @@
 <?import javafx.geometry.*?>
 <?import controller.HeaderController?>
 
+<<<<<<< HEAD
 <BorderPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">    
+=======
+<!-- 
+    Home view. It permits to make a research, go to the connection or the creation view.
+-->
+
+<BorderPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
+>>>>>>> e747fe9c164bcd9991acc75245e8acbf5194a35c
     <center>
         <VBox alignment="CENTER" BorderPane.alignment="CENTER">
             <TextField fx:id="input" focusTraversable="false" onAction="#onEnter" maxWidth="600" promptText="Search" text="IraSkyx"/>
