@@ -1,17 +1,8 @@
 package business_logic;
 
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import org.eclipse.egit.github.core.RepositoryContents;
-import org.eclipse.egit.github.core.RepositoryId;
-import org.eclipse.egit.github.core.service.ContentsService;
-import java.util.Base64;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import launch.Main;
 
 public class Repository extends Follow {
     

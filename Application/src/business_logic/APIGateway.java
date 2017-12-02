@@ -43,7 +43,7 @@ public class APIGateway {
             System.out.println("Proxy issue");
             return null;
         }
-        catch (Exception ex) {
+        catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println(ex.getMessage());
             return null;
@@ -59,7 +59,7 @@ public class APIGateway {
             return decode(readMe.getContent());
         } 
         catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            System.out.println("Error README.md : " + ex.getMessage());
             return "No README.md"; //No README.md found in this Repository
         }       
     }

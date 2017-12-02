@@ -8,6 +8,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Button?>
@@ -27,12 +28,42 @@
         </VBox>
     </left>
     <top>
-        <VBox alignment="CENTER" BorderPane.alignment="CENTER">
-            <children>
-                <HeaderController/>
-                <TextField fx:id="input" focusTraversable="false" text="IraSkyx" onAction="#onEnter" maxWidth="600" promptText="Search" />
-            </children>
-        </VBox>
+        <BorderPane>
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <left>
+                <Button text="Home" onAction="#GoHome"/>
+            </left>
+            <center>
+                <VBox alignment="CENTER" BorderPane.alignment="CENTER">
+                    <children>
+                        <HeaderController/>
+                        <TextField fx:id="input" focusTraversable="false" text="IraSkyx" onAction="#onEnter" maxWidth="600" promptText="Search" />
+                    </children>
+                </VBox>
+            </center>
+            <right>
+                <VBox>
+                    <children>
+                        <HBox alignment="CENTER">
+                            <padding>
+                                <Insets top="10" right="10" bottom="10" left="10"/>
+                            </padding>
+                            <children>      
+                                <!-- When logged in the controls above will be displayed -->                  
+                                <Button fx:id="loggedOff1" text="Sign in" onAction="#SignIn"/>
+                                <Button fx:id="loggedOff2" text="Sign up" onAction="#SignUp"/>
+                                    
+                                <!-- When logged off the controls above will be displayed -->      
+                                <Label fx:id="loggedIn1"/>
+                                <Button fx:id="loggedIn2" text="Log off" onAction="#logOff"/>
+                            </children>                   
+                        </HBox>
+                    </children>
+                </VBox>        
+            </right>
+        </BorderPane>       
     </top>
     <center>
             <BorderPane>
@@ -61,7 +92,7 @@
             </padding>
             <children>
                 <Label fx:id="h31" text="Your follows" textAlignment="CENTER" />
-                <TreeView fx:id="TreeViewFollows" layoutX="0" layoutY="0"/>
+                <TreeView fx:id="TreeViewFollows"/>
             </children>    
         </VBox> 
     </right>

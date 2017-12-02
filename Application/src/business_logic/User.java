@@ -41,5 +41,9 @@ public class User {
     public Follow getFollows() {
         return follows;
     }
-	
+    
+    @Override
+    public String toString() {
+        return username;
+    }
 }

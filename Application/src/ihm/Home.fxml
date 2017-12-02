@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.*?>
 <?import controller.HeaderController?>
 
 <BorderPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
@@ -15,7 +16,6 @@
         <VBox alignment="CENTER" BorderPane.alignment="CENTER">
             <TextField fx:id="input" focusTraversable="false" onAction="#onEnter" maxWidth="600" promptText="Search" text="IraSkyx"/>
             <Label id="h2" text="A better way to follow GitHub projects" />
-            <Label fx:id="error" text="Problème de connexion internet" visible="false"/>
         </VBox>
     </center>
     <top>
@@ -27,9 +27,9 @@
     </top>
     <bottom>
         <FlowPane alignment="CENTER" columnHalignment="CENTER" BorderPane.alignment="CENTER">
-            <children>               
-                <Button id="signIn" focusTraversable="false" onAction="#GoToSignIn" text="Sign in" />
-                <Button id="signUp" focusTraversable="false" onAction="#GoToSignUp" text="Sign up" />
+            <children>
+                <Button id="signIn" focusTraversable="false" onAction="#GoToSignIn" text="Sign in"/>
+                <Button id="signUp" focusTraversable="false" onAction="#GoToSignUp" text="Sign up"/>
             </children>
         </FlowPane>
     </bottom>

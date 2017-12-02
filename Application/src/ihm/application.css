@@ -50,18 +50,18 @@
     -fx-background-color:white;
 }
 
-#h1, #h2, #h3, #h31, #repoName, #repoDescription{
+#h1, #h2, #h3, #h31, #repoName, #repoDescription, #loggedIn1 {
     -fx-font-family: Collegiate;
     -fx-font-size: 10em;
     -fx-text-fill: white;
 }
 
-#h2, #repoName{
+#h2, #repoName, #loggedIn1{
     -fx-font-family: 'Lato Hairline';
     -fx-font-size: 3em;
 }
 
-#h3, #h31, #repoDescription{
+#h3, #h31, #repoDescription, #loggedIn1{
     -fx-font-size: 1.5em;
 }
 

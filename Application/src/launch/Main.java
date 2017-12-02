@@ -1,5 +1,6 @@
 package launch;
 
+import business_logic.UsersManager;
 import controller.FrontController;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -8,6 +9,7 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.layout.BorderPane;
 import javafx.fxml.FXMLLoader;
+import stub.StubUser;
 
 public class Main extends Application {
         
@@ -15,12 +17,15 @@ public class Main extends Application {
     public void start(Stage stage) {
         try {       
             FrontController.setStage(stage, (BorderPane) FXMLLoader.load(getClass().getResource("/ihm/Home.fxml")));
-        } catch (IOException e) {
+        } 
+        catch (IOException e) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 
     public static void main(String[] args) {
+        UsersManager.setAllUsers(StubUser.loadUsers());
+        UsersManager.setCurrentUser(UsersManager.getAllUsers().get(0));       
         launch(args);
     }
 }
