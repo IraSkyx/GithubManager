@@ -1,1 +1,4 @@
 /dist/
+Application/build/*
+!Application/build.xml
+Application/nbproject/*
