@@ -21,6 +21,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TreeItem;
 import javafx.scene.layout.HBox;
 
 /**
@@ -42,7 +43,7 @@ public class OnlineModeController extends BorderPane {
     
     @FXML Label repoReadMe; 
     
-    @FXML TreeView TreeViewFollows;
+    @FXML TreeView<String> TreeViewFollows;
     
     @FXML Label h31;
     
@@ -116,5 +117,10 @@ public class OnlineModeController extends BorderPane {
         
         TreeViewFollows.visibleProperty().bind(nullToBool2);
         TreeViewFollows.managedProperty().bind(nullToBool2);
+        
+        TreeItem<String> root = new TreeItem<>("Node");
+        root.setExpanded(true);
+        root.getChildren().add(new TreeItem<>("UnderNode"));
+        TreeViewFollows.setRoot(root);
     }
 }

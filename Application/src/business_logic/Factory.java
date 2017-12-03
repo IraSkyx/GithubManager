@@ -5,10 +5,15 @@
  */
 package business_logic;
 
+import javafx.scene.control.TreeView;
+
 /**
  *
  * @author fsimo
  */
 public class Factory {
-    
+    public TreeView setItemsTreeView(TreeView<Follow> TreeViewFollows, User user){
+        
+        return TreeViewFollows;       
+    }
 }
