@@ -118,9 +118,17 @@ public class OnlineModeController extends BorderPane {
         TreeViewFollows.visibleProperty().bind(nullToBool2);
         TreeViewFollows.managedProperty().bind(nullToBool2);
         
-        TreeItem<String> root = new TreeItem<>("Node");
+        TreeItem<String> root = new TreeItem<>("To follow");
         root.setExpanded(true);
-        root.getChildren().add(new TreeItem<>("UnderNode"));
+        TreeItem<String> categ1 = new TreeItem<>("Future projects");
+        for (int i = 1; i < 3; i++) 
+            categ1.getChildren().add(new TreeItem<>("MyResource " + i));       
+        root.getChildren().add(categ1);
+        TreeItem<String> categ2 = new TreeItem<>("TODOLIST");
+        for (int j = 1; j < 5; j++)
+            categ2.getChildren().add(new TreeItem<>("MyResource " + j));     
+        root.getChildren().add(categ2);
+        
         TreeViewFollows.setRoot(root);
     }
 }
