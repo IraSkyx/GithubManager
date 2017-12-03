@@ -34,6 +34,11 @@ public class Category extends Follow{
     }
     
     @Override
+    public String toString(){
+        return name;
+    }
+    
+    @Override
     public void AddFollow(Follow follow) {
         listOfFollows.add(follow);
     }

@@ -6,6 +6,7 @@
 package controller;
 
 import business_logic.APIGateway;
+import business_logic.ModelGateway;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
@@ -75,7 +76,7 @@ public class OnlineModeController extends BorderPane {
     
     @FXML
     private void logOff() throws IOException{
-        UsersManager.disconnect();       
+        ModelGateway.disconnect();       
     }
 
     public void setItems(ObservableList<Repository> results) {

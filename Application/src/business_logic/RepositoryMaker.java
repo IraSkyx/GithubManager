@@ -10,7 +10,7 @@ package business_logic;
  * @author Adrien
  */
 public class RepositoryMaker {
-    public static Repository Make(org.eclipse.egit.github.core.Repository repository){
+    public static Repository make(org.eclipse.egit.github.core.Repository repository){
         //TO ADD : Handle difference between org.eclipse.egit.github.core.Repository and Repository
         return new Repository(repository);
     }

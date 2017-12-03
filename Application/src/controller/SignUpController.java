@@ -1,10 +1,10 @@
 package controller;
 
+import business_logic.ModelGateway;
 import business_logic.User;
-import business_logic.UsersManager;
+import business_logic.UserMaker;
 import java.io.IOException;
 import java.security.InvalidParameterException;
-import java.util.IllegalFormatException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -36,8 +36,8 @@ public class SignUpController {
     @FXML 
     private void SignUp() throws IOException {  
         try {      
-            User newUser = UsersManager.signUp(username.getText(), email.getText(), password.getText(), verifpassword.getText());
-            UsersManager.connect(newUser.getEmail(), newUser.getPassword());
+            User newUser = UserMaker.make(username.getText(), email.getText(), password.getText(), verifpassword.getText());
+            ModelGateway.connect(newUser.getEmail(), newUser.getPassword());
             FrontController.setScene((BorderPane)FXMLLoader.load(getClass().getResource("/ihm/OnlineMode.fxml")));
         }
         catch(InvalidParameterException ex) {

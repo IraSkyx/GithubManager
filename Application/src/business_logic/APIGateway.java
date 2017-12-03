@@ -35,7 +35,7 @@ public class APIGateway {
             service.getClient().setOAuth2Token(oAuth2Token);
             
             for(org.eclipse.egit.github.core.Repository repo : service.getRepositories(input))
-                list.add(RepositoryMaker.Make(repo));
+                list.add(RepositoryMaker.make(repo));
             
             return list;
         } 

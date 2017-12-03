@@ -39,22 +39,6 @@ public class Repository extends Follow {
         return proxy;
     }
     
-    public Date getCreatedAt(){
-        return proxy.getCreatedAt();
-    }
-    
-    public String getCloneUrl(){
-        return proxy.getCloneUrl();
-    }
-    
-    public org.eclipse.egit.github.core.User getOwner(){
-        return proxy.getOwner();
-    }
-    
-    public Date getUpdatedAt(){
-        return proxy.getUpdatedAt();
-    }   
-    
     @Override
     public String toString(){
         return getName();

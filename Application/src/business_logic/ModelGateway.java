@@ -11,4 +11,12 @@ package business_logic;
  */
 public class ModelGateway {
     
+    public static void disconnect(){
+        UsersManager.disconnect();
+    }
+
+    public static boolean connect(String email, String password) {
+        return UsersManager.connect(email, password);
+    }
+    
 }
