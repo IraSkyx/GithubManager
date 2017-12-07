@@ -1,17 +1,11 @@
 package business_logic;
 
-import java.util.Date;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class Repository extends Follow {
     
-    private final org.eclipse.egit.github.core.Repository proxy;
-        
-    private final StringProperty name = new SimpleStringProperty();
-        public String getName() {return name.get();}
-        public void setName(String name) {this.name.set(name);}
-        public StringProperty nameProperty(){return name;}
+    private final org.eclipse.egit.github.core.Repository proxy;      
         
     private final StringProperty description = new SimpleStringProperty();
         public String getDescription() {return description.get();}
@@ -24,8 +18,9 @@ public class Repository extends Follow {
         public StringProperty readmeProperty(){return readme;}
 
     public Repository(org.eclipse.egit.github.core.Repository proxy) {
+        super(proxy.getName());
         this.proxy = proxy;        
-        try {   
+        try {  
             setName(proxy.getName());
             setDescription(proxy.getDescription());                                                          
             setReadMe(APIGateway.getReadMe(proxy));
@@ -42,15 +37,5 @@ public class Repository extends Follow {
     @Override
     public String toString(){
         return getName();
-    }
-
-    @Override
-    public void AddFollow(Follow follow) {
-        throw new UnsupportedOperationException("OperationNotSupportedException");
-    }
-
-    @Override
-    public void DeleteFollow(Follow follow) {
-        throw new UnsupportedOperationException("OperationNotSupportedException");
     }
 }

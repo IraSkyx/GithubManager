@@ -29,15 +29,15 @@ public class StubUser {
             Category categ = new Category("Future projects");
             for(Repository repo : APIGateway.getRepositories("IraSkyx"))
                 categ.AddFollow(repo);
-            user.getFollows().AddFollow(categ);
+            user.getMyFollow().AddFollow(categ);
             
             Category categ2 = new Category("TODOLIST");
             for(Repository repo : APIGateway.getRepositories("ElRaffray"))
                 categ2.AddFollow(repo);
-            user.getFollows().AddFollow(categ2);
+            user.getMyFollow().AddFollow(categ2);
             
             for(Repository repo : APIGateway.getRepositories("GabinSalabert"))
-                user.getFollows().AddFollow(repo);
+                user.getMyFollow().AddFollow(repo);
         }
     }
 }

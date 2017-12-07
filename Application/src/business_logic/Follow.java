@@ -5,6 +5,9 @@
  */
 package business_logic;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 /*
 * Abstract Class Follow : mother class in a composite pattern to make a treelike structure
 */
@@ -14,6 +17,21 @@ package business_logic;
  * @author Adrien
  */
 public abstract class Follow {
-    public abstract void AddFollow(Follow follow);
-    public abstract void DeleteFollow(Follow follow);
+    
+    private final StringProperty name = new SimpleStringProperty();
+        public String getName() {return name.get();}
+        public void setName(String name) {this.name.set(name);}
+        public StringProperty nameProperty(){return name;}
+    
+    public Follow(String name){
+        setName(name);
+    }
+        
+    public void AddFollow(Follow follow) {
+        throw new UnsupportedOperationException("OperationNotSupportedException");
+    }
+
+    public void DeleteFollow(Follow follow) {
+        throw new UnsupportedOperationException("OperationNotSupportedException");
+    }
 }

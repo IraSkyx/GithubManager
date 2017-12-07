@@ -14,6 +14,7 @@
 <?import javafx.scene.control.Button?>
 <?import controller.HeaderController?>
 <?import business_logic.User?>
+<?import cellFactory.TreeItemFollowFactory?>
 
 <!-- 
     OnlineMode view. It permits to consult search results, add followers (repositories or directories).
@@ -96,7 +97,12 @@
             </padding>
             <children>
                 <Label fx:id="h31" text="Your follows" textAlignment="CENTER" />
-                <TreeView fx:id="TreeViewFollows"/>
+                <TreeView fx:id="TreeViewFollows">
+                    <cellFactory>
+                        <TreeItemFollowFactory/>
+                    </cellFactory>
+                    <TreeItem fx:id="root"/>
+                </TreeView>
             </children>    
         </VBox> 
     </right>

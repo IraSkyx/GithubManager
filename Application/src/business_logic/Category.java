@@ -5,37 +5,29 @@
  */
 package business_logic;
 
-import java.util.ArrayList;
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleListProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
  * @author Adrien
  */
 public class Category extends Follow{
-
-    private String name;
-    private final ArrayList<Follow> listOfFollows;
     
+    private final ListProperty<Follow> listOfFollows = new SimpleListProperty<>();   
+        public final ObservableList<Follow> getListOfFollows() { return listOfFollows.get(); }
+        public final void setListOfFollows(ObservableList<Follow> value) { listOfFollows.set(value); }
+        
     public Category(String name) {
-        this.name = name;
-        this.listOfFollows = new ArrayList<>();
+        super(name);
+        setListOfFollows(FXCollections.<Follow>observableArrayList());
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-    
-    public ArrayList<Follow> getListOfFollows() {
-        return listOfFollows;
-    }
-    
     @Override
     public String toString(){
-        return name;
+        return getName();
     }
     
     @Override
