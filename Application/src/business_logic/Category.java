@@ -24,11 +24,6 @@ public class Category extends Follow{
         super(name);
         setListOfFollows(FXCollections.<Follow>observableArrayList());
     }
-
-    @Override
-    public String toString(){
-        return getName();
-    }
     
     @Override
     public void AddFollow(Follow follow) {
@@ -40,4 +35,13 @@ public class Category extends Follow{
         listOfFollows.remove(follow);
     }
     
+    @Override
+    public ObservableList<Follow> getChildren() {
+        return FXCollections.<Follow>observableArrayList();
+    }
+    
+    @Override
+    public String toString(){
+        return getName();
+    }
 }

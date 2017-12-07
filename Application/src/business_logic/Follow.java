@@ -7,6 +7,7 @@ package business_logic;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.ObservableList;
 
 /*
 * Abstract Class Follow : mother class in a composite pattern to make a treelike structure
@@ -32,6 +33,10 @@ public abstract class Follow {
     }
 
     public void DeleteFollow(Follow follow) {
+        throw new UnsupportedOperationException("OperationNotSupportedException");
+    }
+
+    public ObservableList<Follow> getChildren() {
         throw new UnsupportedOperationException("OperationNotSupportedException");
     }
 }

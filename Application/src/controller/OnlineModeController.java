@@ -6,6 +6,8 @@
 package controller;
 
 import business_logic.APIGateway;
+import business_logic.Category;
+import business_logic.Follow;
 import business_logic.ModelGateway;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -17,6 +19,8 @@ import business_logic.UsersManager;
 import java.io.IOException;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -119,5 +123,19 @@ public class OnlineModeController extends BorderPane {
         TreeViewFollows.visibleProperty().bind(nullToBool2);
         TreeViewFollows.managedProperty().bind(nullToBool2);
         root.valueProperty().bind(UsersManager.currentUserProperty().get().myFollowProperty());
+        root.valueProperty().addListener(x -> {
+            updateTreeView(root);
+        });
+    }
+
+    private void updateTreeView(TreeItem<Follow> root) {
+        ((Category)root.getValue()).getListOfFollows().stream().forEach(x -> {
+            TreeItem<Follow> item = new TreeItem<>(x);
+            if(x instanceof Repository && !root.getChildren().stream().anyMatch(
+                y -> ((Repository)y.getValue()).getProxy().generateId().equals(((Repository)x).getProxy().generateId())
+            )){
+                root.getChildren().add(item);
+            }                                   
+        });
     }
 }

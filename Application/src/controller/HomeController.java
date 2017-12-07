@@ -2,6 +2,7 @@ package controller;
 
 import business_logic.APIGateway;
 import java.io.IOException;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -31,6 +32,8 @@ public class HomeController {
     private void onEnter() throws IOException {        
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ihm/OnlineMode.fxml"));
         FrontController.setScene((BorderPane)loader.load());   
-        ((OnlineModeController)loader.getController()).setItems(APIGateway.getRepositories(input.getText()));
+        Platform.runLater(() -> {
+            ((OnlineModeController)loader.getController()).setItems(APIGateway.getRepositories(input.getText()));
+        });
     }
 }

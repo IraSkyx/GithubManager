@@ -101,7 +101,7 @@
                     <cellFactory>
                         <TreeItemFollowFactory/>
                     </cellFactory>
-                    <TreeItem fx:id="root"/>
+                    <TreeItem fx:id="root" expanded="true"/>
                 </TreeView>
             </children>    
         </VBox> 

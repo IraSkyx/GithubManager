@@ -28,7 +28,7 @@ public class APIGateway {
     public static final String oAuth2Token = "5492d1456e37ba89cc8985ccdee4a8dc028e916f";
     
     public static ObservableList<Repository> getRepositories(String input){
-        try {
+        try {          
             ObservableList<Repository> list = FXCollections.observableArrayList();
             
             RepositoryService service = new RepositoryService();

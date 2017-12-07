@@ -4,14 +4,16 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group name="Exemples FX"/>
         <group>
-            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/ihm/SignUp.fxml</file>
-            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/controller/OnlineModeController.java</file>
-            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/launch/Main.java</file>
-            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/ihm/OnlineMode.fxml</file>
-            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/business_logic/UsersManager.java</file>
-            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/stub/StubUser.java</file>
-            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/controller/SignUpController.java</file>
-            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/ihm/application.css</file>
+            <file>file:/C:/Users/Adrien/Desktop/githubmanager/Application/src/business_logic/Repository.java</file>
+            <file>file:/C:/Users/Adrien/Desktop/githubmanager/Application/src/business_logic/RepositoryMaker.java</file>
+            <file>file:/C:/Users/Adrien/Desktop/githubmanager/Application/src/business_logic/Follow.java</file>
+            <file>file:/C:/Users/Adrien/Desktop/githubmanager/Application/src/ihm/application.css</file>
+            <file>file:/C:/Users/Adrien/Desktop/githubmanager/Application/src/controller/OnlineModeController.java</file>
+            <file>file:/C:/Users/Adrien/Desktop/githubmanager/Application/src/stub/StubUser.java</file>
+            <file>file:/C:/Users/Adrien/Desktop/githubmanager/Application/src/business_logic/Category.java</file>
+            <file>file:/C:/Users/Adrien/Desktop/githubmanager/Application/src/controller/HomeController.java</file>
+            <file>file:/C:/Users/Adrien/Desktop/githubmanager/Application/src/ihm/OnlineMode.fxml</file>
+            <file>file:/C:/Users/Adrien/Desktop/githubmanager/Application/src/business_logic/APIGateway.java</file>
         </group>
     </open-files>
 </project-private>

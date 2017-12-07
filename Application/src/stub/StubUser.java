@@ -25,7 +25,9 @@ public class StubUser {
     }
     
     public static void loadFollows(ArrayList<User> allUsers){
-        for(User user : allUsers){
+        
+        new Thread(() -> {
+            for(User user : allUsers){
             Category categ = new Category("Future projects");
             for(Repository repo : APIGateway.getRepositories("IraSkyx"))
                 categ.AddFollow(repo);
@@ -38,6 +40,9 @@ public class StubUser {
             
             for(Repository repo : APIGateway.getRepositories("GabinSalabert"))
                 user.getMyFollow().AddFollow(repo);
-        }
+            }
+        }).start();
+        
+        
     }
 }
