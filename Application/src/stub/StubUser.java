@@ -29,17 +29,17 @@ public class StubUser {
         new Thread(() -> {
             for(User user : allUsers){
             Category categ = new Category("Future projects");
-            for(Repository repo : APIGateway.getRepositories("IraSkyx"))
-                categ.AddFollow(repo);
-            user.getMyFollow().AddFollow(categ);
+            for(Repository repo : APIGateway.getRepositoriesByUsername("IraSkyx"))
+                categ.addFollow(repo);
+            user.getMyFollow().addFollow(categ);
             
             Category categ2 = new Category("TODOLIST");
-            for(Repository repo : APIGateway.getRepositories("ElRaffray"))
-                categ2.AddFollow(repo);
-            user.getMyFollow().AddFollow(categ2);
+            for(Repository repo : APIGateway.getRepositoriesByUsername("ElRaffray"))
+                categ2.addFollow(repo);
+            user.getMyFollow().addFollow(categ2);
             
-            for(Repository repo : APIGateway.getRepositories("GabinSalabert"))
-                user.getMyFollow().AddFollow(repo);
+            for(Repository repo : APIGateway.getRepositoriesByUsername("GabinSalabert"))
+                user.getMyFollow().addFollow(repo);
             }
         }).start();
         

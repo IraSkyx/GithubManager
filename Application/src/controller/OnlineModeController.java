@@ -17,10 +17,12 @@ import javafx.scene.layout.BorderPane;
 import business_logic.Repository;
 import business_logic.UsersManager;
 import java.io.IOException;
+import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.ListChangeListener;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -46,7 +48,7 @@ public class OnlineModeController extends BorderPane {
     
     @FXML Label repoReadMe; 
     
-    @FXML TreeView<String> TreeViewFollows;
+    @FXML TreeView<Follow> TreeViewFollows;
     
     @FXML Label h31;
     
@@ -61,8 +63,10 @@ public class OnlineModeController extends BorderPane {
     @FXML TreeItem root;
     
     @FXML
-    private void onEnter() {      
-        setItems(APIGateway.getRepositories(input.getText()));
+    private void onEnter() {   
+        Platform.runLater(() -> {
+            setItems(APIGateway.getRepositoriesByUsername(input.getText()));
+        });     
     }
     
     @FXML
@@ -86,8 +90,7 @@ public class OnlineModeController extends BorderPane {
     }
 
     public void setItems(ObservableList<Repository> results) {
-        searchResults.setItems(results);      
-        
+        searchResults.setItems(results);             
         repoName.textProperty().bind(Bindings.selectString(searchResults.getSelectionModel().selectedItemProperty(), "name"));
         repoDescription.textProperty().bind(Bindings.selectString(searchResults.getSelectionModel().selectedItemProperty(), "description"));
         repoReadMe.textProperty().bind(Bindings.selectString(searchResults.getSelectionModel().selectedItemProperty(), "readme"));            
@@ -122,20 +125,26 @@ public class OnlineModeController extends BorderPane {
         
         TreeViewFollows.visibleProperty().bind(nullToBool2);
         TreeViewFollows.managedProperty().bind(nullToBool2);
+             
+        UsersManager.currentUserProperty().get().myFollowProperty().get().addListeners(new ListChangeListener<Follow>(){
+            @Override
+            public void onChanged(ListChangeListener.Change c) {
+                updateTreeView(root);
+            }
+        });    
         root.valueProperty().bind(UsersManager.currentUserProperty().get().myFollowProperty());
-        root.valueProperty().addListener(x -> {
-            updateTreeView(root);
-        });
     }
 
     private void updateTreeView(TreeItem<Follow> root) {
+        System.out.println("Hello");
         ((Category)root.getValue()).getListOfFollows().stream().forEach(x -> {
+            
             TreeItem<Follow> item = new TreeItem<>(x);
-            if(x instanceof Repository && !root.getChildren().stream().anyMatch(
-                y -> ((Repository)y.getValue()).getProxy().generateId().equals(((Repository)x).getProxy().generateId())
-            )){
+            
+            if(x instanceof Repository && !root.getChildren().parallelStream().anyMatch(y -> ((Repository)y.getValue()).getProxy().generateId().equals(((Repository)x).getProxy().generateId())))
                 root.getChildren().add(item);
-            }                                   
+            else          
+                updateTreeView(item);
         });
     }
 }

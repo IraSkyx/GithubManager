@@ -15,17 +15,17 @@ public class Main extends Application {
         
     @Override
     public void start(Stage stage) {
-        try {       
-            FrontController.setStage(stage, (BorderPane) FXMLLoader.load(getClass().getResource("/ihm/Home.fxml")));
+        try {   
+            UsersManager.setAllUsers(StubUser.loadUsers());
+            UsersManager.setCurrentUser(UsersManager.getAllUsers().get(0));   
+            FrontController.setStage(stage, (BorderPane) FXMLLoader.load(getClass().getResource("/ihm/Home.fxml")));           
         } 
         catch (IOException e) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
         }
     }
 
-    public static void main(String[] args) {
-        UsersManager.setAllUsers(StubUser.loadUsers());
-        UsersManager.setCurrentUser(UsersManager.getAllUsers().get(0));       
+    public static void main(String[] args) {           
         launch(args);
     }
 }

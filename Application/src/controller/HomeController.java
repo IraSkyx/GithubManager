@@ -33,7 +33,7 @@ public class HomeController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ihm/OnlineMode.fxml"));
         FrontController.setScene((BorderPane)loader.load());   
         Platform.runLater(() -> {
-            ((OnlineModeController)loader.getController()).setItems(APIGateway.getRepositories(input.getText()));
+            ((OnlineModeController)loader.getController()).setItems(APIGateway.getRepositoriesByUsername(input.getText()));
         });
     }
 }

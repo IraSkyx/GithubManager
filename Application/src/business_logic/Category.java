@@ -8,6 +8,7 @@ package business_logic;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 
 /**
@@ -26,18 +27,23 @@ public class Category extends Follow{
     }
     
     @Override
-    public void AddFollow(Follow follow) {
+    public void addFollow(Follow follow) {
         listOfFollows.add(follow);
     }
 
     @Override
-    public void DeleteFollow(Follow follow) {
+    public void deleteFollow(Follow follow) {
         listOfFollows.remove(follow);
     }
     
     @Override
-    public ObservableList<Follow> getChildren() {
-        return FXCollections.<Follow>observableArrayList();
+    public void addListeners(ListChangeListener listener){
+        getListOfFollows().parallelStream().forEach((Follow x) -> {
+                if(x instanceof Category){
+                    ((Category)x).getListOfFollows().addListener(listener);
+                    x.addListeners(listener);
+                }
+        });
     }
     
     @Override
