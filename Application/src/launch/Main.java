@@ -15,10 +15,10 @@ public class Main extends Application {
         
     @Override
     public void start(Stage stage) {
-        try {   
+        try {  
+            FrontController.setStage(stage, (BorderPane) FXMLLoader.load(getClass().getResource("/ihm/Home.fxml")));    
             UsersManager.setAllUsers(StubUser.loadUsers());
-            UsersManager.setCurrentUser(UsersManager.getAllUsers().get(0));   
-            FrontController.setStage(stage, (BorderPane) FXMLLoader.load(getClass().getResource("/ihm/Home.fxml")));           
+            UsersManager.setCurrentUser(UsersManager.getAllUsers().get(0)); 
         } 
         catch (IOException e) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);

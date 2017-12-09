@@ -124,14 +124,20 @@ public class OnlineModeController extends BorderPane {
         loggedOff2.managedProperty().bind(nullToBool);
         
         TreeViewFollows.visibleProperty().bind(nullToBool2);
-        TreeViewFollows.managedProperty().bind(nullToBool2);
-             
-        UsersManager.currentUserProperty().get().myFollowProperty().get().addListeners(new ListChangeListener<Follow>(){
+        TreeViewFollows.managedProperty().bind(nullToBool2);              
+        
+        /*UsersManager.currentUserProperty().addListener(new ChangeListener() {
             @Override
-            public void onChanged(ListChangeListener.Change c) {
-                updateTreeView(root);
+            public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+                UsersManager.currentUserProperty().get().myFollowProperty().get().addListeners(new ListChangeListener<Follow>(){
+                    @Override
+                    public void onChanged(ListChangeListener.Change c) {
+                        updateTreeView(root);
+                    }                     
+                });
             }
-        });    
+        });*/
+                
         root.valueProperty().bind(UsersManager.currentUserProperty().get().myFollowProperty());
     }
 
