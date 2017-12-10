@@ -13,10 +13,11 @@ public class User {
     private String password;
     private String email;
     private final ObjectProperty<Follow> myFollow = new SimpleObjectProperty<>();
-        public Follow getMyFollow() {return myFollow.get();}
-        public void setMyFollow(Follow myFollow) {this.myFollow.set(myFollow);}
-        public ObjectProperty<Follow> myFollowProperty(){return myFollow;}
+    public Follow getMyFollow() {return myFollow.get();}
+    public void setMyFollow(Follow myFollow) {this.myFollow.set(myFollow);}
+    public ObjectProperty<Follow> myFollowProperty(){return myFollow;}
     
+   
     //
     public User(String username, String password, String email) {
         this.username = username;
