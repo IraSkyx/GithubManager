@@ -1,5 +1,6 @@
 package business_logic.persistance.xml;
 
+import business_logic.gateways.APIManager;
 import business_logic.persistance.DataManager;
 import business_logic.user.IUser;
 import business_logic.user.UsersManager;
@@ -8,18 +9,30 @@ import java.beans.XMLEncoder;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author fasimonet
  */
-public class XMLUsers implements DataManager {
+public class XMLUsers implements DataManager, Serializable {
 
     /**
      * Load users using XML deserialization
      * @return Every loaded users
      */
+    
+    private APIManager apiManager;
+    
+    public XMLUsers(APIManager apiManager){
+        this.apiManager = apiManager;
+    }
+    
+    public void setAPIManager(APIManager apiManager){
+        this.apiManager = apiManager;
+    }
+    
     @Override
     public ArrayList<IUser> loadUsers() {
         ArrayList<IUser> result = null;

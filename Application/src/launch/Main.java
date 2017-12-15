@@ -23,7 +23,7 @@ public class Main extends Application {
             FrontController.setStage(stage,"/ihm/Home.fxml");    
             
             UsersManager.setCurrentUser(UsersManager.getAllUsers().get(0));
-            UsersManager.setDataManager(new XMLUsers());
+            UsersManager.setDataManager(new XMLUsers(new GitHubGateway()));
         } 
         catch (IOException e) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
