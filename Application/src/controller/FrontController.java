@@ -1,28 +1,53 @@
 package controller;
 
+import business_logic.gateways.APIManager;
+import java.io.IOException;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 /**
- *
+ * 
  * @author Adrien
  */
 public class FrontController {
-    private static Stage stage;
     
-    public static void setStage(Stage primaryStage, BorderPane panel){
+    private static Stage stage;
+    private static final String CSSPATH = "/ihm/application.css";
+    
+    public static void setStage(Stage primaryStage, String path) throws IOException{
         stage = primaryStage;
         stage.setWidth(1440);
         stage.setHeight(920);
         stage.setTitle("GithubManager");
-        setScene(panel);
+        setScene(path);
         stage.show();
     }
     
-    public static void setScene(BorderPane panel){
-        Scene scene = new Scene(panel, stage.getHeight(), stage.getWidth());           
-        scene.getStylesheets().add(FrontController.class.getResource("/ihm/application.css").toExternalForm());
+    public static Scene getScene(){
+        return stage.getScene();
+    }
+    
+    public static void setScene(String path) throws IOException {
+        FXMLLoader loader = new FXMLLoader(FrontController.class.getClass().getResource(path));  
+        
+        Scene scene = new Scene(loader.load(), stage.getHeight(), stage.getWidth());      
+        
+        scene.getStylesheets().add(FrontController.class.getResource(CSSPATH).toExternalForm());
         stage.setScene(scene);
+    }
+    
+    public static FXMLLoader setScene(String path, APIManager apiManager) throws IOException {
+        FXMLLoader loader = new FXMLLoader(FrontController.class.getClass().getResource(path));  
+        
+        Scene scene = new Scene((BorderPane)loader.load(), stage.getHeight(), stage.getWidth());
+
+        ((Manageable)loader.getController()).setApiManager(apiManager);       
+
+        scene.getStylesheets().add(FrontController.class.getResource(CSSPATH).toExternalForm());
+        stage.setScene(scene);  
+        
+        return loader;
     }
 }

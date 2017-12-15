@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import controller.HeaderController?>
 
-<BorderPane id="BorderPane" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignInController">
+<BorderPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignInController">
     <top>
         <HeaderController/>
     </top>

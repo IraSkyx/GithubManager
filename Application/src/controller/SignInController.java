@@ -5,15 +5,12 @@
  */
 package controller;
 
-import business_logic.ModelGateway;
-import business_logic.UsersManager;
+import business_logic.user.UsersManager;
 import java.io.IOException;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.BorderPane;
 
 /**
  * FXML Controller class
@@ -30,14 +27,26 @@ public class SignInController {
     
     @FXML
     private void SignIn() throws IOException {
-        if(ModelGateway.connect(email.getText(), password.getText()))
-            FrontController.setScene((BorderPane)FXMLLoader.load(getClass().getResource("/ihm/OnlineMode.fxml")));
+        if(UsersManager.connect(email.getText(), password.getText()))
+            FrontController.setScene("/ihm/OnlineMode.fxml");
         else
             error.setVisible(true);
     }
 
     @FXML 
     private void GoToHome() throws IOException {   
-        FrontController.setScene((BorderPane)FXMLLoader.load(getClass().getResource("/ihm/Home.fxml")));
+        FrontController.setScene("/ihm/Home.fxml");
     }   
+    
+    public void initialize() {               
+        /*FrontController.getScene().setOnKeyPressed((KeyEvent event) -> {
+            if(event.getCode() == KeyCode.ENTER)
+                try {
+                    SignIn();
+                } 
+                catch (IOException ex) {
+                    Logger.getLogger(SignInController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+        });*/
+    }       
 }
