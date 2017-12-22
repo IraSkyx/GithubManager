@@ -66,6 +66,7 @@ public class OnlineModeController extends BorderPane implements Manageable {
         
     @FXML
     private void cloneUrl() {
+        TreeViewFollows.getRoot().getChildren().clear();
         updateTreeView(root);
     }
         

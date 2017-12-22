@@ -29,5 +29,10 @@ public class Category extends Follow {
 
     @Override public void deleteFollow(Follow follow) {listOfFollows.remove(follow);}    
     
-    @Override public String toString() {return getName();}
+    @Override public String toString() {
+        String toString="";
+        for(Follow follow : listOfFollows)
+            toString+= (follow instanceof Category ? follow.toString() : follow.getName()) +"\n";
+        return toString;
+    }
 }

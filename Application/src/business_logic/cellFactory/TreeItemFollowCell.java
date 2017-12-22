@@ -2,8 +2,10 @@ package business_logic.cellFactory;
 
 import business_logic.repository.Category;
 import business_logic.repository.Follow;
+import business_logic.repository.GitHubRepository;
 import business_logic.repository.GitHubRepositoryFactory;
 import business_logic.repository.Repository;
+import business_logic.user.UsersManager;
 import javafx.event.EventHandler;
 import javafx.scene.control.TreeCell;
 import javafx.scene.control.TreeItem;
@@ -46,7 +48,12 @@ public class TreeItemFollowCell extends TreeCell<Follow> {
                 
                 if(getTreeItem().getValue() instanceof Category){
                     System.out.println("Je drop sur une category");
-                    getTreeItem().getChildren().add(new TreeItem<>(GitHubRepositoryFactory.make((org.eclipse.egit.github.core.Repository)db.getContent(DataFormat.HTML))));
+                    
+                    GitHubRepository newItem = GitHubRepositoryFactory.make((org.eclipse.egit.github.core.Repository)db.getContent(DataFormat.HTML));
+                    
+                    getTreeItem().getChildren().add(new TreeItem<>(newItem));
+                    UsersManager.currentUserProperty().getValue().userFollowProperty().getValue().addFollow(newItem);
+                    System.out.println(UsersManager.currentUserProperty().getValue().userFollowProperty().toString());
                     getTreeItem().setExpanded(true);
                 }
                 else {
