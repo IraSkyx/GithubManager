@@ -16,8 +16,6 @@
 <?import business_logic.cellFactory.TreeItemFollowFactory?>
 <?import business_logic.cellFactory.ListViewRepositoryFactory?>
 
-<!-- OnlineMode view. It permits to consult search results, add followers (repositories or directories). -->
-
 <BorderPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OnlineModeController">
     <left>
         <VBox alignment="CENTER" BorderPane.alignment="CENTER">
@@ -53,7 +51,7 @@
             <right>
                 <VBox>
                     <children>
-                        <HBox alignment="CENTER">
+                        <VBox alignment="CENTER_RIGHT">
                             <padding>
                                 <Insets top="10" right="10" bottom="10" left="10"/>
                             </padding>
@@ -63,10 +61,10 @@
                                 <Button fx:id="loggedOff2" text="Sign up" onAction="#SignUp"/>
                                     
                                 <!-- When logged off the controls above will be displayed -->      
-                                <Label id="h3" fx:id="loggedIn1"/>
+                                <Label id="h3" fx:id="loggedIn1" textAlignment="RIGHT"/>
                                 <Button fx:id="loggedIn2" text="Log off" onAction="#logOff"/>
                             </children>                   
-                        </HBox>
+                        </VBox>
                     </children>
                 </VBox>        
             </right>
@@ -78,16 +76,25 @@
                     <Insets top="50" right="50" bottom="50" left="50"/>
                 </padding>  
             <top>
-                <VBox>
-                    <children>
-                        <Label id="h3" text="${controller.selectedFollow}"/>
-                        <Label id="h3" text="${controller.selectedFollow.description}"/>
-                        <Button fx:id="download" text="Clone Url" onAction="#cloneUrl"/>
-                    </children>                
-                </VBox>
+                <BorderPane>
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding> 
+                    <left>
+                        <VBox>
+                            <children>
+                                <Label id="h3" text="${controller.selectedFollow}"/>
+                                <Label fx:id="description" id="h3" text="${controller.selectedFollow.description}" maxWidth="500"/> 
+                            </children>
+                        </VBox>                 
+                    </left>      
+                    <right>
+                        <Button text="Clone Url" onAction="#cloneUrl"/>
+                    </right>          
+                </BorderPane>
             </top>
             <center>
-                <ScrollPane>
+                <ScrollPane fx:id="scrollPane">
                     <Label id="h3" text="${controller.selectedFollow.readMe}"/>
                 </ScrollPane>              
             </center>
@@ -98,14 +105,32 @@
             <padding>
                     <Insets top="50" right="50" bottom="50" left="50"/>
             </padding>
-            <children>
-                <Label fx:id="h31" id="h3" text="Your follows" textAlignment="CENTER" />
-                <TreeView fx:id="TreeViewFollows">
-                    <cellFactory>
-                        <TreeItemFollowFactory/>
-                    </cellFactory>
-                    <TreeItem fx:id="root" expanded="true"/>
-                </TreeView>
+            <children>                
+                <BorderPane>
+                    <top>
+                        <Label fx:id="h31" id="h3" text="Your follows" textAlignment="CENTER"/>
+                    </top>
+                    <center>
+                        <TreeView fx:id="TreeViewFollows" editable="true">
+                            <cellFactory>
+                                <TreeItemFollowFactory/>
+                            </cellFactory>
+                            <TreeItem fx:id="root" expanded="true"/>
+                        </TreeView>
+                    </center>
+                    <bottom>
+                        <HBox alignment="CENTER">
+                            <padding>
+                                    <Insets top="10" right="10" bottom="10" left="10"/>
+                            </padding>
+                            <children>
+                                <Button fx:id="TVMenu1" text="Add category" onAction="#addCategory"/>
+                                <Button fx:id="TVMenu2" text="Rename" onAction="#renameCategory"/>
+                                <Button fx:id="TVMenu3" text="Delete" onAction="#deleteFollow"/>
+                            </children>
+                        </HBox>
+                    </bottom>
+                </BorderPane>
             </children>    
         </VBox> 
     </right>

@@ -1,7 +1,9 @@
 package business_logic.gateways;
 
+import business_logic.repository.GitHubRepository;
 import business_logic.repository.GitHubRepositoryFactory;
 import business_logic.repository.Repository;
+import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
@@ -11,9 +13,11 @@ import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import launch.Main;
+import org.eclipse.egit.github.core.Download;
 import org.eclipse.egit.github.core.RepositoryContents;
 import org.eclipse.egit.github.core.RepositoryId;
 import org.eclipse.egit.github.core.service.ContentsService;
+import org.eclipse.egit.github.core.service.DownloadService;
 import org.eclipse.egit.github.core.service.RepositoryService;
 
 /**
@@ -64,10 +68,25 @@ public class GitHubGateway implements APIManager {
             });   
         } 
         catch (IOException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
         }
         
         return list;
+    }
+    
+    public static boolean hasNewCommit(GitHubRepository repository){
+        try {               
+            RepositoryService service = new RepositoryService();
+            service.getClient().setOAuth2Token(OAUTH2TOKEN);
+            
+            org.eclipse.egit.github.core.Repository gitRepository = service.getRepository(RepositoryId.createFromId(repository.getAdapted().generateId()));
+            if(gitRepository.getUpdatedAt().compareTo(repository.getAdapted().getUpdatedAt()) > 0)
+                return true;
+            return false;
+        } 
+        catch (IOException ex) {
+            return false;
+        }
     }
     
     public static String getReadMe(org.eclipse.egit.github.core.Repository repo){
@@ -90,5 +109,12 @@ public class GitHubGateway implements APIManager {
         catch(Exception ex){
           return "Failed to decode README.md";
         }
-   }
+    }
+    
+    public static void cloneRepository(Repository repo) throws IOException {
+        GitHubRepository repository = (GitHubRepository)repo;
+        DownloadService service = new DownloadService();
+        service.getClient().setOAuth2Token(OAUTH2TOKEN);
+        service.createDownload(RepositoryId.createFromId(repository.getAdapted().generateId()), new Download(), new File("Test"));
+    }
 }

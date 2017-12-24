@@ -51,8 +51,4 @@ public class UserFactory {
         UsersManager.getAllUsers().add(user);
         return user;
     }
-
-    public static IUser make() {
-        return new User("Visitor","","");
-    }
 }

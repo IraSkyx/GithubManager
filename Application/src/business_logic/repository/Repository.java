@@ -24,9 +24,11 @@ public abstract class Repository extends Follow implements Serializable {
     public String getOwner(){return ownerProperty().get();};
     public void setOwner(String value){ownerProperty().set(value);}; 
     
-    abstract public StringProperty descriptionProperty();
-    abstract public StringProperty createdAtProperty();
-    abstract public StringProperty cloneUrlProperty();
-    abstract public StringProperty idProperty();
-    abstract public StringProperty ownerProperty();
+    public abstract StringProperty descriptionProperty();
+    public abstract StringProperty createdAtProperty();
+    public abstract StringProperty cloneUrlProperty();
+    public abstract StringProperty idProperty();
+    public abstract StringProperty ownerProperty();
+    
+    
 }

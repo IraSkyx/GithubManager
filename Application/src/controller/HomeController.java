@@ -3,6 +3,8 @@ package controller;
 import business_logic.gateways.GitHubGateway;
 import java.io.IOException;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class HomeController {
@@ -26,6 +28,8 @@ public class HomeController {
     
     @FXML
     private void onEnter() throws IOException {        
-        ((OnlineModeController)(FrontController.setScene("/ihm/OnlineMode.fxml", new GitHubGateway()).getController())).setItems(input.getText());        
+        OnlineModeController ctrl = (OnlineModeController)(FrontController.setScene("/ihm/OnlineMode.fxml", new GitHubGateway()).getController()); 
+        ctrl.setItems(input.getText());      
+        ctrl.setPlaceholderSearchResults("Results loading ...");
     }
 }

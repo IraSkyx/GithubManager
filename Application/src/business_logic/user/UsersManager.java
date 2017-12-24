@@ -73,7 +73,7 @@ public class UsersManager {
      * Reset current User 
      */
     public static void disconnect(){
-        currentUserProperty().setValue(UserFactory.make());
+        currentUserProperty().setValue(null);
     }
        
     /**

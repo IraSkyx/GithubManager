@@ -9,6 +9,10 @@ import javafx.beans.property.StringProperty;
  */
 public abstract class Follow implements Serializable {
         
+    private static Follow selectedDaD;
+        public static Follow getSelectedDaD() { return selectedDaD; }
+        public static void setSelectedDaD(Follow selectedDaD) { Follow.selectedDaD = selectedDaD; }
+    
     public String getName(){return nameProperty().get();};
     public void setName(String value){nameProperty().set(value);};
     
