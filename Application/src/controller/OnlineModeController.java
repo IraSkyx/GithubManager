@@ -2,6 +2,7 @@ package controller;
 
 import business_logic.cellFactory.TreeItemFollowCell;
 import business_logic.gateways.APIManager;
+import business_logic.gateways.GitHubGateway;
 import business_logic.repository.Category;
 import business_logic.repository.Follow;
 import business_logic.repository.Repository;
@@ -83,7 +84,12 @@ public class OnlineModeController extends BorderPane implements Manageable {
         
     @FXML
     private void cloneUrl() {
-        
+        try {
+            GitHubGateway.cloneRepository((Repository)getSelectedFollow());
+        } 
+        catch (IOException ex) {
+            Logger.getLogger(OnlineModeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
         
     @FXML

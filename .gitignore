@@ -1,6 +1,3 @@
-/dist/
 Application/build/*
-!Application/build.xml
-/Application/dist/
-*.properties
-/nbproject/private/
+
+Application/nbproject/private/*

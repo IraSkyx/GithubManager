@@ -2,7 +2,15 @@ package business_logic.gateways;
 
 import business_logic.repository.GitHubRepositoryFactory;
 import business_logic.repository.Repository;
+import controller.FrontController;
+import java.io.BufferedOutputStream;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.List;
@@ -10,6 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.stage.DirectoryChooser;
 import launch.Main;
 import org.eclipse.egit.github.core.RepositoryContents;
 import org.eclipse.egit.github.core.RepositoryId;
@@ -108,9 +117,10 @@ public class GitHubGateway implements APIManager {
     }
     
     public static void cloneRepository(Repository repo) throws IOException {
-        /*GitHubRepository repository = (GitHubRepository)repo;
-        DownloadService service = new DownloadService();
-        service.getClient().setOAuth2Token(OAUTH2TOKEN);
-        service.createDownload(RepositoryId.createFromId(repository.getAdapted().generateId()), new Download(), new File("Test"));*/
-    }
+        final URL uri = new URL("https://github.com/".concat(repo.getId()).concat("/tarball"));
+        DirectoryChooser  dirChooser = new DirectoryChooser ();
+        dirChooser.setTitle("Choose destination");
+        final File selectedDirectory = dirChooser.showDialog(FrontController.getScene().getWindow());
+        File f = new File(uri.getFile());
+    }  
 }
