@@ -21,6 +21,14 @@ class User implements IUser {
     private final ObjectProperty<Follow> userFollow = new SimpleObjectProperty<>();
         @Override public ObjectProperty<Follow> userFollowProperty() {return userFollow;}
     
+    //Important for the serialisation
+    public User() {
+        setUsername("defaultLogin");
+        setPassword("defaultPassword");
+        setEmail("defaultAdress@gmail.com");
+        setUserFollow(new Category("Favorites"));
+    }
+        
     public User(String username, String password, String email) {
         setUsername(username);
         setPassword(password);
