@@ -12,6 +12,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.Base64;
 import java.util.List;
 import java.util.logging.Level;
@@ -121,6 +122,6 @@ public class GitHubGateway implements APIManager {
         DirectoryChooser  dirChooser = new DirectoryChooser ();
         dirChooser.setTitle("Choose destination");
         final File selectedDirectory = dirChooser.showDialog(FrontController.getScene().getWindow());
-        File f = new File(uri.getFile());
+        File f = new File(uri.getFile());       
     }  
 }
