@@ -3,3 +3,4 @@ Application/build/*
 !Application/build.xml
 /Application/dist/
 *.properties
+/nbproject/private/

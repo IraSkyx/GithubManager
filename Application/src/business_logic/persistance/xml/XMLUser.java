@@ -1,6 +1,5 @@
 package business_logic.persistance.xml;
 
-import business_logic.repository.XMLCategory;
 import business_logic.repository.Category;
 import business_logic.repository.Follow;
 import business_logic.user.IUser;
@@ -25,7 +24,7 @@ public class XMLUser implements IUser, Serializable {
         username = new SimpleStringProperty(model.getUsername());
         password = new SimpleStringProperty(model.getPassword());
         email = new SimpleStringProperty(model.getEmail());
-        userFollow = new SimpleObjectProperty(new XMLCategory((Category)model.getUserFollow()));
+        userFollow = new SimpleObjectProperty(model.getUserFollow());
     }
             
     private transient IUser model;  
