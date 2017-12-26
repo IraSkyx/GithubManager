@@ -1,7 +1,8 @@
 package business_logic.cellFactory;
 
-import business_logic.repository.GitHubRepository;
+import business_logic.repository.Follow;
 import business_logic.repository.Repository;
+import javafx.beans.binding.Bindings;
 import javafx.scene.control.ListCell;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.Dragboard;
@@ -19,7 +20,7 @@ public class ListViewRepositoryCell extends ListCell<Repository> {
             Dragboard db = startDragAndDrop(TransferMode.COPY);
             ClipboardContent content = new ClipboardContent();
             content.putString(getItem().toString());
-            GitHubRepository.setSelectedDaD((GitHubRepository)getItem());
+            Follow.setSelectedDaD(getItem());
             db.setContent(content);
             event.consume();
         });       
@@ -34,6 +35,6 @@ public class ListViewRepositoryCell extends ListCell<Repository> {
             setGraphic(null);
             return;
         }
-        textProperty().bind(item.nameProperty());
+        textProperty().bind(Bindings.format("%s", item.getName()));
     }
 }

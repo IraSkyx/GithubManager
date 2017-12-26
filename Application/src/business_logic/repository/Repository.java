@@ -1,34 +1,27 @@
 package business_logic.repository;
 
-import java.io.Serializable;
-import javafx.beans.property.StringProperty;
+import java.util.Date;
 
 /**
  * API for Repository
  * @author Adrien
  */
-public abstract class Repository extends Follow implements Serializable {   
+public abstract class Repository extends Follow {    
+    abstract public String getDescription();
+    abstract public void setDescription(String value); 
     
-    public String getDescription(){return descriptionProperty().get();};
-    public void setDescription(String value){descriptionProperty().set(value);}; 
+    abstract public Date getCreatedAt(); 
+    abstract public void setCreatedAt(String value); 
     
-    public String getCreatedAt(){return createdAtProperty().get();}; 
-    public void setCreatedAt(String value){createdAtProperty().set(value);}; 
+    abstract public String getCloneUrl();
+    abstract public void setCloneUrl(String value); 
     
-    public String getCloneUrl(){return cloneUrlProperty().get();};
-    public void setCloneUrl(String value){cloneUrlProperty().set(value);}; 
+    abstract public String getId(); 
+    abstract public void setId(String value); 
     
-    public String getId(){return idProperty().get();}; 
-    public void setId(String value){idProperty().set(value);}; 
+    abstract public String getOwner();
+    abstract public void setOwner(String value); 
     
-    public String getOwner(){return ownerProperty().get();};
-    public void setOwner(String value){ownerProperty().set(value);}; 
-    
-    public abstract StringProperty descriptionProperty();
-    public abstract StringProperty createdAtProperty();
-    public abstract StringProperty cloneUrlProperty();
-    public abstract StringProperty idProperty();
-    public abstract StringProperty ownerProperty();
-    
-    
+    abstract public Date getUpdatedAt();
+    abstract public void setUpdatedAt(Date value); 
 }

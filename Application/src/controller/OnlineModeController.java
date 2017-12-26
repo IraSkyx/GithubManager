@@ -5,7 +5,6 @@ import business_logic.gateways.APIManager;
 import business_logic.repository.Category;
 import business_logic.repository.Follow;
 import business_logic.repository.Repository;
-import business_logic.user.UserFactory;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TreeView;
@@ -18,20 +17,14 @@ import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
-import javafx.beans.binding.ObjectBinding;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.ListChangeListener;
-import javafx.collections.ObservableArray;
-import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.input.KeyCode;
@@ -55,16 +48,14 @@ public class OnlineModeController extends BorderPane implements Manageable {
     
     @FXML Label h31;    
     @FXML Label loggedIn1;
+    @FXML Label readMe;
     
     @FXML Button loggedOff1;    
     @FXML Button loggedOff2;   
     @FXML Button loggedIn2; 
     @FXML Button TVMenu1; 
     @FXML Button TVMenu2; 
-    @FXML Button TVMenu3; 
-    
-    @FXML Label description;
-    @FXML ScrollPane scrollPane;
+    @FXML Button TVMenu3;   
     
     @FXML TreeItem root;
     
@@ -123,8 +114,8 @@ public class OnlineModeController extends BorderPane implements Manageable {
     
     @FXML
     private void deleteFollow() throws IOException {
-        TreeViewFollows.getSelectionModel().selectedItemProperty().get().getParent().getValue().deleteFollow(TreeViewFollows.getSelectionModel().selectedItemProperty().get().getValue());
-        TreeViewFollows.getSelectionModel().selectedItemProperty().get().getParent().setExpanded(true);
+        if(TreeViewFollows.getSelectionModel().getSelectedItem() != TreeViewFollows.getRoot())
+            TreeViewFollows.getSelectionModel().selectedItemProperty().get().getParent().getValue().deleteFollow(TreeViewFollows.getSelectionModel().selectedItemProperty().get().getValue());
     }
     
     public void setItems(String input) {      
@@ -157,9 +148,7 @@ public class OnlineModeController extends BorderPane implements Manageable {
         loggedOff2.managedProperty().bind(nullToBool);
         
         TreeViewFollows.visibleProperty().bind(nullToBool2);
-        TreeViewFollows.managedProperty().bind(nullToBool2); 
-        
-        root.valueProperty().bind(UsersManager.currentUserProperty().get().userFollowProperty());  
+        TreeViewFollows.managedProperty().bind(nullToBool2);       
         
         TreeViewFollows.setOnKeyPressed((KeyEvent keyEvent) -> {
             if (TreeViewFollows.getSelectionModel().getSelectedItem() != null && keyEvent.getCode().equals(KeyCode.DELETE )){
@@ -175,7 +164,7 @@ public class OnlineModeController extends BorderPane implements Manageable {
         TreeViewFollows.getSelectionModel().selectedItemProperty().addListener(x -> {
            if(TreeViewFollows.getSelectionModel().selectedItemProperty().get().getValue() instanceof Repository){
                 selectedFollowProperty().unbind();
-                selectedFollowProperty().setValue(TreeViewFollows.getSelectionModel().selectedItemProperty().getValue().getValue());
+                selectedFollowProperty().setValue(TreeViewFollows.getSelectionModel().getSelectedItem().getValue());
             } 
         });
         
@@ -185,9 +174,12 @@ public class OnlineModeController extends BorderPane implements Manageable {
         
         setPlaceholderSearchResults("No result for your search");
         
-        initializeListeners((Category)UsersManager.currentUserProperty().getValue().userFollowProperty().getValue());
-        updateTreeView(root);
-        TreeItemFollowCell.firstRender=false;
+        if(UsersManager.currentUserProperty().isNotNull().get()){
+            root.valueProperty().bind(UsersManager.currentUserProperty().get().userFollowProperty());
+            initializeListeners((Category)UsersManager.currentUserProperty().getValue().userFollowProperty().getValue());
+            updateTreeView(root);
+            TreeItemFollowCell.firstRender=false;
+        }
     }   
     
     public void setPlaceholderSearchResults(String text) {

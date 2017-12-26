@@ -1,7 +1,7 @@
 package business_logic.persistance;
 
 import business_logic.user.IUser;
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Interface for data persistence class
@@ -13,11 +13,11 @@ public interface DataManager {
     * Recover persistent users
     * @return persistent user collection
     */
-    public ArrayList<IUser> loadUsers();
+    public List<IUser> loadUsers();
     
     /**
     * Save users
     * @param users user collection to save
     */  
-    public void saveUsers(ArrayList<IUser> users);        
+    public void saveUsers(List<IUser> users);        
 }

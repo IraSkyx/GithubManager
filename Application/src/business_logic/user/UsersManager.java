@@ -2,6 +2,7 @@ package business_logic.user;
 
 import business_logic.persistance.DataManager;
 import java.util.ArrayList;
+import java.util.List;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 
@@ -12,7 +13,7 @@ import javafx.beans.property.SimpleObjectProperty;
 public class UsersManager {
     
     private static DataManager dataManager;
-    private static ArrayList<IUser> allUsers = new ArrayList<>();
+    private static List<IUser> allUsers = new ArrayList<>();
     
     private static final ObjectProperty<IUser> currentUser = new SimpleObjectProperty();
         public static IUser getCurrentUser() {return currentUser.get();}
@@ -52,7 +53,7 @@ public class UsersManager {
      * @return allUsers the list of all the users
      * 
      */      
-    public static ArrayList<IUser> getAllUsers() {
+    public static List<IUser> getAllUsers() {
         return allUsers;
     }   
 

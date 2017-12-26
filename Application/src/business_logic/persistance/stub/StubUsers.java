@@ -1,7 +1,6 @@
 package business_logic.persistance.stub;
 
 import business_logic.gateways.APIManager;
-import business_logic.gateways.GitHubGateway;
 import business_logic.persistance.DataManager;
 import business_logic.repository.Category;
 import business_logic.repository.Repository;
@@ -9,6 +8,7 @@ import business_logic.user.IUser;
 import business_logic.user.UserFactory;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * StubUsers : Initialisation of the datas which refers to Users
@@ -27,9 +27,9 @@ public class StubUsers implements DataManager {
     }
     
     @Override
-    public ArrayList<IUser> loadUsers() {
+    public List<IUser> loadUsers() {
         
-        ArrayList<IUser> allUsers = new ArrayList<>(Arrays.asList(
+        List<IUser> allUsers = new ArrayList<>(Arrays.asList(
             UserFactory.make("Adrien Lenoir", "adrien.lenoir@etu.uca.fr", "mdp"),
             UserFactory.make("Fabien Simonet", "fabien.simonet@etu.uca.fr", "mdp")
         ));
@@ -62,7 +62,7 @@ public class StubUsers implements DataManager {
     }
 
     @Override
-    public void saveUsers(ArrayList<IUser> user) {
+    public void saveUsers(List<IUser> user) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 }

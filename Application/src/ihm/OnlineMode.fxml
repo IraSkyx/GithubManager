@@ -84,7 +84,7 @@
                         <VBox>
                             <children>
                                 <Label id="h3" text="${controller.selectedFollow}"/>
-                                <Label fx:id="description" id="h3" text="${controller.selectedFollow.description}" maxWidth="500"/> 
+                                <Label id="h3" text="${controller.selectedFollow.description}" maxWidth="500"/> 
                             </children>
                         </VBox>                 
                     </left>      
@@ -94,8 +94,8 @@
                 </BorderPane>
             </top>
             <center>
-                <ScrollPane fx:id="scrollPane">
-                    <Label id="h3" text="${controller.selectedFollow.readMe}"/>
+                <ScrollPane>
+                    <Label fx:id="readMe" id="h3" text="${controller.selectedFollow.readMe}"/>
                 </ScrollPane>              
             </center>
         </BorderPane>

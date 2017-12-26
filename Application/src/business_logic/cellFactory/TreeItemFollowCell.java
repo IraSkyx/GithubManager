@@ -3,7 +3,6 @@ package business_logic.cellFactory;
 import business_logic.gateways.GitHubGateway;
 import business_logic.repository.Category;
 import business_logic.repository.Follow;
-import business_logic.repository.GitHubRepository;
 import business_logic.repository.Repository;
 import javafx.beans.binding.Bindings;
 import javafx.scene.control.TreeCell;
@@ -92,17 +91,17 @@ public class TreeItemFollowCell extends TreeCell<Follow> {
         }
         
         if(item instanceof Category){
-            textProperty().bind(item.nameProperty());
+            textProperty().bind(((Category)item).nameProperty());
             setStyle("-fx-font-size:1.5em;");
         }
 
         if(item instanceof Repository){ 
-            if(item instanceof GitHubRepository && TreeItemFollowCell.firstRender && GitHubGateway.hasNewCommit((GitHubRepository)item)){
-                textProperty().bind(Bindings.format("(New !) %s", item.nameProperty()));
+            if(TreeItemFollowCell.firstRender && GitHubGateway.hasNewCommit((Repository)item)){
+                textProperty().bind(Bindings.format("(New !) %s", item.getName()));
                 setStyle("-fx-text-fill: rgb(38, 166, 91);");              
             }
             else{    
-                textProperty().bind(item.nameProperty());
+                textProperty().bind(Bindings.format("%s", item.getName()));
                 setStyle("");
             }
             setGraphic(null);
