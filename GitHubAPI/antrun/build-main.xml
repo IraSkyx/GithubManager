@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<project name="maven-antrun-" default="main"  >
-<target name="main">
-  <copy file="META-INF/SOURCE-MANIFEST.MF" tofile="/home/skyx/GitHubManager/egit-github/org.eclipse.egit.github.core/target/META-INF/SOURCE-MANIFEST.MF" overwrite="true"/>
-  <replace file="/home/skyx/GitHubManager/egit-github/org.eclipse.egit.github.core/target/META-INF/SOURCE-MANIFEST.MF">
-    <replacefilter value=".2017-11-16T07:28:34Z" token=".qualifier"/>
-  </replace>
-</target>
-</project>

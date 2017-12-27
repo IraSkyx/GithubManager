@@ -3,16 +3,11 @@ package business_logic.gateways;
 import business_logic.repository.GitHubRepositoryFactory;
 import business_logic.repository.Repository;
 import controller.FrontController;
-import java.io.BufferedOutputStream;
-import java.io.ByteArrayInputStream;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Base64;
 import java.util.List;
 import java.util.logging.Level;
@@ -20,7 +15,11 @@ import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import launch.Main;
+import net.lingala.zip4j.core.ZipFile;
+import org.apache.commons.io.FileUtils;
 import org.eclipse.egit.github.core.RepositoryContents;
 import org.eclipse.egit.github.core.RepositoryId;
 import org.eclipse.egit.github.core.service.ContentsService;
@@ -117,11 +116,25 @@ public class GitHubGateway implements APIManager {
         }
     }
     
-    public static void cloneRepository(Repository repo) throws IOException {
-        final URL uri = new URL("https://github.com/".concat(repo.getId()).concat("/tarball"));
-        DirectoryChooser  dirChooser = new DirectoryChooser ();
+    public static void cloneRepository(Repository repo) throws IOException {       
+        final URL uri = new URL("https://api.github.com/repos/".concat(repo.getId()).concat("/zipball"));
+        DirectoryChooser dirChooser = new DirectoryChooser();
         dirChooser.setTitle("Choose destination");
-        final File selectedDirectory = dirChooser.showDialog(FrontController.getScene().getWindow());
-        File f = new File(uri.getFile());       
+        final File selectedDir = dirChooser.showDialog(FrontController.getScene().getWindow());   
+        if(selectedDir != null){
+            File zipDestination = new File(selectedDir.getAbsolutePath() + "/" + repo.getName() + ".zip");
+            FileUtils.copyURLToFile(uri, zipDestination);           
+
+            new Thread(() -> {
+                try {
+                    ZipFile zipFile = new ZipFile(zipDestination);
+                    zipFile.extractAll(selectedDir.getAbsolutePath()+"/"+repo.getName());
+                    FileUtils.forceDelete(zipDestination);
+                }
+                catch (net.lingala.zip4j.exception.ZipException | IOException ex ) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }).start();    
+        }          
     }  
 }

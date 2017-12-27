@@ -89,7 +89,7 @@
                         </VBox>                 
                     </left>      
                     <right>
-                        <Button text="Clone Url" onAction="#cloneUrl"/>
+                        <Button fx:id="cloneBtn" text="Clone Url" onAction="#cloneUrl"/>
                     </right>          
                 </BorderPane>
             </top>

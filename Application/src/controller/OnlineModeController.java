@@ -56,7 +56,8 @@ public class OnlineModeController extends BorderPane implements Manageable {
     @FXML Button loggedIn2; 
     @FXML Button TVMenu1; 
     @FXML Button TVMenu2; 
-    @FXML Button TVMenu3;   
+    @FXML Button TVMenu3; 
+    @FXML Button cloneBtn;
     
     @FXML TreeItem root;
     
@@ -85,7 +86,8 @@ public class OnlineModeController extends BorderPane implements Manageable {
     @FXML
     private void cloneUrl() {
         try {
-            GitHubGateway.cloneRepository((Repository)getSelectedFollow());
+            if(getSelectedFollow() != null)
+                GitHubGateway.cloneRepository((Repository)getSelectedFollow());
         } 
         catch (IOException ex) {
             Logger.getLogger(OnlineModeController.class.getName()).log(Level.SEVERE, null, ex);
@@ -94,8 +96,7 @@ public class OnlineModeController extends BorderPane implements Manageable {
         
     @FXML
     private void onEnter() {   
-        setItems(input.getText());
-        setPlaceholderSearchResults("Results loading ...");  
+        setItems(input.getText());        
     }
     
     @FXML
@@ -133,7 +134,12 @@ public class OnlineModeController extends BorderPane implements Manageable {
     
     public void initialize(){        
         h31.visibleProperty().bind(nullToBool2); 
-        h31.managedProperty().bind(nullToBool2);        
+        h31.managedProperty().bind(nullToBool2);  
+        cloneBtn.visibleProperty().bind(Bindings
+                .when(selectedFollowProperty().isNull())
+                .then(false)
+                .otherwise(true)
+        );
         
         loggedIn1.visibleProperty().bind(nullToBool2);     
         loggedIn2.visibleProperty().bind(nullToBool2);
