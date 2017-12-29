@@ -1,22 +1,19 @@
 package business_logic.gateways;
 
+import business_logic.repository.GitHubRepository;
 import business_logic.repository.GitHubRepositoryFactory;
 import business_logic.repository.Repository;
 import controller.FrontController;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Paths;
-import java.util.Base64;
+import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.stage.DirectoryChooser;
-import javafx.stage.FileChooser;
-import javafx.stage.FileChooser.ExtensionFilter;
 import launch.Main;
 import net.lingala.zip4j.core.ZipFile;
 import org.apache.commons.io.FileUtils;
@@ -79,13 +76,16 @@ public class GitHubGateway implements APIManager {
         return list;
     }
     
-    public static boolean hasNewCommit(Repository repository){
+    @Override
+    public boolean hasNewCommit(Repository repository){
+        GitHubRepository gitHubRepo = (GitHubRepository)repository;
+        
         try {               
             RepositoryService service = new RepositoryService();
             service.getClient().setOAuth2Token(OAUTH2TOKEN);
             
-            org.eclipse.egit.github.core.Repository gitRepository = service.getRepository(RepositoryId.createFromId(repository.getId()));
-            if(gitRepository.getUpdatedAt().compareTo(repository.getUpdatedAt()) > 0)
+            org.eclipse.egit.github.core.Repository gitRepository = service.getRepository(RepositoryId.createFromId(gitHubRepo.getId()));
+            if(gitRepository.getUpdatedAt().compareTo(gitHubRepo.getUpdatedAt()) > 0)
                 return true;
             return false;
         } 
@@ -94,47 +94,46 @@ public class GitHubGateway implements APIManager {
         }
     }
     
+    @Override
+    public void cloneRepository(Repository repository) {  
+        GitHubRepository gitHubRepo = (GitHubRepository)repository;
+        
+        try {
+            final URL uri = new URL("https://api.github.com/repos/".concat(gitHubRepo.getId()).concat("/zipball"));
+            DirectoryChooser dirChooser = new DirectoryChooser();
+            dirChooser.setTitle("Choose destination");
+            final File selectedDir = dirChooser.showDialog(FrontController.getScene().getWindow());   
+            if(selectedDir != null){
+                new Thread(() -> {
+                    try {
+                        File zipDestination = new File(selectedDir.getAbsolutePath() + "/" + gitHubRepo.getName() + ".zip");
+                        FileUtils.copyURLToFile(uri, zipDestination);           
+
+                        ZipFile zipFile = new ZipFile(zipDestination);
+                        zipFile.extractAll(selectedDir.getAbsolutePath()+"/"+gitHubRepo.getName());
+                        FileUtils.forceDelete(zipDestination);
+                    }
+                    catch (net.lingala.zip4j.exception.ZipException | IOException ex ) {
+                        Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }).start();    
+            }     
+        }     
+        catch(IOException e){
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }  
+    
     public static String getReadMe(org.eclipse.egit.github.core.Repository repo){
         try {
             ContentsService contents = new ContentsService();
             contents.getClient().setOAuth2Token(OAUTH2TOKEN);                   
             RepositoryContents readMe = contents.getReadme(RepositoryId.createFromId(repo.generateId()));
-            return decode(readMe.getContent());
+            return new String(org.eclipse.egit.github.core.util.EncodingUtils.fromBase64(readMe.getContent()));
         } 
         catch (Exception ex) {
             return "No README.md";
         }       
     }
     
-    private static String decode(String value) {
-        try{
-            byte[] decodedValue = Base64.getMimeDecoder().decode(value);
-            return new String(decodedValue, StandardCharsets.UTF_8);
-        }
-        catch(Exception ex){
-          return "Failed to decode README.md";
-        }
-    }
-    
-    public static void cloneRepository(Repository repo) throws IOException {       
-        final URL uri = new URL("https://api.github.com/repos/".concat(repo.getId()).concat("/zipball"));
-        DirectoryChooser dirChooser = new DirectoryChooser();
-        dirChooser.setTitle("Choose destination");
-        final File selectedDir = dirChooser.showDialog(FrontController.getScene().getWindow());   
-        if(selectedDir != null){
-            File zipDestination = new File(selectedDir.getAbsolutePath() + "/" + repo.getName() + ".zip");
-            FileUtils.copyURLToFile(uri, zipDestination);           
-
-            new Thread(() -> {
-                try {
-                    ZipFile zipFile = new ZipFile(zipDestination);
-                    zipFile.extractAll(selectedDir.getAbsolutePath()+"/"+repo.getName());
-                    FileUtils.forceDelete(zipDestination);
-                }
-                catch (net.lingala.zip4j.exception.ZipException | IOException ex ) {
-                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }).start();    
-        }          
-    }  
 }

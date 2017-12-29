@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="githubmanager.jar" size="205765" download="eager" />
+    <jar href="githubmanager.jar" size="205327" download="eager" />
     <jar href="lib\commons-io-2.6.jar" size="214788" download="eager" />
     <jar href="lib\org.eclipse.egit.github.core-4.9.0-SNAPSHOT.jar" size="415022" download="eager" />
     <jar href="lib\zip4j_1.3.2.jar" size="131025" download="eager" />

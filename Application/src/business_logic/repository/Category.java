@@ -26,10 +26,10 @@ public class Category extends Follow implements Serializable {
         public ListProperty listOfFollowsProperty(){return listOfFollows;};
 
     public Category(){
-        
+        setListOfFollows(FXCollections.<Follow>observableArrayList());
     }
         
-    public Category(String name) {       
+    public Category(String name) {  
         setName(name);
         setListOfFollows(FXCollections.<Follow>observableArrayList());
     }

@@ -1,5 +1,6 @@
 package business_logic.cellFactory;
 
+import business_logic.gateways.APIManager;
 import business_logic.gateways.GitHubGateway;
 import business_logic.repository.Category;
 import business_logic.repository.Follow;
@@ -20,12 +21,14 @@ import javafx.scene.input.TransferMode;
  */
 public class TreeItemFollowCell extends TreeCell<Follow> {
 
-    public static boolean firstRender = true;
-    
+    private APIManager apiManager;
+    public static boolean firstRender = true;    
     private Follow item;
     
-    public TreeItemFollowCell(TreeView<Follow> parent){
+    public TreeItemFollowCell(TreeView<Follow> parent, APIManager apiManager){
               
+        this.apiManager=apiManager;
+        
         setOnDragDetected((MouseEvent event) -> {
             Dragboard db = startDragAndDrop(TransferMode.MOVE);
             ClipboardContent content = new ClipboardContent();
@@ -96,7 +99,7 @@ public class TreeItemFollowCell extends TreeCell<Follow> {
         }
 
         if(item instanceof Repository){ 
-            if(TreeItemFollowCell.firstRender && GitHubGateway.hasNewCommit((Repository)item)){
+            if(TreeItemFollowCell.firstRender && apiManager.hasNewCommit((Repository)item)){
                 textProperty().bind(Bindings.format("(New !) %s", item.getName()));
                 setStyle("-fx-text-fill: rgb(38, 166, 91);");              
             }

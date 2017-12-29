@@ -2,7 +2,6 @@ package controller;
 
 import business_logic.cellFactory.TreeItemFollowCell;
 import business_logic.gateways.APIManager;
-import business_logic.gateways.GitHubGateway;
 import business_logic.repository.Category;
 import business_logic.repository.Follow;
 import business_logic.repository.Repository;
@@ -85,13 +84,8 @@ public class OnlineModeController extends BorderPane implements Manageable {
         
     @FXML
     private void cloneUrl() {
-        try {
-            if(getSelectedFollow() != null)
-                GitHubGateway.cloneRepository((Repository)getSelectedFollow());
-        } 
-        catch (IOException ex) {
-            Logger.getLogger(OnlineModeController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        if(getSelectedFollow() != null && getSelectedFollow() instanceof Repository)
+            apiManager.cloneRepository((Repository)getSelectedFollow());
     }
         
     @FXML
@@ -116,7 +110,8 @@ public class OnlineModeController extends BorderPane implements Manageable {
     
     @FXML
     private void logOff() throws IOException {
-        UsersManager.disconnect();       
+        //UsersManager.disconnect(); 
+        UsersManager.currentUserProperty().get().setUsername("Patate");
     }
     
     @FXML
@@ -132,7 +127,7 @@ public class OnlineModeController extends BorderPane implements Manageable {
         });
     }
     
-    public void initialize(){        
+    public void initialize(){       
         h31.visibleProperty().bind(nullToBool2); 
         h31.managedProperty().bind(nullToBool2);  
         cloneBtn.visibleProperty().bind(Bindings

@@ -56,8 +56,6 @@ public class StubUsers implements DataManager {
                     user.getUserFollow().addFollow(repo);
             }).start();
         }
-                
-        
         return allUsers;
     }
 

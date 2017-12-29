@@ -34,7 +34,7 @@ public class UsersManager {
      */
     public static void loadUsers() {
         if (dataManager != null) {
-           dataManager.loadUsers().stream().forEach(x -> allUsers.add(x));
+           allUsers = dataManager.loadUsers();
         }
     }  
     

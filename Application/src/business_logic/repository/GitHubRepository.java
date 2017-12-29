@@ -12,7 +12,7 @@ import javafx.beans.property.StringProperty;
  */
 public class GitHubRepository extends Repository implements Serializable {
     
-    private org.eclipse.egit.github.core.Repository adapted;   
+    private org.eclipse.egit.github.core.Repository adapted;
         public org.eclipse.egit.github.core.Repository getAdapted() {return adapted;}     
         public void setAdapted(org.eclipse.egit.github.core.Repository adapted) {this.adapted=adapted;}
     
@@ -22,31 +22,24 @@ public class GitHubRepository extends Repository implements Serializable {
         public StringProperty readMeProperty() {return readMe;}
     
     @Override public String getName() {return adapted.getName();}
-    @Override public void setName(String value) {throw new UnsupportedOperationException("Not supported yet.");}
+    @Override public void setName(String value) {adapted.setName(value);}
     
     @Override public String getDescription() {return adapted.getDescription();}
-    @Override public void setDescription(String value) {throw new UnsupportedOperationException("Not supported yet.");}
+    @Override public void setDescription(String value) {adapted.setDescription(value);}
 
     @Override public Date getCreatedAt() {return adapted.getCreatedAt();}
-    @Override public void setCreatedAt(String value) {throw new UnsupportedOperationException("Not supported yet.");}
-
-    @Override public String getCloneUrl() {return adapted.getCloneUrl();}
-    @Override public void setCloneUrl(String value) {throw new UnsupportedOperationException("Not supported yet."); }
-
-    @Override public String getId() {return adapted.generateId();}
-    @Override public void setId(String value) {throw new UnsupportedOperationException("Not supported yet.");}
-
-    @Override public String getOwner() {return adapted.getOwner().toString();}
-    @Override public void setOwner(String value) {throw new UnsupportedOperationException("Not supported yet.");}
+    @Override public void setCreatedAt(Date value) {adapted.setCreatedAt(value);}
 
     @Override public Date getUpdatedAt() {return adapted.getUpdatedAt();}
-    @Override public void setUpdatedAt(Date value) {throw new UnsupportedOperationException("Not supported yet.");}   
+    @Override public void setUpdatedAt(Date value) {adapted.setUpdatedAt(value);}   
     
-    GitHubRepository(){
+    public String getId() {return adapted.generateId();}
+    
+    public GitHubRepository(){
         
     }
     
-    GitHubRepository(org.eclipse.egit.github.core.Repository adapted) {  
+    public GitHubRepository(org.eclipse.egit.github.core.Repository adapted) {  
         this.adapted=adapted;
         setReadMe(GitHubGateway.getReadMe(adapted));
     } 

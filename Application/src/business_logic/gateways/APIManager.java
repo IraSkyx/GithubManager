@@ -10,4 +10,6 @@ import javafx.collections.ObservableList;
 public interface APIManager {
     public ObservableList<Repository> getRepositoriesByName(String input);
     public ObservableList<Repository> getRepositoriesByUsername(String input);   
+    public void cloneRepository(Repository repo);
+    public boolean hasNewCommit(Repository repository);
 }

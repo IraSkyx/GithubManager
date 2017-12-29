@@ -23,7 +23,7 @@ public class XMLDataManager implements DataManager{
     public List<IUser> loadUsers() {
         List<IUser> result = null;
         try (XMLDecoder ois = new XMLDecoder(new FileInputStream("users.xml"))) {
-            result = ((ArrayList<XMLUser>) ois.readObject()).stream().map(n -> n.getModel()).collect(Collectors.toList());
+            result = ((ArrayList<XMLUser>)ois.readObject()).stream().map(n -> n.getModel()).collect(Collectors.toList());
         } 
         catch (IOException e) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
