@@ -38,7 +38,10 @@
                 <Insets top="10" right="10" bottom="10" left="10"/>
             </padding>
             <left>
-                <Button text="Home" onAction="#GoHome"/>
+                <VBox>
+                    <Button text="Home" onAction="#GoHome"/>
+                    <Button text="Option" onAction="#GoOption"/>
+                </VBox>
             </left>
             <center>
                 <VBox alignment="CENTER" BorderPane.alignment="CENTER">

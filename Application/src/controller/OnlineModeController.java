@@ -110,7 +110,7 @@ public class OnlineModeController extends BorderPane implements Manageable {
     
     @FXML
     private void logOff() throws IOException {
-        //UsersManager.disconnect(); 
+        UsersManager.disconnect(); 
         UsersManager.currentUserProperty().get().setUsername("Patate");
     }
     
@@ -291,5 +291,10 @@ public class OnlineModeController extends BorderPane implements Manageable {
             root.getChildren().addAll(tf,error,submit);
             stage.setScene(scene);
             stage.showAndWait();      
+    }
+    
+    @FXML
+    private void GoOption() throws IOException {
+        FrontController.setScene("/ihm/Option.fxml");
     }
 }

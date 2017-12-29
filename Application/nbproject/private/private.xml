@@ -1,30 +1,9 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/business_logic/user/IUser.java</file>
-            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/controller/OnlineModeController.java</file>
-            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/launch/Main.java</file>
-            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/business_logic/persistance/xml/XMLUser.java</file>
-            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/business_logic/user/UsersManager.java</file>
-            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/business_logic/persistance/xml/XMLDataManager.java</file>
-            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/business_logic/repository/GitHubRepository.java</file>
-            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/business_logic/user/User.java</file>
+            <file>file:/C:/Users/fsimo/Desktop/githubmanager/Application/src/launch/Main.java</file>
+            <file>file:/C:/Users/fsimo/Desktop/githubmanager/Application/src/controller/FrontController.java</file>
         </group>
     </open-files>
 </project-private>
-=======
-<?xml version="1.0" encoding="UTF-8"?>
-<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/controller/OnlineModeController.java</file>
-            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/business_logic/gateways/GitHubGateway.java</file>
-            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/ihm/OnlineMode.fxml</file>
-        </group>
-    </open-files>
-</project-private>
->>>>>>> 740a6a3a8454db235462b64d212ef42a52200de7

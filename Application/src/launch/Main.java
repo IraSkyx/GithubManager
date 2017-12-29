@@ -16,8 +16,8 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
         try {  
-            UsersManager.setDataManager(new XMLDataManager());
-            //UsersManager.setDataManager(new StubUsers(new GitHubGateway()));
+            //UsersManager.setDataManager(new XMLDataManager());
+            UsersManager.setDataManager(new StubUsers(new GitHubGateway()));
             UsersManager.loadUsers();     
             FrontController.setStage(stage,"/ihm/Home.fxml");
             
