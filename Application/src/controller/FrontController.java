@@ -18,8 +18,7 @@ public class FrontController {
     
     public static void setStage(Stage primaryStage, String path) throws IOException{
         stage = primaryStage;
-        stage.setWidth(1440);
-        stage.setHeight(920);
+        stage.setMaximized(true);
         stage.setTitle("GithubManager");
         setScene(path);
         stage.show();

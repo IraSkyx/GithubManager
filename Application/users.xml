@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_151" class="java.beans.XMLDecoder">
+ <object class="java.util.ArrayList">
+  <void method="add">
+   <object class="business_logic.persistance.xml.XMLUser" id="XMLUser0">
+    <void property="email">
+     <string>adrien.lenoir@etu.uca.fr</string>
+    </void>
+    <void property="password">
+     <string>mdp</string>
+    </void>
+    <void id="Category0" property="userFollow">
+     <void property="listOfFollows">
+      <void method="add">
+       <object class="business_logic.repository.Category">
+        <void property="name">
+         <string>TODOLIST</string>
+        </void>
+       </object>
+      </void>
+      <void method="add">
+       <object class="business_logic.repository.Category">
+        <void property="name">
+         <string>Future projects</string>
+        </void>
+       </object>
+      </void>
+     </void>
+    </void>
+    <void property="username">
+     <string>Adrien Lenoir</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="business_logic.persistance.xml.XMLUser" id="XMLUser1">
+    <void property="email">
+     <string>fabien.simonet@etu.uca.fr</string>
+    </void>
+    <void property="password">
+     <string>mdp</string>
+    </void>
+    <void id="Category1" property="userFollow">
+     <void property="listOfFollows">
+      <void method="add">
+       <object class="business_logic.repository.Category">
+        <void property="name">
+         <string>TODOLIST</string>
+        </void>
+       </object>
+      </void>
+      <void method="add">
+       <object class="business_logic.repository.Category">
+        <void property="name">
+         <string>Future projects</string>
+        </void>
+       </object>
+      </void>
+     </void>
+    </void>
+    <void property="username">
+     <string>Fabien Simonet</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="business_logic.persistance.xml.XMLUser">
+    <void property="email">
+     <string>adrien.lenoir@etu.uca.fr</string>
+    </void>
+    <void property="password">
+     <string>mdp</string>
+    </void>
+    <void property="userFollow">
+     <object idref="Category0"/>
+    </void>
+    <void property="username">
+     <string>Adrien Lenoir</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="business_logic.persistance.xml.XMLUser">
+    <void property="email">
+     <string>fabien.simonet@etu.uca.fr</string>
+    </void>
+    <void property="password">
+     <string>mdp</string>
+    </void>
+    <void property="userFollow">
+     <object idref="Category1"/>
+    </void>
+    <void property="username">
+     <string>Fabien Simonet</string>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>

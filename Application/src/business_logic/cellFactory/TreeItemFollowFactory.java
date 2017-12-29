@@ -15,5 +15,5 @@ public class TreeItemFollowFactory implements Callback<TreeView<Follow>,TreeCell
     @Override
     public TreeCell<Follow> call(TreeView<Follow> param) {
        return new TreeItemFollowCell(param, new GitHubGateway());
-    }    
+    }
 }

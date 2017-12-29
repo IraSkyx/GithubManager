@@ -15,25 +15,25 @@ import java.util.List;
  * @author adlenoir
  */
 public class StubUsers implements DataManager {
-    
+
     private APIManager apiManager;
 
     public StubUsers(APIManager apiManager) {
         this.apiManager = apiManager;
     }
-    
+
     public void setApiManager(APIManager apiManager) {
         this.apiManager = apiManager;
     }
-    
+
     @Override
     public List<IUser> loadUsers() {
-        
+
         List<IUser> allUsers = new ArrayList<>(Arrays.asList(
             UserFactory.make("Adrien Lenoir", "adrien.lenoir@etu.uca.fr", "mdp"),
             UserFactory.make("Fabien Simonet", "fabien.simonet@etu.uca.fr", "mdp")
         ));
-        
+
         for(IUser user : allUsers){
 
             Category categ = new Category("Future projects");
