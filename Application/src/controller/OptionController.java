@@ -5,8 +5,13 @@
  */
 package controller;
 
+import business_logic.user.IUser;
+import business_logic.user.UsersManager;
 import java.io.IOException;
+import javafx.beans.property.ObjectProperty;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
@@ -15,12 +20,19 @@ import javafx.fxml.FXML;
  */
 public class OptionController {
 
+    @FXML TextField username;
+    @FXML TextField email;
+    @FXML TextField password;
+    @FXML Label error;
+    
     /**
      * Initializes the controller class.
      */
-
+    
     public void initialize() {
-        // TODO
+        setUsername();
+        setPassword();
+        getEmail();
     }    
     
     @FXML
@@ -28,4 +40,17 @@ public class OptionController {
         FrontController.setScene("/ihm/OnlineMode.fxml");
     } 
     
+    private void setUsername() {
+        username.textProperty().bindBidirectional(UsersManager.getCurrentUser().usernameProperty());
+    }
+    
+    private void setPassword() {
+        password.textProperty().bindBidirectional(UsersManager.getCurrentUser().passwordProperty());
+    }
+    
+    private void getEmail() {
+        email.textProperty().bindBidirectional(UsersManager.getCurrentUser().emailProperty());
+        if(UsersManager.exists(email.textProperty().get())) error.setVisible(true); 
+        else error.setVisible(false);
+    }
 }

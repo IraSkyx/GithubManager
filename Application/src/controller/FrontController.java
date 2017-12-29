@@ -4,6 +4,7 @@ import business_logic.gateways.APIManager;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -20,6 +21,8 @@ public class FrontController {
         stage = primaryStage;
         stage.setMaximized(true);
         stage.setTitle("GithubManager");
+        Image applicationIcon = new Image("/resources/imgs/Icon.png");
+        stage.getIcons().add(applicationIcon);
         setScene(path);
         stage.show();
     }
