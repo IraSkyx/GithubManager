@@ -144,7 +144,8 @@ public class OnlineModeController extends BorderPane implements Manageable {
         loggedOff1.visibleProperty().bind(nullToBool);        
         loggedOff2.visibleProperty().bind(nullToBool); 
         
-        loggedIn1.textProperty().bind(Bindings.format("Welcome\n%s", UsersManager.currentUserProperty().asString()));
+        //loggedIn1.textProperty().bind(Bindings.format("Welcome\n%s", UsersManager.currentUserProperty().asString()));
+        loggedIn1.textProperty().bind(Bindings.format("Welcome\n%s", UsersManager.getCurrentUser().getEmail()));;
         
         loggedIn1.managedProperty().bind(nullToBool2);     
         loggedIn2.managedProperty().bind(nullToBool2);  
@@ -189,6 +190,10 @@ public class OnlineModeController extends BorderPane implements Manageable {
         }
     }   
     
+    /**
+     * Set the search result in a label
+     * @param text
+    */
     public void setPlaceholderSearchResults(String text) {
         Label placeholder = new Label(text);
         placeholder.setPadding(new Insets(20,20,20,20));   

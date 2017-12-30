@@ -107,3 +107,4 @@ public class UsersManager {
         return allUsers.stream().anyMatch(x -> x.getEmail().equals(email));
     }
 }
+    

@@ -74,10 +74,10 @@
         </BorderPane>       
     </top>
     <center>
-            <BorderPane>
-                <padding>
-                    <Insets top="50" right="50" bottom="50" left="50"/>
-                </padding>  
+        <BorderPane>
+            <padding>
+                <Insets top="50" right="50" bottom="50" left="50"/>
+            </padding>  
             <top>
                 <BorderPane>
                     <padding>

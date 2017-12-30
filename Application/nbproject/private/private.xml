@@ -4,7 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/fsimo/Desktop/githubmanager/Application/src/ihm/Option.fxml</file>
+            <file>file:/C:/Users/fsimo/Desktop/githubmanager/Application/src/business_logic/user/IUser.java</file>
             <file>file:/C:/Users/fsimo/Desktop/githubmanager/Application/src/controller/OnlineModeController.java</file>
+            <file>file:/C:/Users/fsimo/Desktop/githubmanager/Application/src/business_logic/persistance/stub/StubUsers.java</file>
             <file>file:/C:/Users/fsimo/Desktop/githubmanager/Application/src/controller/OptionController.java</file>
             <file>file:/C:/Users/fsimo/Desktop/githubmanager/Application/src/resources/imgs/categIcon.png</file>
             <file>file:/C:/Users/fsimo/Desktop/githubmanager/Application/src/ihm/Header.fxml</file>

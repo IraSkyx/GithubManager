@@ -12,6 +12,9 @@ import javafx.beans.property.ObjectProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import java.awt.Component;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 /**
  * FXML Controller class
@@ -24,6 +27,10 @@ public class OptionController {
     @FXML TextField email;
     @FXML TextField password;
     @FXML Label error;
+    
+    String intermediaryEmail = UsersManager.getCurrentUser().getEmail();
+    
+    StringProperty intermediaryEmailProperty = new SimpleStringProperty(UsersManager.getCurrentUser().getEmail());
     
     /**
      * Initializes the controller class.
@@ -49,8 +56,19 @@ public class OptionController {
     }
     
     private void getEmail() {
-        email.textProperty().bindBidirectional(UsersManager.getCurrentUser().emailProperty());
-        if(UsersManager.exists(email.textProperty().get())) error.setVisible(true); 
-        else error.setVisible(false);
+        email.textProperty().bindBidirectional(intermediaryEmailProperty); 
+    }
+    
+    @FXML
+    private void validateEmailChanges() {
+        if(UsersManager.exists(email.textProperty().get()) && !email.textProperty().get().equals(UsersManager.getCurrentUser().emailProperty())) {
+            error.setVisible(true); 
+            email.textProperty().set(intermediaryEmail);
+        }
+        else { 
+            error.setVisible(false);
+            UsersManager.getCurrentUser().emailProperty().bindBidirectional(intermediaryEmailProperty);
+            UsersManager.getCurrentUser().emailProperty().unbind();
+        }
     }
 }
