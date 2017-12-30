@@ -28,8 +28,6 @@ public class OptionController {
     @FXML TextField password;
     @FXML Label error;
     
-    String intermediaryEmail = UsersManager.getCurrentUser().getEmail();
-    
     StringProperty intermediaryEmailProperty = new SimpleStringProperty(UsersManager.getCurrentUser().getEmail());
     
     /**
@@ -42,28 +40,47 @@ public class OptionController {
         getEmail();
     }    
     
+    /**
+     * Go to the OnlineMode page
+     * @throws IOException 
+     */
     @FXML
     private void GoOnlineMode() throws IOException {
         FrontController.setScene("/ihm/OnlineMode.fxml");
     } 
     
+    /**
+     * Create a bidirectional binding which allow the current user to update his username
+     */
     private void setUsername() {
         username.textProperty().bindBidirectional(UsersManager.getCurrentUser().usernameProperty());
     }
     
+    /**
+     * Create a bidirectional binding which allow the current user to update his password
+     */
     private void setPassword() {
         password.textProperty().bindBidirectional(UsersManager.getCurrentUser().passwordProperty());
     }
-    
+     
+    /**
+     * Create a bidirectional binding which allow the current user to update his email in an intermediary property
+     * This property is then checked in an other method before updating the value of the current user email property
+     */
     private void getEmail() {
         email.textProperty().bindBidirectional(intermediaryEmailProperty); 
     }
     
+    /**
+     * Check if the email changed by the user is not already used
+     * Update the value of the current user email if it is free
+     * Display an error message and replace by the older value of email if it is not
+     */
     @FXML
     private void validateEmailChanges() {
         if(UsersManager.exists(email.textProperty().get()) && !email.textProperty().get().equals(UsersManager.getCurrentUser().emailProperty())) {
             error.setVisible(true); 
-            email.textProperty().set(intermediaryEmail);
+            email.textProperty().set(intermediaryEmailProperty.get());
         }
         else { 
             error.setVisible(false);

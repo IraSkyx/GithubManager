@@ -4,7 +4,7 @@
   <void method="add">
    <object class="business_logic.persistance.xml.XMLUser" id="XMLUser0">
     <void property="email">
-     <string>adrien.leir@etu.uca.fr</string>
+     <string>adrien.lenoir@etu.uca.fr</string>
     </void>
     <void property="password">
      <string>mdp</string>

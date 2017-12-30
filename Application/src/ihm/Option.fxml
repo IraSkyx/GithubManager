@@ -37,7 +37,7 @@
                 <Label id="h2" text="Username" />
                 <TextField fx:id="username" maxWidth="200" />
                 <Label id="h2" text="Email" />
-                <TextField alignment="CENTER" fx:id="email" maxWidth="200" />
+                <TextField fx:id="email" maxWidth="200" />
                 <FlowPane alignment="CENTER">
                     <children>
                         <Button text="Validate Email" onAction="#validateEmailChanges" />
