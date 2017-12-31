@@ -1,7 +1,6 @@
 package business_logic.cellFactory;
 
 import business_logic.gateways.APIManager;
-import business_logic.gateways.GitHubGateway;
 import business_logic.repository.Category;
 import business_logic.repository.Follow;
 import business_logic.repository.Repository;
@@ -33,17 +32,19 @@ public class TreeItemFollowCell extends TreeCell<Follow> {
             Dragboard db = startDragAndDrop(TransferMode.MOVE);
             ClipboardContent content = new ClipboardContent();
             content.putString(getItem().toString());
-            Follow.setSelectedDaD(getItem());
+            TreeItemFollowFactory.setSelectedDaD(getItem());
             db.setContent(content);
             event.consume();
         });
 
         setOnDragEntered((DragEvent event) -> {
-            setStyle(getItem() instanceof Repository ? "-fx-background-color: grey;" : "-fx-background-color: grey;-fx-font-size:1.5em;");
+            if(!getTreeView().getRoot().getChildren().isEmpty())
+                setStyle(getItem() instanceof Repository ? "-fx-background-color: grey;" : "-fx-background-color: grey;-fx-font-size:1.5em;");
         });
 
         setOnDragExited((DragEvent event) -> {
-            setStyle(getItem() instanceof Repository ? "" : "-fx-font-size:1.5em;");
+            if(!getTreeView().getRoot().getChildren().isEmpty())
+                setStyle(getItem() instanceof Repository ? "" : "-fx-font-size:1.5em;");
         });
 
         setOnDragOver((DragEvent event) -> {
@@ -55,8 +56,8 @@ public class TreeItemFollowCell extends TreeCell<Follow> {
         setOnDragDropped((DragEvent event) -> {
             Dragboard db = event.getDragboard();
             boolean success = false;
-            if (db.hasString() && Repository.getSelectedDaD() != null) {
-                Repository newItem = (Repository)Follow.getSelectedDaD();
+            if (db.hasString() && TreeItemFollowFactory.getSelectedDaD() != null) {
+                Repository newItem = (Repository)TreeItemFollowFactory.getSelectedDaD();
                 if(getTreeItem().getValue() instanceof Category){
                     getTreeItem().getValue().addFollow(newItem);
                     getTreeItem().getChildren().add(new TreeItem<>(newItem));

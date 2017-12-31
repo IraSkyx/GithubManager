@@ -1,5 +1,6 @@
 package controller;
 
+import business_logic.cellFactory.ComboBoxChoiceFactory;
 import business_logic.cellFactory.TreeItemFollowCell;
 import business_logic.gateways.APIManager;
 import business_logic.repository.Category;
@@ -10,10 +11,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.BorderPane;
 import business_logic.user.UsersManager;
-import java.io.IOException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
@@ -21,17 +19,16 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.ListChangeListener;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  * FXML Controller class
@@ -41,6 +38,8 @@ import javafx.stage.Stage;
 public class OnlineModeController extends BorderPane implements Manageable {
     
     @FXML ListView searchResults;  
+    
+    @FXML ComboBox searchBy;
     
     @FXML TextField input;
     
@@ -59,28 +58,14 @@ public class OnlineModeController extends BorderPane implements Manageable {
     @FXML Button cloneBtn;
     
     @FXML TreeItem root;
-    
-    BooleanBinding nullToBool = Bindings
-            .when(UsersManager.currentUserProperty().isNull())            
-            .then(true)
-            .otherwise(false);
-    
-    BooleanBinding nullToBool2 = Bindings
-            .when(UsersManager.currentUserProperty().isNull())    
-            .then(false)
-            .otherwise(true);
-    
+ 
     private APIManager apiManager;
+        @Override public void setApiManager(APIManager apiManager) {this.apiManager = apiManager;}
     
     private final ObjectProperty<Follow> selectedFollow = new SimpleObjectProperty();   
         public final Follow getSelectedFollow() { return selectedFollow.get(); }
         public final void setSelectedFollow(Follow value) { selectedFollow.set(value); }
-        public ObjectProperty<Follow> selectedFollowProperty(){return selectedFollow;};       
-    
-    @Override
-    public void setApiManager(APIManager apiManager) {
-        this.apiManager = apiManager;
-    }
+        public ObjectProperty<Follow> selectedFollowProperty(){return selectedFollow;};         
         
     @FXML
     private void cloneUrl() {
@@ -88,46 +73,75 @@ public class OnlineModeController extends BorderPane implements Manageable {
             apiManager.cloneRepository((Repository)getSelectedFollow());
     }
         
-    @FXML
-    private void onEnter() {   
-        setItems(input.getText());        
-    }
+    @FXML private void searchFor() {setItems(input.getText(), (String)searchBy.getSelectionModel().getSelectedItem());}
+    
+    @FXML private void goHome() {FrontController.setContentStage(FrontController.getStage(),"/ihm/Home.fxml");}
+    
+    @FXML private void goSignIn() {FrontController.setContentStage(FrontController.getStage(),"/ihm/SignIn.fxml");}
+    
+    @FXML private void goSignUp() {FrontController.setContentStage(FrontController.getStage(),"/ihm/SignUp.fxml");}
+    
+    @FXML private void goOptions() {FrontController.setContentStage(FrontController.getStage(),"/ihm/Options.fxml");}
+    
+    @FXML private void logOff() {UsersManager.disconnect();}
     
     @FXML
-    private void GoHome() throws IOException {
-        FrontController.setScene("/ihm/Home.fxml");
-    }
-    
-    @FXML
-    private void SignIn() throws IOException {
-        FrontController.setScene("/ihm/SignIn.fxml");
-    }
-    
-    @FXML
-    private void SignUp() throws IOException {
-        FrontController.setScene("/ihm/SignUp.fxml");
-    }
-    
-    @FXML
-    private void logOff() throws IOException {
-        UsersManager.disconnect(); 
-        UsersManager.currentUserProperty().get().setUsername("Patate");
-    }
-    
-    @FXML
-    private void deleteFollow() throws IOException {
+    private void deleteFollow() {
         if(TreeViewFollows.getSelectionModel().getSelectedItem() != TreeViewFollows.getRoot())
             TreeViewFollows.getSelectionModel().selectedItemProperty().get().getParent().getValue().deleteFollow(TreeViewFollows.getSelectionModel().selectedItemProperty().get().getValue());
     }
     
-    public void setItems(String input) {      
+    @FXML
+    private void addCategory() {      
+        Follow selected;
+        
+        if(TreeViewFollows.getSelectionModel().getSelectedItem() != null){
+            selected = TreeViewFollows.getSelectionModel().selectedItemProperty().get().getValue() instanceof Category ? TreeViewFollows.getSelectionModel().selectedItemProperty().get().getValue() : TreeViewFollows.getSelectionModel().selectedItemProperty().getValue().getParent().getValue();
+        }
+        else{
+            selected = TreeViewFollows.getRoot().getValue();
+        }
+        Stage stage = new Stage(); 
+        stage.initStyle(StageStyle.UTILITY);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setTitle("Add category");                    
+        ((AddCategoryController)FrontController.setContentStage(stage,"/ihm/AddCategory.fxml").getController()).setSelected(selected);                
+    }
+    
+    @FXML
+    private void renameCategory() {             
+        if(TreeViewFollows.getSelectionModel().getSelectedItem() != null && TreeViewFollows.getSelectionModel().selectedItemProperty().get().getValue() instanceof Category){          
+            Stage stage = new Stage(); 
+            stage.initStyle(StageStyle.UTILITY);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Rename category");          
+            ((RenameCategoryController)FrontController.setContentStage(stage,"/ihm/RenameCategory.fxml").getController()).setOldValue((Category)TreeViewFollows.getSelectionModel().getSelectedItem().getValue());         
+        }
+    }
+    
+    public void setItems(String input, String choice) {
         Platform.runLater(() -> {
-            searchResults.setItems(apiManager.getRepositoriesByUsername(input));
+            switch(choice){
+                case "By name" : searchResults.setItems(apiManager.getRepositoriesByName(input));                
+                default: searchResults.setItems(apiManager.getRepositoriesByUsername(input));
+            }              
             setPlaceholderSearchResults("No results for your search");
         });
     }
     
-    public void initialize(){       
+    public void initialize() { 
+        
+        BooleanBinding nullToBool = Bindings
+            .when(UsersManager.currentUserProperty().isNull())            
+            .then(true)
+            .otherwise(false);
+    
+        BooleanBinding nullToBool2 = Bindings
+            .when(UsersManager.currentUserProperty().isNull())    
+            .then(false)
+            .otherwise(true);
+        
+        searchBy.setItems(ComboBoxChoiceFactory.comboList);
         h31.visibleProperty().bind(nullToBool2); 
         h31.managedProperty().bind(nullToBool2);  
         cloneBtn.visibleProperty().bind(Bindings
@@ -144,8 +158,7 @@ public class OnlineModeController extends BorderPane implements Manageable {
         loggedOff1.visibleProperty().bind(nullToBool);        
         loggedOff2.visibleProperty().bind(nullToBool); 
         
-        //loggedIn1.textProperty().bind(Bindings.format("Welcome\n%s", UsersManager.currentUserProperty().asString()));
-        loggedIn1.textProperty().bind(Bindings.format("Welcome\n%s", UsersManager.getCurrentUser().getEmail()));;
+        loggedIn1.textProperty().bind(Bindings.format("Welcome\n%s", UsersManager.currentUserProperty()));
         
         loggedIn1.managedProperty().bind(nullToBool2);     
         loggedIn2.managedProperty().bind(nullToBool2);  
@@ -159,14 +172,8 @@ public class OnlineModeController extends BorderPane implements Manageable {
         TreeViewFollows.managedProperty().bind(nullToBool2);       
         
         TreeViewFollows.setOnKeyPressed((KeyEvent keyEvent) -> {
-            if (TreeViewFollows.getSelectionModel().getSelectedItem() != null && keyEvent.getCode().equals(KeyCode.DELETE )){
-                try {
-                    deleteFollow();
-                }
-                catch (IOException ex) {
-                  Logger.getLogger(OnlineModeController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
+            if (TreeViewFollows.getSelectionModel().getSelectedItem() != null && keyEvent.getCode().equals(KeyCode.DELETE ))
+                deleteFollow();
         });
         
         TreeViewFollows.getSelectionModel().selectedItemProperty().addListener(x -> {
@@ -186,12 +193,12 @@ public class OnlineModeController extends BorderPane implements Manageable {
             root.valueProperty().bind(UsersManager.currentUserProperty().get().userFollowProperty());
             initializeListeners((Category)UsersManager.currentUserProperty().getValue().userFollowProperty().getValue());
             updateTreeView(root);
-            TreeItemFollowCell.firstRender=false;
+            TreeItemFollowCell.firstRender = false;
         }
     }   
     
     /**
-     * Set the search result in a label
+     * Wrap the search result placeholder in a label
      * @param text
     */
     public void setPlaceholderSearchResults(String text) {
@@ -228,78 +235,5 @@ public class OnlineModeController extends BorderPane implements Manageable {
             if(follow instanceof Category)
                 initializeListeners((Category)follow);
         }
-    } 
-        
-    @FXML
-    private void renameCategory() throws IOException {             
-        if(TreeViewFollows.getSelectionModel().selectedItemProperty().get().getValue() instanceof Category){
-            
-            Category oldValue = (Category)TreeViewFollows.getSelectionModel().selectedItemProperty().get().getValue();
-            
-            Stage stage = new Stage();
-            stage.setWidth(300);
-            stage.setHeight(150);
-            stage.initModality(Modality.APPLICATION_MODAL);
-
-            VBox root = new VBox();
-            root.setAlignment(Pos.CENTER);
-            Scene scene = new Scene(root);
-            scene.getStylesheets().add(FrontController.class.getResource("/ihm/application.css").toExternalForm());
-            TextField tf = new TextField();           
-            Button submit = new Button("Submit");
-            
-            tf.textProperty().setValue(oldValue.nameProperty().get());          
-            submit.setOnAction(e -> {
-                oldValue.nameProperty().setValue(tf.getText());
-                stage.close();
-            });
-
-            root.getChildren().addAll(tf, submit);
-            stage.setScene(scene);
-            stage.showAndWait();
-        }
-    }
-    
-    @FXML
-    private void addCategory(){
-        
-        Stage stage = new Stage();
-            stage.setWidth(300);
-            stage.setHeight(150);
-            stage.initModality(Modality.APPLICATION_MODAL);
-
-            VBox root = new VBox();
-            root.setAlignment(Pos.CENTER);
-            Scene scene = new Scene(root);
-            scene.getStylesheets().add(FrontController.class.getResource("/ihm/application.css").toExternalForm());
-            TextField tf = new TextField();      
-            Label error = new Label("Category of the same name already exists");
-            error.setVisible(false);
-            error.getStyleClass().add("error");
-            Button submit = new Button("Submit");
-                        
-            submit.setOnAction(e -> {
-                if(((Category)UsersManager.currentUserProperty().get().userFollowProperty().get()).contains(tf.getText())){
-                    error.setVisible(true);
-                    return;
-                }                   
-                try {
-                    Follow selected = TreeViewFollows.getSelectionModel().selectedItemProperty().get().getValue();    
-                    TreeViewFollows.getSelectionModel().selectedItemProperty().getValue().getParent().getValue().addFollow(new Category(tf.getText()));
-                }
-                catch(NullPointerException ex){
-                    TreeViewFollows.getRoot().getValue().addFollow(new Category(tf.getText()));
-                }
-                stage.close();
-            });
-
-            root.getChildren().addAll(tf,error,submit);
-            stage.setScene(scene);
-            stage.showAndWait();      
-    }
-    
-    @FXML
-    private void GoOption() throws IOException {
-        FrontController.setScene("/ihm/Option.fxml");
-    }
+    }       
 }

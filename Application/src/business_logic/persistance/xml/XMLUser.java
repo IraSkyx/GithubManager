@@ -16,7 +16,7 @@ import javafx.beans.property.StringProperty;
  */
 public class XMLUser implements IUser, Serializable {
     public XMLUser(){
-        this(UserFactory.make());
+        this(UserFactory.create());
     }
     
     public XMLUser(IUser model) {

@@ -11,7 +11,11 @@ import javafx.util.Callback;
  * @author Adrien
  */
 public class TreeItemFollowFactory implements Callback<TreeView<Follow>,TreeCell<Follow>> {
-
+    
+    private static transient Follow selectedDaD;
+        public static Follow getSelectedDaD() { return selectedDaD; }
+        public static void setSelectedDaD(Follow selectedDaD) { TreeItemFollowFactory.selectedDaD = selectedDaD; }
+    
     @Override
     public TreeCell<Follow> call(TreeView<Follow> param) {
        return new TreeItemFollowCell(param, new GitHubGateway());

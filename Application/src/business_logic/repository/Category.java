@@ -25,18 +25,18 @@ public class Category extends Follow implements Serializable {
         public final void setListOfFollows(ObservableList<Follow> value) { listOfFollows.set(value); }
         public ListProperty listOfFollowsProperty(){return listOfFollows;};
 
-    public Category(){
-        setListOfFollows(FXCollections.<Follow>observableArrayList());
+    Category(){
+        setListOfFollows(FXCollections.synchronizedObservableList(FXCollections.<Follow>observableArrayList()));
     }
 
-    public Category(String name) {
+    Category(String name) {
         setName(name);
-        setListOfFollows(FXCollections.<Follow>observableArrayList());
+        setListOfFollows(FXCollections.synchronizedObservableList(FXCollections.<Follow>observableArrayList()));
     }
 
 
     public boolean contains(String name){
-        boolean res=false;
+        boolean res = false;
         for(Follow follow : listOfFollows){
             if(follow.getName().equals(name))
                 return true;

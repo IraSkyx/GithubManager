@@ -14,12 +14,12 @@
 <?import javafx.scene.layout.HBox?>
 <?import controller.HeaderController?>
 
-<BorderPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignInController">
+<BorderPane fx:id="rootPane" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignInController">
     <top>
         <HeaderController/>
     </top>
     <center>
-      <VBox alignment="CENTER" BorderPane.alignment="CENTER">
+      <VBox alignment="CENTER" BorderPane.alignment="CENTER" spacing="10">
          <children>
             <Label id="h2" text="Email" />
             <TextField fx:id="email" maxWidth="200" />
@@ -34,11 +34,14 @@
       </VBox>
    </center>
    <bottom>
-        <FlowPane alignment="CENTER" columnHalignment="CENTER" BorderPane.alignment="CENTER">
+        <HBox alignment="CENTER" BorderPane.alignment="CENTER" spacing="10">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
             <children>
-                <Button id="signIn" focusTraversable="false" text="Log in" onAction="#SignIn"/>
-                <Button id="home" focusTraversable="false" onAction="#GoToHome" text="Go back" />
+                <Button id="signIn" text="Log in" onAction="#submit"/>
+                <Button id="home" onAction="#goHome" text="Go back" />
             </children>
-        </FlowPane>
+        </HBox>
    </bottom>
 </BorderPane>

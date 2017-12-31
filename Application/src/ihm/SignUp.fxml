@@ -11,37 +11,41 @@
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.geometry.Insets?>
 <?import controller.HeaderController?>
 
-<!-- 
-    SignUp view for the creation of Users. It permits to create a new account.
--->
-
-<BorderPane id="AnchorPane" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignUpController">
+<BorderPane fx:id="rootPane" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignUpController">
     <top>
         <HeaderController/>
     </top>
     <center>
-        <VBox alignment="CENTER" BorderPane.alignment="CENTER">
+        <VBox alignment="CENTER" BorderPane.alignment="CENTER" spacing="10">
             <children>
                <Label id="h2" text="Username" />
                <TextField fx:id="username" maxWidth="200" />
+               
                <Label id="h2" text="Email" />
                <TextField fx:id="email" maxWidth="200" />
+               
                <Label id="h2" text="Password" />
                <PasswordField  fx:id="password" maxWidth="200" />
+               
                <Label id="h2" text="Password verification" />
                <PasswordField  fx:id="verifpassword" maxWidth="200" />
+               
                <Label fx:id="error"/>
             </children>
         </VBox>
    </center>
     <bottom>
-        <FlowPane alignment="CENTER" columnHalignment="CENTER" BorderPane.alignment="CENTER">
+        <HBox alignment="CENTER" BorderPane.alignment="CENTER" spacing="10">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
             <children>
-                <Button id="signUp" focusTraversable="false" text="Submit" onAction="#SignUp"/>
-                <Button id="home" focusTraversable="false" onAction="#GoToHome" text="Go back" />               
+                <Button text="Submit" onAction="#submit"/>
+                <Button text="Go back" onAction="#goHome"/>               
             </children>
-        </FlowPane>
+        </HBox>
     </bottom>
 </BorderPane>

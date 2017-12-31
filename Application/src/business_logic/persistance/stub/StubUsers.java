@@ -3,6 +3,7 @@ package business_logic.persistance.stub;
 import business_logic.gateways.APIManager;
 import business_logic.persistance.DataManager;
 import business_logic.repository.Category;
+import business_logic.repository.CategoryFactory;
 import business_logic.repository.Repository;
 import business_logic.user.IUser;
 import business_logic.user.UserFactory;
@@ -30,14 +31,14 @@ public class StubUsers implements DataManager {
     public List<IUser> loadUsers() {
 
         List<IUser> allUsers = new ArrayList<>(Arrays.asList(
-            UserFactory.make("Adrien Lenoir", "adrien.lenoir@etu.uca.fr", "mdp"),
-            UserFactory.make("Fabien Simonet", "fabien.simonet@etu.uca.fr", "mdp")
+            UserFactory.create("Adrien Lenoir", "adrien.lenoir@etu.uca.fr", "mdp"),
+            UserFactory.create("Fabien Simonet", "fabien.simonet@etu.uca.fr", "mdp")
         ));
 
         for(IUser user : allUsers){
 
-            Category categ = new Category("Future projects");
-            Category categ2 = new Category("TODOLIST");
+            Category categ = CategoryFactory.create("Future projects");
+            Category categ2 = CategoryFactory.create("TODOLIST");
 
             new Thread(() -> {
                 for(Repository repo : apiManager.getRepositoriesByUsername("IraSkyx"))

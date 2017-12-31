@@ -1,9 +1,0 @@
-business_logic.cellFactory
-business_logic.gateways
-business_logic.persistance
-business_logic.persistance.stub
-business_logic.persistance.xml
-business_logic.repository
-business_logic.user
-controller
-launch

@@ -20,7 +20,7 @@ public class ListViewRepositoryCell extends ListCell<Repository> {
             Dragboard db = startDragAndDrop(TransferMode.COPY);
             ClipboardContent content = new ClipboardContent();
             content.putString(getItem().toString());
-            Follow.setSelectedDaD(getItem());
+            TreeItemFollowFactory.setSelectedDaD(getItem());
             db.setContent(content);
             event.consume();
         });       

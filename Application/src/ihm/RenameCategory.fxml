@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox fx:id="rootPane" xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" prefWidth="600" spacing="5" prefHeight="300" fx:controller="controller.RenameCategoryController">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+    <children>
+        <Label id="h2" text="Change the category name" />      
+        <TextField fx:id="name"/>
+        <Label fx:id="error" visible="false" text="Incorrect name (empty or already used)"/>
+        <Button fx:id="submit" text="Submit" onAction="#submit"/>
+    </children>
+</VBox>
