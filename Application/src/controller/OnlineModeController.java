@@ -73,7 +73,7 @@ public class OnlineModeController extends BorderPane implements Manageable {
             apiManager.cloneRepository((Repository)getSelectedFollow());
     }
         
-    @FXML private void searchFor() {setItems(input.getText(), (String)searchBy.getSelectionModel().getSelectedItem());}
+    @FXML private void searchFor() {setItems(input.getText(),searchBy.getSelectionModel().selectedItemProperty().isNull().get() ? "" : (String)searchBy.getSelectionModel().getSelectedItem());}
     
     @FXML private void goHome() {FrontController.setContentStage(FrontController.getStage(),"/ihm/Home.fxml");}
     
@@ -158,7 +158,7 @@ public class OnlineModeController extends BorderPane implements Manageable {
         loggedOff1.visibleProperty().bind(nullToBool);        
         loggedOff2.visibleProperty().bind(nullToBool); 
         
-        loggedIn1.textProperty().bind(Bindings.format("Welcome\n%s", UsersManager.currentUserProperty()));
+        loggedIn1.textProperty().bind(Bindings.format("Welcome\n%s", UsersManager.currentUserProperty().get().usernameProperty()));
         
         loggedIn1.managedProperty().bind(nullToBool2);     
         loggedIn2.managedProperty().bind(nullToBool2);  

@@ -1,6 +1,5 @@
 package business_logic.persistance.xml;
 
-import business_logic.repository.Category;
 import business_logic.repository.Follow;
 import business_logic.user.IUser;
 import business_logic.user.UserFactory;
