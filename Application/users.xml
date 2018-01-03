@@ -967,6 +967,16 @@ dotfiles
        </object>
       </void>
       <void method="add">
+       <object class="business_logic.repository.Category">
+        <void property="name">
+         <string>My GitHub Projects</string>
+        </void>
+        <void property="parent">
+         <object idref="Category3"/>
+        </void>
+       </object>
+      </void>
+      <void method="add">
        <object class="business_logic.repository.GitHubRepository">
         <void property="adapted">
          <object class="org.eclipse.egit.github.core.Repository"/>
