@@ -11,8 +11,10 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
 <?import controller.HeaderController?>
+<?import javafx.scene.Group?>
 <?import business_logic.cellFactory.TreeItemFollowFactory?>
 <?import business_logic.cellFactory.ComboBoxChoiceFactory?>
 <?import business_logic.cellFactory.ListViewRepositoryFactory?>
@@ -67,13 +69,18 @@
                                 <Insets top="10" right="10" bottom="10" left="10"/>
                             </padding>
                             <children>      
-                                <!-- When logged in the controls above will be displayed -->                  
-                                <Button fx:id="loggedOff1" text="Sign in" onAction="#goSignIn"/>
-                                <Button fx:id="loggedOff2" text="Sign up" onAction="#goSignUp"/>
+                                <!-- When logged in the controls above will be displayed -->  
+                                <VBox visible="${!controller.isLoggedIn}" managed="${!controller.isLoggedIn}" alignment="CENTER_RIGHT" spacing="10">
+                                    <Button text="Sign in" onAction="#goSignIn"/>
+                                    <Button text="Sign up" onAction="#goSignUp"/>
+                                </VBox>                
+                                
                                     
                                 <!-- When logged off the controls above will be displayed -->      
-                                <Label id="h3" fx:id="loggedIn1" textAlignment="RIGHT"/>
-                                <Button fx:id="loggedIn2" text="Log off" onAction="#logOff"/>
+                                <VBox visible="${controller.isLoggedIn}" managed="${controller.isLoggedIn}" alignment="CENTER_RIGHT" spacing="10">
+                                    <Label fx:id="username" id="h3" textAlignment="RIGHT"/>
+                                    <Button text="Log off" onAction="#logOff"/>
+                                </VBox>
                             </children>                   
                         </VBox>
                     </children>
@@ -106,7 +113,7 @@
             </top>
             <center>
                 <ScrollPane>
-                    <Label fx:id="readMe" id="h3" text="${controller.selectedFollow.readMe}"/>
+                    <Label id="h3" text="${controller.selectedFollow.readMe}"/>
                 </ScrollPane>              
             </center>
         </BorderPane>
@@ -119,10 +126,10 @@
             <children>                
                 <BorderPane>
                     <top>
-                        <Label fx:id="h31" id="h3" text="Your follows" textAlignment="CENTER"/>
+                        <Label visible="${controller.isLoggedIn}" managed="${controller.isLoggedIn}" id="h3" text="Your follows" textAlignment="CENTER"/>
                     </top>
                     <center>
-                        <TreeView fx:id="TreeViewFollows" editable="true">
+                        <TreeView fx:id="TreeViewFollows" editable="true" visible="${controller.isLoggedIn}" managed="${controller.isLoggedIn}">
                             <cellFactory>
                                 <TreeItemFollowFactory/>
                             </cellFactory>
@@ -130,14 +137,14 @@
                         </TreeView>
                     </center>
                     <bottom>
-                        <HBox alignment="CENTER" spacing="10">
+                        <HBox alignment="CENTER" spacing="10" visible="${controller.isLoggedIn}" managed="${controller.isLoggedIn}">
                             <padding>
                                     <Insets top="10" right="10" bottom="10" left="10"/>
                             </padding>
-                            <children>
-                                <Button fx:id="TVMenu1" text="Add category" onAction="#addCategory"/>
-                                <Button fx:id="TVMenu2" text="Rename" onAction="#renameCategory"/>
-                                <Button fx:id="TVMenu3" text="Delete" onAction="#deleteFollow"/>
+                            <children>                                
+                                <Button text="Add category" onAction="#addCategory"/>
+                                <Button text="Rename" onAction="#renameCategory"/>
+                                <Button text="Delete" onAction="#deleteFollow"/>                               
                             </children>
                         </HBox>
                     </bottom>

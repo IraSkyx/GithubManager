@@ -14,8 +14,8 @@ public class Main extends Application {
         
     @Override
     public void start(Stage stage) {
-        //UsersManager.setDataManager(new XMLDataManager());
-        UsersManager.setDataManager(new StubUsers(new GitHubGateway()));           
+        UsersManager.setDataManager(new XMLDataManager());
+        //UsersManager.setDataManager(new StubUsers(new GitHubGateway()));           
         UsersManager.loadUsers();     
 
         GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();

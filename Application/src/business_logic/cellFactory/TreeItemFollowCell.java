@@ -31,9 +31,11 @@ public class TreeItemFollowCell extends TreeCell<Follow> {
         setOnDragDetected((MouseEvent event) -> {
             Dragboard db = startDragAndDrop(TransferMode.MOVE);
             ClipboardContent content = new ClipboardContent();
-            content.putString(getItem().toString());
-            TreeItemFollowFactory.setSelectedDaD(getItem());
-            db.setContent(content);
+            if(getItem() != null){
+                content.putString(getItem().toString());
+                TreeItemFollowFactory.setSelectedDaD(getItem());
+                db.setContent(content);
+            }
             event.consume();
         });
 
@@ -56,14 +58,25 @@ public class TreeItemFollowCell extends TreeCell<Follow> {
         setOnDragDropped((DragEvent event) -> {
             Dragboard db = event.getDragboard();
             boolean success = false;
-            if (db.hasString() && TreeItemFollowFactory.getSelectedDaD() != null) {
-                Repository newItem = (Repository)TreeItemFollowFactory.getSelectedDaD();
+            
+            Follow newItem = TreeItemFollowFactory.getSelectedDaD();          
+            
+            //If I drop on the same category, I cancel it
+            if(getTreeItem().getValue() instanceof Category && getTreeItem().getValue() == newItem.getParent()
+                || getTreeItem().getValue() instanceof Repository && getTreeItem().getParent().getValue() == newItem.getParent())
+                return;
+            
+            //If something has been selected and I don't drop it on himself (avoid Stack overflow)
+            if (db.hasString() && newItem != null && getItem() != newItem) {      
+                if(newItem.getParent() != null)
+                    newItem.getParent().deleteFollow(newItem);
+                
                 if(getTreeItem().getValue() instanceof Category){
                     getTreeItem().getValue().addFollow(newItem);
                     getTreeItem().getChildren().add(new TreeItem<>(newItem));
                     getTreeItem().setExpanded(true);
                 }
-                else {
+                else if(getTreeItem().getValue() instanceof Repository) {
                     getTreeItem().getParent().getValue().addFollow(newItem);
                     getTreeItem().getParent().getChildren().add(new TreeItem<>(newItem));
                     getTreeItem().getParent().setExpanded(true);
@@ -78,7 +91,7 @@ public class TreeItemFollowCell extends TreeCell<Follow> {
     @Override
     public void updateItem(Follow item, boolean isEmpty){
         super.updateItem(item, isEmpty);
-        this.item=item;
+        this.item = item;
         if(isEmpty){
             textProperty().unbind();
             setText(null);

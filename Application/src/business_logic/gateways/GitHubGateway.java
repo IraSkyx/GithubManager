@@ -1,9 +1,7 @@
 package business_logic.gateways;
 
 import business_logic.repository.GitHubRepository;
-import business_logic.repository.GitHubRepositoryFactory;
 import business_logic.repository.Repository;
-import controller.AddCategoryController;
 import controller.CloneStateController;
 import controller.FrontController;
 import java.io.File;
@@ -12,11 +10,8 @@ import java.net.URL;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.ProgressIndicator;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -53,7 +48,7 @@ public class GitHubGateway implements APIManager {
             search.stream().forEach(x -> {
                 try {
                     org.eclipse.egit.github.core.Repository repo = service.getRepository(RepositoryId.createFromId(x.generateId()));
-                    list.add(GitHubRepositoryFactory.create(repo));
+                    list.add(new GitHubRepository(repo));
                 }
                 catch (IOException ex) {
                     Logger.getLogger(GitHubGateway.class.getName()).log(Level.SEVERE, null, ex);
@@ -76,7 +71,7 @@ public class GitHubGateway implements APIManager {
             service.getClient().setOAuth2Token(OAUTH2TOKEN);
 
             service.getRepositories(input).stream().forEach(x -> {
-                list.add(GitHubRepositoryFactory.create(x));
+                list.add(new GitHubRepository(x));
             });
         }
         catch (IOException ex) {

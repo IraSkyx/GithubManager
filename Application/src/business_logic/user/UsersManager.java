@@ -73,7 +73,7 @@ public class UsersManager {
     /**
      * Reset current User
      */
-    public static void disconnect(){
+    public static void disconnect() {
         currentUserProperty().setValue(null);
     }
 
@@ -86,7 +86,7 @@ public class UsersManager {
      * @return true if connection succeeded, false otherwise
      *
      */
-    public static boolean connect(String email, String password){
+    public static boolean connect(String email, String password) {
         IUser user = getUser(email, password);
         if(user != null){
             setCurrentUser(user);

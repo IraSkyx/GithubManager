@@ -25,35 +25,41 @@ public class Category extends Follow implements Serializable {
         public final void setListOfFollows(ObservableList<Follow> value) { listOfFollows.set(value); }
         public ListProperty listOfFollowsProperty(){return listOfFollows;};
 
-    Category(){
-        setListOfFollows(FXCollections.synchronizedObservableList(FXCollections.<Follow>observableArrayList()));
+    public Category() {
+        setListOfFollows(FXCollections.<Follow>observableArrayList());
     }
 
-    Category(String name) {
+    public Category(String name) {
         setName(name);
-        setListOfFollows(FXCollections.synchronizedObservableList(FXCollections.<Follow>observableArrayList()));
+        setListOfFollows(FXCollections.<Follow>observableArrayList());
     }
 
 
-    public boolean contains(String name){
+    public boolean contains(Follow value) {
         boolean res = false;
         for(Follow follow : listOfFollows){
-            if(follow.getName().equals(name))
+            if(follow.equals(value))
                 return true;
             if(follow instanceof Category)
-                res&=((Category)follow).contains(name);
+                res&=((Category)follow).contains(value);
         }
         return res;
     }
 
     @Override
     public void addFollow(Follow follow) {
+        if(((Category)getRoot()).contains(follow))
+            return;   
+        
+        follow.setParent(this);
         listOfFollows.add(follow);
-        Collections.sort(listOfFollows, (Follow f1, Follow f2) -> {
-            if (f1 instanceof Repository && f2 instanceof Category) return 1;
-            if (f1 instanceof Category && f2 instanceof Repository) return -1;
-            return 0;
-        });
+        
+        if(listOfFollows != null)
+            Collections.sort(listOfFollows, (Follow f1, Follow f2) -> {
+                if (f1 instanceof Repository && f2 instanceof Category) return 1;
+                if (f1 instanceof Category && f2 instanceof Repository) return -1;
+                return 0;
+            });
     }
 
     @Override

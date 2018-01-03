@@ -18,7 +18,7 @@ import launch.Main;
  *
  * @author fsimo
  */
-public class XMLDataManager implements DataManager{  
+public class XMLDataManager implements DataManager {  
     @Override
     public List<IUser> loadUsers() {
         List<IUser> result = null;

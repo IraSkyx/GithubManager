@@ -1,6 +1,5 @@
 package business_logic.cellFactory;
 
-import business_logic.repository.Follow;
 import business_logic.repository.Repository;
 import javafx.beans.binding.Bindings;
 import javafx.scene.control.ListCell;
@@ -19,9 +18,11 @@ public class ListViewRepositoryCell extends ListCell<Repository> {
         setOnDragDetected((MouseEvent event) -> {
             Dragboard db = startDragAndDrop(TransferMode.COPY);
             ClipboardContent content = new ClipboardContent();
-            content.putString(getItem().toString());
-            TreeItemFollowFactory.setSelectedDaD(getItem());
-            db.setContent(content);
+            if(getItem() != null){
+                content.putString(getItem().toString());
+                TreeItemFollowFactory.setSelectedDaD(getItem());
+                db.setContent(content);
+            }
             event.consume();
         });       
     }

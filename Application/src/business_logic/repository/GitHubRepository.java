@@ -33,7 +33,7 @@ public class GitHubRepository extends Repository implements Serializable {
     @Override public Date getUpdatedAt() {return adapted.getUpdatedAt();}
     @Override public void setUpdatedAt(Date value) {adapted.setUpdatedAt(value);}
 
-    public String getId() {return adapted.generateId();}
+    @Override public String getId() {return adapted.generateId()== null ? "" : adapted.generateId();}
 
     public GitHubRepository(){
 
@@ -44,6 +44,20 @@ public class GitHubRepository extends Repository implements Serializable {
         setReadMe(GitHubGateway.getReadMe(adapted));
     }
 
+    @Override 
+    public boolean equals(Object o){
+        if (o == null)
+            return false;
+
+        if (this == o)
+            return true;
+
+        if (getClass() != o.getClass())
+            return false;
+        
+        return getId().equals(((GitHubRepository)o).getId());
+    }
+    
     @Override
     public String toString(){
         return getName();

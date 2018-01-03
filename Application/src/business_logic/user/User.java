@@ -1,7 +1,7 @@
 package business_logic.user;
 
+import business_logic.repository.Category;
 import business_logic.repository.Follow;
-import business_logic.repository.CategoryFactory;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -25,14 +25,14 @@ class User implements IUser {
         setUsername("");
         setPassword("");
         setEmail("");
-        setUserFollow(CategoryFactory.create("Favorites"));
+        setUserFollow(new Category("Favorites"));
     }
 
     User(String username, String password, String email) {
         setUsername(username);
         setPassword(password);
         setEmail(email);
-        setUserFollow(CategoryFactory.create("Favorites"));
+        setUserFollow(new Category("Favorites"));
     }
 
     @Override

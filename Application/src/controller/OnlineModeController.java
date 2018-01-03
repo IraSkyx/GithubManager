@@ -11,11 +11,14 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.BorderPane;
 import business_logic.user.UsersManager;
+import converters.PropertyStringConverter;
 import java.util.List;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.ListChangeListener;
 import javafx.geometry.Insets;
@@ -45,16 +48,8 @@ public class OnlineModeController extends BorderPane implements Manageable {
     
     @FXML TreeView<Follow> TreeViewFollows;
     
-    @FXML Label h31;    
-    @FXML Label loggedIn1;
-    @FXML Label readMe;
-    
-    @FXML Button loggedOff1;    
-    @FXML Button loggedOff2;   
-    @FXML Button loggedIn2; 
-    @FXML Button TVMenu1; 
-    @FXML Button TVMenu2; 
-    @FXML Button TVMenu3; 
+    @FXML Label username;
+
     @FXML Button cloneBtn;
     
     @FXML TreeItem root;
@@ -62,6 +57,11 @@ public class OnlineModeController extends BorderPane implements Manageable {
     private APIManager apiManager;
         @Override public void setApiManager(APIManager apiManager) {this.apiManager = apiManager;}
     
+    private final BooleanProperty isLoggedIn = new SimpleBooleanProperty();   
+        public final Boolean getIsLoggedIn() { return isLoggedIn.get(); }
+        public final void setIsLoggedIn(Boolean value) { isLoggedIn.set(value); }
+        public BooleanProperty isLoggedInProperty(){return isLoggedIn;}; 
+        
     private final ObjectProperty<Follow> selectedFollow = new SimpleObjectProperty();   
         public final Follow getSelectedFollow() { return selectedFollow.get(); }
         public final void setSelectedFollow(Follow value) { selectedFollow.set(value); }
@@ -129,55 +129,32 @@ public class OnlineModeController extends BorderPane implements Manageable {
         });
     }
     
-    public void initialize() { 
-        
-        BooleanBinding nullToBool = Bindings
-            .when(UsersManager.currentUserProperty().isNull())            
-            .then(true)
-            .otherwise(false);
-    
-        BooleanBinding nullToBool2 = Bindings
+    public void initialize() {
+
+        BooleanBinding loggedIn = Bindings
             .when(UsersManager.currentUserProperty().isNull())    
             .then(false)
             .otherwise(true);
+
+        isLoggedIn.bind(loggedIn);
         
         searchBy.setItems(ComboBoxChoiceFactory.comboList);
-        h31.visibleProperty().bind(nullToBool2); 
-        h31.managedProperty().bind(nullToBool2);  
+ 
         cloneBtn.visibleProperty().bind(Bindings
-                .when(selectedFollowProperty().isNull())
-                .then(false)
-                .otherwise(true)
-        );
+            .when(selectedFollowProperty().isNull())
+            .then(false)
+            .otherwise(true)
+        );     
         
-        loggedIn1.visibleProperty().bind(nullToBool2);     
-        loggedIn2.visibleProperty().bind(nullToBool2);
-        TVMenu1.visibleProperty().bind(nullToBool2);  
-        TVMenu2.visibleProperty().bind(nullToBool2);  
-        TVMenu3.visibleProperty().bind(nullToBool2);  
-        loggedOff1.visibleProperty().bind(nullToBool);        
-        loggedOff2.visibleProperty().bind(nullToBool); 
-        
-        loggedIn1.textProperty().bind(Bindings.format("Welcome\n%s", UsersManager.currentUserProperty().get().usernameProperty()));
-        
-        loggedIn1.managedProperty().bind(nullToBool2);     
-        loggedIn2.managedProperty().bind(nullToBool2);  
-        TVMenu1.managedProperty().bind(nullToBool2);  
-        TVMenu2.managedProperty().bind(nullToBool2);  
-        TVMenu3.managedProperty().bind(nullToBool2); 
-        loggedOff1.managedProperty().bind(nullToBool);        
-        loggedOff2.managedProperty().bind(nullToBool);
-        
-        TreeViewFollows.visibleProperty().bind(nullToBool2);
-        TreeViewFollows.managedProperty().bind(nullToBool2);       
-        
+        Bindings.bindBidirectional(username.textProperty(), UsersManager.currentUserProperty().get().usernameProperty(), new PropertyStringConverter());
+
         TreeViewFollows.setOnKeyPressed((KeyEvent keyEvent) -> {
-            if (TreeViewFollows.getSelectionModel().getSelectedItem() != null && keyEvent.getCode().equals(KeyCode.DELETE ))
+            if(TreeViewFollows.getSelectionModel().getSelectedItem() != null && keyEvent.getCode().equals(KeyCode.DELETE))
                 deleteFollow();
         });
         
         TreeViewFollows.getSelectionModel().selectedItemProperty().addListener(x -> {
-           if(TreeViewFollows.getSelectionModel().selectedItemProperty().get().getValue() instanceof Repository){
+            if(TreeViewFollows.getSelectionModel().getSelectedItem() != null && TreeViewFollows.getSelectionModel().selectedItemProperty().get().getValue() instanceof Repository){
                 selectedFollowProperty().unbind();
                 selectedFollowProperty().setValue(TreeViewFollows.getSelectionModel().getSelectedItem().getValue());
             } 

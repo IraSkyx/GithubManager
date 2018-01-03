@@ -33,7 +33,7 @@ public class RenameCategoryController extends VBox {
     
     @FXML
     private void submit() {
-        if(!name.getText().isEmpty() && !((Category)UsersManager.currentUserProperty().get().userFollowProperty().get()).contains(name.getText())){
+        if(!name.getText().isEmpty() && !((Category)UsersManager.currentUserProperty().get().userFollowProperty().get()).contains(new Category(name.getText()))){
             oldValue.nameProperty().setValue(name.getText());    
             ((Stage)rootPane.getScene().getWindow()).close();            
         }

@@ -42,13 +42,13 @@ public class XMLUser implements IUser, Serializable {
     @Override public StringProperty emailProperty() {return email;}
     @Override public ObjectProperty<Follow> userFollowProperty() {return userFollow;}
     
-    @Override public String getUsername() {return IUser.super.getUsername();}
-    @Override public String getPassword() {return IUser.super.getPassword();}
-    @Override public String getEmail() {return IUser.super.getEmail();}
-    @Override public Follow getUserFollow() {return IUser.super.getUserFollow();}
+    @Override public String getUsername() {return model.getUsername();}
+    @Override public String getPassword() {return model.getPassword();}
+    @Override public String getEmail() {return model.getEmail();}
+    @Override public Follow getUserFollow() {return model.getUserFollow();}
     
-    @Override public void setUsername(String value) {IUser.super.setUsername(value);}
-    @Override public void setPassword(String value) {IUser.super.setPassword(value);}
-    @Override public void setEmail(String value) {IUser.super.setEmail(value);}
-    @Override public void setUserFollow(Follow value) {IUser.super.setUserFollow(value);}
+    @Override public void setUsername(String value) {model.setUsername(value);}
+    @Override public void setPassword(String value) {model.setPassword(value);}
+    @Override public void setEmail(String value) {model.setEmail(value);}
+    @Override public void setUserFollow(Follow value) {model.setUserFollow(value);}
 }

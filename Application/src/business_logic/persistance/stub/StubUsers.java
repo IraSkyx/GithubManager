@@ -3,7 +3,6 @@ package business_logic.persistance.stub;
 import business_logic.gateways.APIManager;
 import business_logic.persistance.DataManager;
 import business_logic.repository.Category;
-import business_logic.repository.CategoryFactory;
 import business_logic.repository.Repository;
 import business_logic.user.IUser;
 import business_logic.user.UserFactory;
@@ -37,25 +36,15 @@ public class StubUsers implements DataManager {
 
         for(IUser user : allUsers){
 
-            Category categ = CategoryFactory.create("Future projects");
-            Category categ2 = CategoryFactory.create("TODOLIST");
+            Category categ = new Category("Future projects");
+            Category categ2 = new Category("TO DO LIST");
 
-            new Thread(() -> {
-                for(Repository repo : apiManager.getRepositoriesByUsername("IraSkyx"))
-                    categ.addFollow(repo);
-                user.getUserFollow().addFollow(categ);
-            }).start();
-
-            new Thread(() -> {
-                for(Repository repo : apiManager.getRepositoriesByUsername("ElRaffray"))
-                    categ2.addFollow(repo);
-                user.getUserFollow().addFollow(categ2);
-            }).start();
-
-            new Thread(() -> {
-                for(Repository repo : apiManager.getRepositoriesByUsername("GabinSalabert"))
-                    user.getUserFollow().addFollow(repo);
-            }).start();
+            user.getUserFollow().addFollow(categ);
+            user.getUserFollow().addFollow(categ2);
+            
+            new Thread(() -> apiManager.getRepositoriesByUsername("IraSkyx").forEach((repo) -> categ.addFollow(repo))).start();
+            new Thread(() -> apiManager.getRepositoriesByUsername("ElRaffray").forEach((repo) -> categ2.addFollow(repo))).start();
+            new Thread(() -> apiManager.getRepositoriesByUsername("GabinSalabert").forEach((repo) -> user.getUserFollow().addFollow(repo))).start();
         }
         return allUsers;
     }

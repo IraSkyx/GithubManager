@@ -16,4 +16,6 @@ public abstract class Repository extends Follow {
 
     abstract public Date getUpdatedAt();
     abstract public void setUpdatedAt(Date value);
+    
+    abstract public String getId();
 }

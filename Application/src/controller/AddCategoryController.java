@@ -1,7 +1,6 @@
 package controller;
 
 import business_logic.repository.Category;
-import business_logic.repository.CategoryFactory;
 import business_logic.repository.Follow;
 import business_logic.user.UsersManager;
 import javafx.animation.PauseTransition;
@@ -32,8 +31,8 @@ public class AddCategoryController extends VBox {
     
     @FXML
     private void submit() {           
-        if(!name.getText().isEmpty() && !((Category)UsersManager.currentUserProperty().get().userFollowProperty().get()).contains(name.getText())){
-            selected.addFollow(CategoryFactory.create(name.getText()));
+        if(!name.getText().isEmpty() && !((Category)UsersManager.currentUserProperty().get().userFollowProperty().get()).contains(new Category(name.getText()))){
+            selected.addFollow(new Category(name.getText()));
             ((Stage)name.getScene().getWindow()).close();
         }
         else{
