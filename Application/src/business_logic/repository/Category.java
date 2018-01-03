@@ -2,6 +2,8 @@ package business_logic.repository;
 
 import java.io.Serializable;
 import java.util.Collections;
+import java.util.Objects;
+import java.util.function.Predicate;
 import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -13,7 +15,7 @@ import javafx.collections.ObservableList;
  *
  * @author Adrien
  */
-public class Category extends Follow implements Serializable {
+public class Category extends Follow implements CompositeUtils<Follow>, Serializable {
 
     private transient final StringProperty name = new SimpleStringProperty();
         @Override public String getName() {return name.get();}
@@ -33,22 +35,23 @@ public class Category extends Follow implements Serializable {
         setName(name);
         setListOfFollows(FXCollections.<Follow>observableArrayList());
     }
-
-
-    public boolean contains(Follow value) {
+    
+    @Override
+    public boolean contains(Predicate<? super Follow> action) {
+        Objects.requireNonNull(action);
         boolean res = false;
         for(Follow follow : listOfFollows){
-            if(follow.equals(value))
+            if(action.test(follow))
                 return true;
             if(follow instanceof Category)
-                res&=((Category)follow).contains(value);
+                res&=((Category)follow).contains(action);
         }
         return res;
     }
 
     @Override
     public void addFollow(Follow follow) {
-        if(((Category)getRoot()).contains(follow))
+        if(((Category)getRoot()).contains(x -> x.equals(follow)))
             return;   
         
         follow.setParent(this);
@@ -69,5 +72,5 @@ public class Category extends Follow implements Serializable {
 
     @Override public String toString() {
         return getName();
-    }
+    }  
 }

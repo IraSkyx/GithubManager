@@ -24,8 +24,8 @@ public class FrontController {
     
     public static Scene getScene(){
         return stage.getScene();
-    }
-        
+    }      
+    
     public static FXMLLoader setContentStage(Stage stage, String path) {
         Image applicationIcon = new Image("/resources/imgs/Icon.png");
         stage.getIcons().add(applicationIcon);      

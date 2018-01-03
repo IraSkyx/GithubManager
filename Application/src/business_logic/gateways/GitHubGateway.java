@@ -33,7 +33,6 @@ import org.eclipse.egit.github.core.service.RepositoryService;
 public class GitHubGateway implements APIManager {
     
     private static final String OAUTH2TOKEN = "5492d1456e37ba89cc8985ccdee4a8dc028e916f";
-    private static final int LIMIT = 10;
 
     @Override
     public ObservableList<Repository> getRepositoriesByName(String input){
@@ -43,7 +42,7 @@ public class GitHubGateway implements APIManager {
             RepositoryService service = new RepositoryService();
             service.getClient().setOAuth2Token(OAUTH2TOKEN);
 
-            List<org.eclipse.egit.github.core.SearchRepository> search =  service.searchRepositories(input).subList(0,LIMIT);
+            List<org.eclipse.egit.github.core.SearchRepository> search =  service.searchRepositories(input);
 
             search.stream().forEach(x -> {
                 try {

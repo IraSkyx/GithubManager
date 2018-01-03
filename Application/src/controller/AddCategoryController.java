@@ -31,7 +31,7 @@ public class AddCategoryController extends VBox {
     
     @FXML
     private void submit() {           
-        if(!name.getText().isEmpty() && !((Category)UsersManager.currentUserProperty().get().userFollowProperty().get()).contains(new Category(name.getText()))){
+        if(!name.getText().isEmpty() && !((Category)UsersManager.currentUserProperty().get().userFollowProperty().get()).contains(x -> x.getName().equals(name.getText()))){
             selected.addFollow(new Category(name.getText()));
             ((Stage)name.getScene().getWindow()).close();
         }

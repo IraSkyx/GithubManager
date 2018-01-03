@@ -18,12 +18,13 @@ public class Main extends Application {
         UsersManager.loadUsers();     
 
         Rectangle2D visualBounds = Screen.getPrimary().getVisualBounds();
-        stage.setWidth(visualBounds.getWidth());
-        stage.setHeight(visualBounds.getHeight());
+        stage.setWidth(visualBounds.getWidth()*0.8);
+        stage.setHeight(visualBounds.getHeight()*0.8);
         stage.centerOnScreen();
         stage.setTitle("GithubManager");
+
         FrontController.setStage(stage);
-        FrontController.setContentStage(stage,"/ihm/Home.fxml");
+        FrontController.setContentStage(stage,"/ihm/Home.fxml");      
 
         UsersManager.setCurrentUser(UsersManager.getAllUsers().get(0));            
     }

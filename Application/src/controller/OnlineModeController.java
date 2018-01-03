@@ -20,6 +20,7 @@ import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.value.ObservableObjectValue;
 import javafx.collections.ListChangeListener;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -49,6 +50,7 @@ public class OnlineModeController extends BorderPane implements Manageable {
     @FXML TreeView<Follow> TreeViewFollows;
     
     @FXML Label username;
+    @FXML Label date;
 
     @FXML Button cloneBtn;
     
@@ -69,7 +71,7 @@ public class OnlineModeController extends BorderPane implements Manageable {
         
     @FXML
     private void cloneUrl() {
-        if(getSelectedFollow() != null && getSelectedFollow() instanceof Repository)
+        if(getSelectedFollow() != null && getSelectedFollow() instanceof Repository && apiManager != null)
             apiManager.cloneRepository((Repository)getSelectedFollow());
     }
         
@@ -120,13 +122,15 @@ public class OnlineModeController extends BorderPane implements Manageable {
     }
     
     public void setItems(String input, String choice) {
-        Platform.runLater(() -> {
+        if(apiManager != null){
+            Platform.runLater(() -> {
             switch(choice){
                 case "By name" : searchResults.setItems(apiManager.getRepositoriesByName(input));                
                 default: searchResults.setItems(apiManager.getRepositoriesByUsername(input));
             }              
             setPlaceholderSearchResults("No results for your search");
         });
+        }
     }
     
     public void initialize() {
@@ -145,6 +149,9 @@ public class OnlineModeController extends BorderPane implements Manageable {
             .then(false)
             .otherwise(true)
         );     
+        
+        date.visibleProperty().bind(cloneBtn.visibleProperty());
+        date.textProperty().bind(Bindings.format("Date of creation : %s", Bindings.selectString(selectedFollowProperty(),"createdAt")));
         
         Bindings.bindBidirectional(username.textProperty(), UsersManager.currentUserProperty().get().usernameProperty(), new PropertyStringConverter());
 

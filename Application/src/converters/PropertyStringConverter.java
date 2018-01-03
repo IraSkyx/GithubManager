@@ -16,6 +16,5 @@ public class PropertyStringConverter extends StringConverter {
     @Override
     public Object fromString(String string) {
         throw new UnsupportedOperationException("Not supported yet.");
-    }
-    
+    }   
 }

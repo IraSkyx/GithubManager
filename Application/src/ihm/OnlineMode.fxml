@@ -116,6 +116,9 @@
                     <Label id="h3" text="${controller.selectedFollow.readMe}"/>
                 </ScrollPane>              
             </center>
+            <bottom>
+                <Label id="h3" fx:id="date"/>
+            </bottom>
         </BorderPane>
     </center>
     <right>

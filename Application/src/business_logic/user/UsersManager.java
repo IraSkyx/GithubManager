@@ -49,9 +49,7 @@ public class UsersManager {
 
     /**
      * Getter of allUsers
-     *
      * @return allUsers the list of all the users
-     *
      */
     public static List<IUser> getAllUsers() {
         return allUsers;
@@ -59,15 +57,12 @@ public class UsersManager {
 
     /**
      * Return a user in the list of allUsers
-     *
      * @param email
      * @param password
-     *
      * @return User an instance of user or null
-     *
      */
     public static IUser getUser(String email, String password){
-        return allUsers.stream().filter(x -> x.getEmail().equals(email)).findFirst().orElse(null);
+        return allUsers.stream().filter(x -> x.getEmail().equals(email) && x.getPassword().equals(password)).findFirst().orElse(null);
     }
 
     /**
@@ -79,10 +74,8 @@ public class UsersManager {
 
     /**
      * Verify the user is valid and set the current user
-     *
      * @param email
      * @param password
-     *
      * @return true if connection succeeded, false otherwise
      *
      */
@@ -97,11 +90,8 @@ public class UsersManager {
 
     /**
      * Verify the email exists in the list
-     *
      * @param email
-     *
      * @return True if yes, false otherwise
-     *
      */
     public static boolean exists(String email) {
         return allUsers.stream().anyMatch(x -> x.getEmail().equals(email));
