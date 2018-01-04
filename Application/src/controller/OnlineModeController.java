@@ -23,7 +23,10 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ObservableObjectValue;
 import javafx.collections.ListChangeListener;
 import javafx.geometry.Insets;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -71,8 +74,12 @@ public class OnlineModeController extends BorderPane implements Manageable {
         
     @FXML
     private void cloneUrl() {
-        if(getSelectedFollow() != null && getSelectedFollow() instanceof Repository && apiManager != null)
-            apiManager.cloneRepository((Repository)getSelectedFollow());
+        Alert alert = new Alert(AlertType.CONFIRMATION, "Are you sure ? This may take a few minutes", ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
+        alert.showAndWait();
+
+        if (alert.getResult() == ButtonType.YES)
+            if(getSelectedFollow() != null && getSelectedFollow() instanceof Repository && apiManager != null)
+                apiManager.cloneRepository((Repository)getSelectedFollow());       
     }
         
     @FXML private void searchFor() {setItems(input.getText(),searchBy.getSelectionModel().selectedItemProperty().isNull().get() ? "" : (String)searchBy.getSelectionModel().getSelectedItem());}

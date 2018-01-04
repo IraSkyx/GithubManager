@@ -3,9 +3,30 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/business_logic/persistance/stub/StubUsers.java</file>
+            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/ihm/Home.fxml</file>
+            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/business_logic/gateways/APIManager.java</file>
+            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/business_logic/cellFactory/TreeItemFollowFactory.java</file>
+            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/controller/FrontController.java</file>
+            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/business_logic/gateways/GitHubGateway.java</file>
+            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/business_logic/repository/Category.java</file>
+            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/controller/AddCategoryController.java</file>
+            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/business_logic/cellFactory/ComboBoxChoiceCell.java</file>
+            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/business_logic/cellFactory/ComboBoxChoiceFactory.java</file>
+            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/business_logic/cellFactory/ListViewRepositoryCell.java</file>
+            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/business_logic/user/User.java</file>
+            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/business_logic/persistance/DataManager.java</file>
+            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/converters/PropertyStringConverter.java</file>
+            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/business_logic/cellFactory/ListViewRepositoryFactory.java</file>
             <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/controller/OnlineModeController.java</file>
-            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/business_logic/user/UsersManager.java</file>
-            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/ihm/OnlineMode.fxml</file>
+            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/business_logic/repository/Follow.java</file>
+            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/launch/Main.java</file>
+            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/controller/HomeController.java</file>
+            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/business_logic/persistance/xml/XMLUser.java</file>
+            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/controller/HeaderController.java</file>
+            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/business_logic/persistance/xml/XMLDataManager.java</file>
+            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/business_logic/repository/CompositeUtils.java</file>
+            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/business_logic/cellFactory/TreeItemFollowCell.java</file>
         </group>
     </open-files>
 </project-private>

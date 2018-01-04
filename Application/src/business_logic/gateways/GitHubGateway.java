@@ -10,6 +10,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.stage.DirectoryChooser;
@@ -23,6 +24,7 @@ import net.lingala.zip4j.progress.ProgressMonitor;
 import org.apache.commons.io.FileUtils;
 import org.eclipse.egit.github.core.RepositoryContents;
 import org.eclipse.egit.github.core.RepositoryId;
+import org.eclipse.egit.github.core.SearchRepository;
 import org.eclipse.egit.github.core.service.ContentsService;
 import org.eclipse.egit.github.core.service.RepositoryService;
 
@@ -37,18 +39,15 @@ public class GitHubGateway implements APIManager {
     @Override
     public ObservableList<Repository> getRepositoriesByName(String input){
         ObservableList<Repository> list = FXCollections.observableArrayList();
-
+        
         try {
             RepositoryService service = new RepositoryService();
             service.getClient().setOAuth2Token(OAUTH2TOKEN);
-
-            List<org.eclipse.egit.github.core.SearchRepository> search =  service.searchRepositories(input);
-
-            search.stream().forEach(x -> {
+            
+            service.searchRepositories(input).stream().forEach(x -> {
                 try {
-                    org.eclipse.egit.github.core.Repository repo = service.getRepository(RepositoryId.createFromId(x.generateId()));
-                    list.add(new GitHubRepository(repo));
-                }
+                    list.add(new GitHubRepository(service.getRepository(RepositoryId.createFromId(x.generateId()))));
+                } 
                 catch (IOException ex) {
                     Logger.getLogger(GitHubGateway.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -57,7 +56,7 @@ public class GitHubGateway implements APIManager {
         catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+    
         return list;
     }
 
@@ -68,14 +67,12 @@ public class GitHubGateway implements APIManager {
         try {
             RepositoryService service = new RepositoryService();
             service.getClient().setOAuth2Token(OAUTH2TOKEN);
-
-            service.getRepositories(input).stream().forEach(x -> {
-                list.add(new GitHubRepository(x));
-            });
+            service.getRepositories(input).stream().forEach(x -> list.add(new GitHubRepository(x)));
         }
         catch (IOException ex) {
-            return null;
+            Logger.getLogger(GitHubGateway.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         return list;
     }
 
@@ -88,9 +85,7 @@ public class GitHubGateway implements APIManager {
             service.getClient().setOAuth2Token(OAUTH2TOKEN);
 
             org.eclipse.egit.github.core.Repository gitRepository = service.getRepository(RepositoryId.createFromId(gitHubRepo.getId()));
-            if(gitRepository.getUpdatedAt().compareTo(gitHubRepo.getUpdatedAt()) > 0)
-                return true;
-            return false;
+            return gitRepository.getUpdatedAt().compareTo(gitHubRepo.getUpdatedAt()) > 0;
         }
         catch (IOException ex) {
             return false;
@@ -105,29 +100,26 @@ public class GitHubGateway implements APIManager {
             final URL uri = new URL("https://api.github.com/repos/".concat(gitHubRepo.getId()).concat("/zipball"));
             DirectoryChooser dirChooser = new DirectoryChooser();
             dirChooser.setTitle("Choose destination");
-            final File selectedDir = dirChooser.showDialog(FrontController.getScene().getWindow());
+            File selectedDir = dirChooser.showDialog(FrontController.getScene().getWindow());
             if(selectedDir != null){               
                 try {                  
                     File zipDestination = new File(selectedDir.getAbsolutePath() + "/" + gitHubRepo.getName() + ".zip");
                     FileUtils.copyURLToFile(uri, zipDestination);
                     ZipFile zipFile = new ZipFile(zipDestination);     
+                    System.out.println("test");
                     zipFile.setRunInThread(true);
 
-                    ProgressMonitor mon = zipFile.getProgressMonitor();                
+                    ProgressMonitor mon = zipFile.getProgressMonitor();  
+                    System.out.println("test2");
                     Stage stage = new Stage(); 
                     stage.initStyle(StageStyle.UNDECORATED);
                     stage.initModality(Modality.APPLICATION_MODAL);
                     stage.setTitle("Cloning ...");                    
                     CloneStateController ctrl = (CloneStateController)FrontController.setContentStage(stage,"/ihm/CloneState.fxml").getController();
-
-                    new Thread(() -> {
-                        try {
-                            zipFile.extractAll(selectedDir.getAbsolutePath() + "/" + gitHubRepo.getName());                               
-                        } 
-                        catch (ZipException ex) {
-                            Logger.getLogger(GitHubGateway.class.getName()).log(Level.SEVERE, null, ex);
-                        }                           
-                    }).start();
+                    
+                    System.out.println("test3");
+                    zipFile.extractAll(selectedDir.getAbsolutePath() + "/" + gitHubRepo.getName());  
+                    System.out.println("test4");
 
                     while(mon.getPercentDone() < 100){
                         System.out.println(mon.getPercentDone());
