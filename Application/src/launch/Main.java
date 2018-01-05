@@ -26,7 +26,7 @@ public class Main extends Application {
         FrontController.setStage(stage);
         FrontController.setContentStage(stage,"/ihm/Home.fxml");      
 
-        UsersManager.setCurrentUser(UsersManager.getAllUsers().get(0));            
+        //UsersManager.setCurrentUser(UsersManager.getAllUsers().get(0));            
     }
 
     public static void main(String[] args) {           

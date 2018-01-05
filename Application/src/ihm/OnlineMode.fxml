@@ -45,7 +45,7 @@
             <left>
                 <VBox spacing="10">
                     <Button text="Home" onAction="#goHome"/>
-                    <Button text="Options" onAction="#goOptions"/>
+                    <Button visible="${controller.isLoggedIn}" text="Options" onAction="#goOptions"/>
                 </VBox>
             </left>
             <center>

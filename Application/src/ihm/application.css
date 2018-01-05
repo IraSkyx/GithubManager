@@ -46,3 +46,9 @@
     -fx-font-size: 1.5em;
     -fx-text-fill: rgb(217, 30, 24);
 }
+
+#noError {
+    -fx-font-family: 'Collegiate';
+    -fx-font-size: 1.5em;
+    -fx-text-fill: rgb(0, 205, 0);
+}

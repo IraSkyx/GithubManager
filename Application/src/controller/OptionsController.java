@@ -20,16 +20,19 @@ public class OptionsController extends BorderPane {
     @FXML TextField email;
     @FXML TextField password;
     @FXML Label error;
+    @FXML Label noError;
     
     StringProperty intermediaryEmailProperty = new SimpleStringProperty(UsersManager.getCurrentUser().getEmail());
+    StringProperty intermediaryUsernameProperty = new SimpleStringProperty(UsersManager.getCurrentUser().getUsername());
+    StringProperty intermediaryPasswordProperty = new SimpleStringProperty(UsersManager.getCurrentUser().getPassword());
     
     /**
      * Initializes the controller class.
      */   
     public void initialize() {
-        setUsername();
-        setPassword();
-        getEmail();
+        bindUsername();
+        bindPassword();
+        bindEmail();
     }    
     
     /**
@@ -40,22 +43,22 @@ public class OptionsController extends BorderPane {
     /**
      * Create a bidirectional binding which allow the current user to update his username
      */
-    private void setUsername() {
-        username.textProperty().bindBidirectional(UsersManager.getCurrentUser().usernameProperty());
+    private void bindUsername() {
+        username.textProperty().bindBidirectional(intermediaryUsernameProperty);
     }
     
     /**
      * Create a bidirectional binding which allow the current user to update his password
      */
-    private void setPassword() {
-        password.textProperty().bindBidirectional(UsersManager.getCurrentUser().passwordProperty());
+    private void bindPassword() {
+        password.textProperty().bindBidirectional(intermediaryPasswordProperty);
     }
      
     /**
      * Create a bidirectional binding which allow the current user to update his email in an intermediary property
      * This property is then checked in an other method before updating the value of the current user email property
      */
-    private void getEmail() {
+    private void bindEmail() {
         email.textProperty().bindBidirectional(intermediaryEmailProperty); 
     }
     
@@ -74,6 +77,27 @@ public class OptionsController extends BorderPane {
             error.setVisible(false);
             UsersManager.getCurrentUser().emailProperty().bindBidirectional(intermediaryEmailProperty);
             UsersManager.getCurrentUser().emailProperty().unbind();
+        }
+    }
+    
+        @FXML
+    private void submitUserChanges() {
+        if(UsersManager.exists(email.textProperty().get()) && !email.textProperty().get().equals(UsersManager.getCurrentUser().getEmail())) {
+            error.setVisible(true); 
+            noError.setVisible(false);
+            email.textProperty().set(UsersManager.getCurrentUser().getEmail());
+            username.textProperty().set(UsersManager.getCurrentUser().getUsername());
+            password.textProperty().set(UsersManager.getCurrentUser().getPassword());
+        }
+        else { 
+            error.setVisible(false);
+            noError.setVisible(true);
+            UsersManager.getCurrentUser().emailProperty().bindBidirectional(intermediaryEmailProperty);
+            UsersManager.getCurrentUser().emailProperty().unbind();
+            UsersManager.getCurrentUser().usernameProperty().bindBidirectional(intermediaryUsernameProperty);
+            UsersManager.getCurrentUser().usernameProperty().unbind();
+            UsersManager.getCurrentUser().passwordProperty().bindBidirectional(intermediaryPasswordProperty);
+            UsersManager.getCurrentUser().passwordProperty().unbind();
         }
     }
 }

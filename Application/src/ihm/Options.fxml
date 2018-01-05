@@ -38,27 +38,16 @@
                 <TextField fx:id="username" maxWidth="200" />
                 <Label id="h2" text="Email" />
                 <TextField fx:id="email" maxWidth="200" />
-                <FlowPane alignment="CENTER">
-                    <children>
-                        <Button text="Validate Email" onAction="#validateEmailChanges" />
-                    </children>
-                </FlowPane>
                 <Label id="h2" text="Password" />
                 <PasswordField fx:id="password" maxWidth="200" /> 
-                <Label fx:id="error" visible="false" text="Email already exists">
-                    <padding>
-                        <Insets top="50" right="50" bottom="50" left="50"/>
-                    </padding>
-                </Label>
+                <Label fx:id="error" visible="false" text="Email already exists" />
+                <Label fx:id="noError" visible="false" text="Changes have been done" />
+                <FlowPane alignment="CENTER">
+                    <children>
+                        <Button text="Submit" onAction="#submitUserChanges" />
+                    </children>
+                </FlowPane>
             </children>            
         </VBox>
     </center>
-    <bottom>
-        <!--
-        <FlowPane alignment="CENTER">
-            <children>
-                <Button text="Submit" onAction="#submit" />
-            </children>
-        </FlowPane>-->
-    </bottom>
 </BorderPane>

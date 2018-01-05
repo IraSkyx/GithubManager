@@ -160,8 +160,8 @@ public class OnlineModeController extends BorderPane implements Manageable {
         date.visibleProperty().bind(cloneBtn.visibleProperty());
         date.textProperty().bind(Bindings.format("Date of creation : %s", Bindings.selectString(selectedFollowProperty(),"createdAt")));
         
-        Bindings.bindBidirectional(username.textProperty(), UsersManager.currentUserProperty().get().usernameProperty(), new PropertyStringConverter());
-
+        if(getIsLoggedIn()) Bindings.bindBidirectional(username.textProperty(), UsersManager.currentUserProperty().get().usernameProperty(), new PropertyStringConverter());
+        
         TreeViewFollows.setOnKeyPressed((KeyEvent keyEvent) -> {
             if(TreeViewFollows.getSelectionModel().getSelectedItem() != null && keyEvent.getCode().equals(KeyCode.DELETE))
                 deleteFollow();
