@@ -34,6 +34,7 @@
                         <ListViewRepositoryFactory/>
                     </cellFactory>
                 </ListView>
+                <Label visible="${controller.isLoggedIn}" managed="${controller.isLoggedIn}" id="h4" text="(Drap&amp;Drop them into your follows !)" BorderPane.alignment="CENTER" textAlignment="CENTER"/>
             </children>
         </VBox>
     </left>
@@ -129,7 +130,7 @@
             <children>                
                 <BorderPane>
                     <top>
-                        <Label visible="${controller.isLoggedIn}" managed="${controller.isLoggedIn}" id="h3" text="Your follows" textAlignment="CENTER"/>
+                        <Label visible="${controller.isLoggedIn}" managed="${controller.isLoggedIn}" id="h3" text="Your follows" BorderPane.alignment="CENTER" textAlignment="CENTER"/>
                     </top>
                     <center>
                         <TreeView fx:id="TreeViewFollows" editable="true" visible="${controller.isLoggedIn}" managed="${controller.isLoggedIn}">

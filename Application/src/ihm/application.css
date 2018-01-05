@@ -37,6 +37,12 @@
     -fx-text-fill: white;
 }
 
+#h4{
+    -fx-font-family: 'Collegiate';
+    -fx-font-size: 1em;
+    -fx-text-fill: white;
+}
+
 .scroll-pane > .viewport {    
     -fx-background-color: #222222;
 }
