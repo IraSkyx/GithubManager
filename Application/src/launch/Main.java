@@ -17,6 +17,11 @@ import javafx.stage.Stage;
  */
 public class Main extends Application {
         
+    /**
+     * Executed at application starting : load Users with the chosen serialisation type and display home page
+     * 
+     * @param stage 
+     */
     @Override
     public void start(Stage stage) {
         UsersManager.setDataManager(new XMLDataManager());         
@@ -34,10 +39,18 @@ public class Main extends Application {
         //UsersManager.setCurrentUser(UsersManager.getAllUsers().get(0));            
     }
 
+    /**
+     * Launch the application
+     * 
+     * @param args 
+     */
     public static void main(String[] args) {           
         launch(args);
     }
     
+    /**
+     * Executed at application closing : save Users with the chosen serialisation type
+     */
     @Override
     public void stop() {
         UsersManager.setDataManager(new XMLDataManager());

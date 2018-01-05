@@ -36,15 +36,29 @@ public class GitHubRepository extends Repository implements Serializable {
 
     @Override public String getId() {return adapted.generateId()== null ? "" : adapted.generateId();}
 
+    /**
+     * Constructor by default
+     */
     public GitHubRepository(){
 
     }
 
+    /**
+     * Constructor with a Repository GitHub
+     * 
+     * @param adapted 
+     */
     public GitHubRepository(org.eclipse.egit.github.core.Repository adapted) {
         this.adapted=adapted;
         setReadMe(GitHubGateway.getReadMe(adapted));
     }
 
+    /**
+     * Test if one Object is equal to a GitHubRepository
+     * 
+     * @param o
+     * @return true if they are equals, false otherwise
+     */
     @Override 
     public boolean equals(Object o){
         if (o == null)
@@ -59,6 +73,11 @@ public class GitHubRepository extends Repository implements Serializable {
         return getId().equals(((GitHubRepository)o).getId());
     }
     
+    /**
+     * toString() method
+     * 
+     * @return GitHubRepository name
+     */
     @Override
     public String toString(){
         return getName();

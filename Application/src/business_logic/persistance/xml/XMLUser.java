@@ -15,10 +15,18 @@ import javafx.beans.property.StringProperty;
  * @author Adrien LENOIR and Fabien SIMONET
  */
 public class XMLUser implements IUser, Serializable {
+    /**
+     * Create an XMLUser by default
+     */
     public XMLUser(){
         this(UserFactory.create());
     }
     
+    /**
+     * Create a XMLUser using an IUser
+     * 
+     * @param model 
+     */
     public XMLUser(IUser model) {
         this.model = model;
         username = new SimpleStringProperty(model.getUsername());

@@ -61,7 +61,10 @@ public class OptionsController extends BorderPane {
     private void bindEmail() {
         email.textProperty().bindBidirectional(intermediaryEmailProperty); 
     }
-        
+       
+    /**
+     * Check if the email is not already used by an other User and apply changes or display error
+     */
     @FXML
     private void submitUserChanges() {
         if(UsersManager.exists(email.textProperty().get()) && !email.textProperty().get().equals(UsersManager.getCurrentUser().getEmail())) {

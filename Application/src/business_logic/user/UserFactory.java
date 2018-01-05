@@ -12,6 +12,16 @@ public class UserFactory {
 
     private static final String isValidEmail = "^([_a-zA-Z0-9-]+(\\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*(\\.[a-zA-Z]{1,6}))?$";
 
+    /**
+     * Create IUser with verified password in parameters
+     * 
+     * @param username
+     * @param email
+     * @param password
+     * @param verifPassword
+     * @return the created IUser
+     * @throws InvalidParameterException 
+     */
     public static IUser create(String username, String email, String password, String verifPassword) throws InvalidParameterException {
 
         if(!password.equals(verifPassword))
@@ -34,6 +44,14 @@ public class UserFactory {
         return user;
     }
 
+    /**
+     * Create IUser without verified password in parameters
+     * 
+     * @param username
+     * @param email
+     * @param password
+     * @return the created IUser
+     */
     public static IUser create(String username, String email, String password) {
 
         if(!Pattern.compile(isValidEmail).matcher(email).matches())
@@ -53,6 +71,11 @@ public class UserFactory {
         return user;
     }
 
+    /**
+     * Create IUser by default
+     * 
+     * @return the created IUser
+     */
     public static IUser create(){
         return new User();
     }

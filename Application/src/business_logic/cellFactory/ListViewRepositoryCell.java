@@ -15,6 +15,9 @@ import javafx.scene.input.TransferMode;
  */
 public class ListViewRepositoryCell extends ListCell<Repository> { 
     
+    /**
+     * Constructor : implement drag and drop
+     */
     public ListViewRepositoryCell() {
         setOnDragDetected((MouseEvent event) -> {
             Dragboard db = startDragAndDrop(TransferMode.COPY);
@@ -28,6 +31,12 @@ public class ListViewRepositoryCell extends ListCell<Repository> {
         });       
     }
     
+    /**
+     * Update the ListView
+     * 
+     * @param item
+     * @param isEmpty 
+     */
     @Override
     protected void updateItem(Repository item, boolean isEmpty) {
         super.updateItem(item, isEmpty);

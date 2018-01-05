@@ -11,6 +11,12 @@ import javafx.util.Callback;
  * @author Adrien LENOIR and Fabien SIMONET
  */
 public class ListViewRepositoryFactory implements Callback<ListView<Repository>,ListCell<Repository>> {
+    /**
+     * Create a listView item
+     * 
+     * @param param
+     * @return a ListViewRepositoryCell whitch is a ListView item
+     */
     @Override
     public ListCell<Repository> call(ListView<Repository> param) {
        return new ListViewRepositoryCell();

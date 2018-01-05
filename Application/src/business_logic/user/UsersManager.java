@@ -50,6 +50,7 @@ public class UsersManager {
 
     /**
      * Getter of allUsers
+     * 
      * @return allUsers the list of all the users
      */
     public static List<IUser> getAllUsers() {
@@ -58,6 +59,7 @@ public class UsersManager {
 
     /**
      * Return a user in the list of allUsers
+     * 
      * @param email
      * @param password
      * @return User an instance of user or null
@@ -75,6 +77,7 @@ public class UsersManager {
 
     /**
      * Verify the user is valid and set the current user
+     * 
      * @param email
      * @param password
      * @return true if connection succeeded, false otherwise
@@ -91,6 +94,7 @@ public class UsersManager {
 
     /**
      * Verify the email exists in the list
+     * 
      * @param email
      * @return True if yes, false otherwise
      */

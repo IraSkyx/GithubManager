@@ -56,6 +56,7 @@ class User implements IUser {
 
     /**
      * toString method
+     * 
      * @return username 
      */
     @Override

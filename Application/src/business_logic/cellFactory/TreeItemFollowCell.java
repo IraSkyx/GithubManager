@@ -25,6 +25,12 @@ public class TreeItemFollowCell extends TreeCell<Follow> {
     public static boolean firstRender = true;
     private Follow item;
 
+    /**
+     * Constructor : implement drag and drop, give styles to TreeView elements and apply adding and deleting Follow
+     * 
+     * @param parent
+     * @param apiManager 
+     */
     public TreeItemFollowCell(TreeView<Follow> parent, APIManager apiManager){
 
         this.apiManager=apiManager;
@@ -89,6 +95,12 @@ public class TreeItemFollowCell extends TreeCell<Follow> {
         });
     }
 
+    /**
+     * Update TreeView item, binding and styles to elements
+     * 
+     * @param item
+     * @param isEmpty 
+     */
     @Override
     public void updateItem(Follow item, boolean isEmpty){
         super.updateItem(item, isEmpty);

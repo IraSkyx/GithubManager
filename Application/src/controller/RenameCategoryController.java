@@ -26,11 +26,19 @@ public class RenameCategoryController extends VBox {
     private Category oldValue;
     private final PauseTransition visiblePause = new PauseTransition(Duration.seconds(2));     
 
+    /**
+     * Set the old value of the Category (to make do/undo)
+     * 
+     * @param oldValue 
+     */
     void setOldValue(Category oldValue) {
         this.oldValue = oldValue;
         name.setText(oldValue.getName());
     }
     
+    /**
+     * Apply the changes or display an error
+     */
     @FXML
     private void submit() {
         if(!name.getText().isEmpty() && !((Category)UsersManager.currentUserProperty().get().userFollowProperty().get()).contains(x -> x.getName().equals(name.getText()))){
@@ -43,6 +51,9 @@ public class RenameCategoryController extends VBox {
         }       
     }  
     
+    /**
+     * Initialize action like a main method
+     */
     public void initialize() {
         visiblePause.setOnFinished(e -> error.setVisible(false));
         rootPane.setOnKeyPressed((KeyEvent event) -> {

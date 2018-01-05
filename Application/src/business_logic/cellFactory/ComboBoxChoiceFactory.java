@@ -19,6 +19,12 @@ public class ComboBoxChoiceFactory implements Callback<ListView<String>,ListCell
         "By user's name"
     ));
     
+    /**
+     * Create a ListCell
+     * 
+     * @param param
+     * @return 
+     */
     @Override
     public ListCell<String> call(ListView<String> param) {
        return new ComboBoxChoiceCell();

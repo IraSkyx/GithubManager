@@ -28,15 +28,29 @@ public class Category extends Follow implements CompositeUtils<Follow>, Serializ
         public final void setListOfFollows(ObservableList<Follow> value) { listOfFollows.set(value); }
         public ListProperty listOfFollowsProperty(){return listOfFollows;};
 
+    /**
+     * Constructor by default
+     */
     public Category() {
         setListOfFollows(FXCollections.<Follow>observableArrayList());
     }
 
+    /**
+     * Constructor with a name
+     * 
+     * @param name name of the new Category
+     */
     public Category(String name) {
         setName(name);
         setListOfFollows(FXCollections.<Follow>observableArrayList());
     }
     
+    /**
+     * Test if a Follow is in the list of Follows
+     * 
+     * @param action
+     * @return true if the Follow is containing by the list, false otherwise
+     */
     @Override
     public boolean contains(Predicate<? super Follow> action) {
         Objects.requireNonNull(action);
@@ -50,6 +64,11 @@ public class Category extends Follow implements CompositeUtils<Follow>, Serializ
         return res;
     }
 
+    /**
+     * Add a Follow to the list of Follows
+     * 
+     * @param follow follow to add 
+     */
     @Override
     public void addFollow(Follow follow) {
         if(((Category)getRoot()).contains(x -> x.equals(follow)))
@@ -66,11 +85,21 @@ public class Category extends Follow implements CompositeUtils<Follow>, Serializ
             });
     }
 
+    /**
+     * Delete a follow of the list of Follows
+     * 
+     * @param follow 
+     */
     @Override
     public void deleteFollow(Follow follow) {
         listOfFollows.remove(follow);
     }
 
+    /**
+     * toString() method
+     * 
+     * @return the name of the Category 
+     */
     @Override public String toString() {
         return getName();
     }  

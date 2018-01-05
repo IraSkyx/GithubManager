@@ -14,9 +14,25 @@ public abstract class Follow {
     abstract public String getName();
     abstract public void setName(String value);
 
+    /**
+     * Add a follow : not implemented
+     * 
+     * @param follow 
+     */
     public void addFollow(Follow follow) { throw new UnsupportedOperationException("OperationNotSupportedException"); }
+    
+    /**
+     * Delete a follow : not implemented
+     * 
+     * @param follow 
+     */
     public void deleteFollow(Follow follow) { throw new UnsupportedOperationException("OperationNotSupportedException"); }
     
+    /**
+     * Get the root node in the tree of Follows
+     * 
+     * @return the root Follow 
+     */
     public Follow getRoot(){
         Follow root = this;
         while(root.getParent() != null){
@@ -25,6 +41,12 @@ public abstract class Follow {
         return root;
     }
     
+    /**
+     * Test if one Object is equal to a Follow
+     * 
+     * @param o
+     * @return true if they are equals, false otherwise
+     */
     @Override 
     public boolean equals(Object o){
         if (o == null)

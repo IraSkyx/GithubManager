@@ -9,6 +9,11 @@ import javafx.scene.layout.VBox;
  * @author Adrien LENOIR and Fabien SIMONET
  */
 public class HeaderController extends VBox {
+    /**
+     * Contructor by default : initialize a FXMLLoader
+     * 
+     * @throws IOException 
+     */
     public HeaderController() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ihm/Header.fxml"));
         loader.setRoot(this);

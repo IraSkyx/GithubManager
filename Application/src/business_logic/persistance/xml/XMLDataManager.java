@@ -34,6 +34,7 @@ public class XMLDataManager implements DataManager {
     
     /**
      * Save users using XML serialization
+     * 
      * @param users All the users to serialize
      */
     @Override

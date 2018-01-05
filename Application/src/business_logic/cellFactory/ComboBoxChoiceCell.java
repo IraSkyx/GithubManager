@@ -9,6 +9,12 @@ import javafx.scene.control.ListCell;
  */
 public class ComboBoxChoiceCell extends ListCell<String> {
     
+    /**
+     * Update the item in the combobox
+     * 
+     * @param item
+     * @param isEmpty 
+     */
     @Override
     protected void updateItem(String item, boolean isEmpty) {
         super.updateItem(item, isEmpty);

@@ -23,10 +23,21 @@ public class FrontController {
         public static void setStage(Stage stage) {FrontController.stage = stage;}   
         public static Stage getStage() {return stage;}
     
+    /**
+     * Get a scene
+     * @return a scene
+     */
     public static Scene getScene(){
         return stage.getScene();
     }      
     
+    /**
+     * Initialize a Stage
+     * 
+     * @param stage
+     * @param path
+     * @return a FMXLLoader
+     */
     public static FXMLLoader setContentStage(Stage stage, String path) {
         Image applicationIcon = new Image("/resources/imgs/Icon.png");
         stage.getIcons().add(applicationIcon);      
@@ -35,6 +46,13 @@ public class FrontController {
         return loader;
     }
     
+    /**
+     * Set scene in a stage
+     * 
+     * @param myStage
+     * @param path
+     * @return a FXMLLoader 
+     */
     public static FXMLLoader setScene(Stage myStage, String path) {
         FXMLLoader loader = new FXMLLoader(FrontController.class.getClass().getResource(path));          
         try {
@@ -48,6 +66,13 @@ public class FrontController {
         return loader;
     }
     
+    /**
+     * Set scene in a stage and fix an APIManager
+     * 
+     * @param path
+     * @param apiManager
+     * @return a FXMLLoader
+     */
     public static FXMLLoader setScene(String path, APIManager apiManager) {
         FXMLLoader loader = new FXMLLoader(FrontController.class.getClass().getResource(path));        
         try {

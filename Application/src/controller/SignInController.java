@@ -26,8 +26,14 @@ public class SignInController extends BorderPane {
     
     private final PauseTransition visiblePause = new PauseTransition(Duration.seconds(2));
     
+    /**
+     * Go to home page
+     */
     @FXML private void goHome() {FrontController.setContentStage(FrontController.getStage(),"/ihm/Home.fxml");}   
     
+    /**
+     * Connect the User and go to the OnlineMode page or display an error
+     */
     @FXML
     private void submit() {
         if(UsersManager.connect(email.getText(), password.getText()))
@@ -38,6 +44,9 @@ public class SignInController extends BorderPane {
         }
     }
     
+    /**
+     * Initialize action like a main method
+     */
     public void initialize() {  
         visiblePause.setOnFinished(e -> error.setVisible(false));
         rootPane.setOnKeyPressed((KeyEvent event) -> {

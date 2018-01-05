@@ -12,12 +12,14 @@ public interface DataManager {
     
    /**
     * Recover persistent users
+    * 
     * @return persistent user collection
     */
     public List<IUser> loadUsers();
     
     /**
     * Save users
+    * 
     * @param users user collection to save
     */  
     public void saveUsers(List<IUser> users);        

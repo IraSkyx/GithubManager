@@ -26,14 +26,29 @@ public class HomeController extends BorderPane {
     @FXML Button logOff;
     @FXML Label username; 
     
+    /**
+     * Go to SignIn page
+     */
     @FXML private void goSignIn() {FrontController.setScene(FrontController.getStage(),"/ihm/SignIn.fxml");}
     
+    /**
+     * Go to SignUp page
+     */
     @FXML private void goSignUp() {FrontController.setScene(FrontController.getStage(),"/ihm/SignUp.fxml");}
     
+    /**
+     * Go to Online page
+     */  
     @FXML private void goOnline() {FrontController.setScene("/ihm/OnlineMode.fxml", new GitHubGateway());}
     
+    /**
+     * Disconnect the currentUser
+     */
     @FXML private void logOff() {UsersManager.disconnect();}
     
+    /**
+     * Go to OnlineMode page and make the research
+     */
     @FXML
     private void onEnter() {        
         OnlineModeController ctrl = (OnlineModeController)(FrontController.setScene("/ihm/OnlineMode.fxml", new GitHubGateway()).getController()); 
@@ -41,6 +56,9 @@ public class HomeController extends BorderPane {
         ctrl.setPlaceholderSearchResults("Results loading ...");
     }
     
+    /**
+     * Initialize action like a main method
+     */
     public void initialize(){
        BooleanBinding nullToBool = Bindings
             .when(UsersManager.currentUserProperty().isNull())            

@@ -71,7 +71,10 @@ public class OnlineModeController extends BorderPane implements Manageable {
         public final Follow getSelectedFollow() { return selectedFollow.get(); }
         public final void setSelectedFollow(Follow value) { selectedFollow.set(value); }
         public ObjectProperty<Follow> selectedFollowProperty(){return selectedFollow;};         
-        
+     
+    /**
+     * Clone selected Repository URL 
+     */
     @FXML
     private void cloneUrl() {
         Alert alert = new Alert(AlertType.CONFIRMATION, "Are you sure ? This may take a few minutes", ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
@@ -84,22 +87,43 @@ public class OnlineModeController extends BorderPane implements Manageable {
         
     @FXML private void searchFor() {setItems(input.getText(),searchBy.getSelectionModel().selectedItemProperty().isNull().get() ? "" : (String)searchBy.getSelectionModel().getSelectedItem());}
     
+    /**
+     * Go to Home page
+     */
     @FXML private void goHome() {FrontController.setContentStage(FrontController.getStage(),"/ihm/Home.fxml");}
     
+    /**
+     * Go to SignIn page
+     */
     @FXML private void goSignIn() {FrontController.setContentStage(FrontController.getStage(),"/ihm/SignIn.fxml");}
     
+    /**
+     * Go to SignUp page
+     */
     @FXML private void goSignUp() {FrontController.setContentStage(FrontController.getStage(),"/ihm/SignUp.fxml");}
     
+    /**
+     * Go to Options page
+     */
     @FXML private void goOptions() {FrontController.setContentStage(FrontController.getStage(),"/ihm/Options.fxml");}
     
+    /**
+     * Disconnect the current User
+     */
     @FXML private void logOff() {UsersManager.disconnect();}
     
+    /**
+     * Delete a Follow in a TreeView component
+     */
     @FXML
     private void deleteFollow() {
         if(TreeViewFollows.getSelectionModel().getSelectedItem() != TreeViewFollows.getRoot())
             TreeViewFollows.getSelectionModel().selectedItemProperty().get().getParent().getValue().deleteFollow(TreeViewFollows.getSelectionModel().selectedItemProperty().get().getValue());
     }
     
+    /**
+     * Go to AddCategory page and add the Category
+     */
     @FXML
     private void addCategory() {      
         Follow selected;
@@ -117,6 +141,9 @@ public class OnlineModeController extends BorderPane implements Manageable {
         ((AddCategoryController)FrontController.setContentStage(stage,"/ihm/AddCategory.fxml").getController()).setSelected(selected);                
     }
     
+    /**
+     * Go to renameCategory page and rename the Category
+     */
     @FXML
     private void renameCategory() {             
         if(TreeViewFollows.getSelectionModel().getSelectedItem() != null && TreeViewFollows.getSelectionModel().selectedItemProperty().get().getValue() instanceof Category){          
@@ -128,6 +155,12 @@ public class OnlineModeController extends BorderPane implements Manageable {
         }
     }
     
+    /**
+     * Manage combobox choice
+     * 
+     * @param input
+     * @param choice 
+     */
     public void setItems(String input, String choice) {
         if(apiManager != null){
             Platform.runLater(() -> {
@@ -140,6 +173,9 @@ public class OnlineModeController extends BorderPane implements Manageable {
         }
     }
     
+    /**
+     * Initialize actions like a main method
+     */
     public void initialize() {
 
         BooleanBinding loggedIn = Bindings

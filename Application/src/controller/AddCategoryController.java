@@ -29,6 +29,9 @@ public class AddCategoryController extends VBox {
     
     private final PauseTransition visiblePause = new PauseTransition(Duration.seconds(2));
     
+    /**
+     * Make verifications about the Category submited by the user and add it or display an error
+     */
     @FXML
     private void submit() {           
         if(!name.getText().isEmpty() && !((Category)UsersManager.currentUserProperty().get().userFollowProperty().get()).contains(x -> x.getName().equals(name.getText()))){
@@ -41,6 +44,9 @@ public class AddCategoryController extends VBox {
         }        
     }  
     
+    /**
+     * Initialize actions like a main method
+     */
     public void initialize() {         
         visiblePause.setOnFinished(e -> error.setVisible(false));      
         rootPane.setOnKeyPressed((KeyEvent event) -> {

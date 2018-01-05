@@ -17,6 +17,12 @@ public class TreeItemFollowFactory implements Callback<TreeView<Follow>,TreeCell
         public static Follow getSelectedDaD() { return selectedDaD; }
         public static void setSelectedDaD(Follow selectedDaD) { TreeItemFollowFactory.selectedDaD = selectedDaD; }
     
+    /**
+     * Create a TreeItem element
+     * 
+     * @param param
+     * @return a TreeItemFollowCell whitch is a TreeItem
+     */
     @Override
     public TreeCell<Follow> call(TreeView<Follow> param) {
        return new TreeItemFollowCell(param, new GitHubGateway());

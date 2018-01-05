@@ -19,14 +19,29 @@ public class StubUsers implements DataManager {
 
     private APIManager apiManager;
 
+    /**
+     * Constructor : Set the APIManager to the Stub
+     * 
+     * @param apiManager 
+     */
     public StubUsers(APIManager apiManager) {
         this.apiManager = apiManager;
     }
 
+    /**
+     * Set the APIManager
+     * 
+     * @param apiManager 
+     */
     public void setApiManager(APIManager apiManager) {
         this.apiManager = apiManager;
     }
 
+    /**
+     * Load always the same Users
+     * 
+     * @return a list of Users
+     */
     @Override
     public List<IUser> loadUsers() {
 
@@ -50,6 +65,11 @@ public class StubUsers implements DataManager {
         return allUsers;
     }
 
+    /**
+     * Save Users : not implemented
+     * 
+     * @param user 
+     */
     @Override
     public void saveUsers(List<IUser> user) {
         throw new UnsupportedOperationException("Not supported yet.");

@@ -37,6 +37,12 @@ public class GitHubGateway implements APIManager {
     
     private static final String OAUTH2TOKEN = "5492d1456e37ba89cc8985ccdee4a8dc028e916f";
 
+    /**
+     * Get a list of Repositories with a research by name
+     * 
+     * @param input
+     * @return a list of Repositories whitch correspond to a research by name
+     */
     @Override
     public ObservableList<Repository> getRepositoriesByName(String input){
         ObservableList<Repository> list = FXCollections.observableArrayList();
@@ -61,6 +67,12 @@ public class GitHubGateway implements APIManager {
         return list;
     }
 
+    /**
+     * Get a list of Repositories by a research by username
+     * 
+     * @param input
+     * @return a list of Repositories whitch correspond ro a research by username
+     */
     @Override
     public ObservableList<Repository> getRepositoriesByUsername(String input){
         ObservableList<Repository> list = FXCollections.observableArrayList();
@@ -77,6 +89,12 @@ public class GitHubGateway implements APIManager {
         return list;
     }
 
+    /**
+     * Test if a Repository has new commits 
+     * 
+     * @param repository
+     * @return true if this Repository has new commits, false otherwise
+     */
     @Override
     public boolean hasNewCommit(Repository repository){
         GitHubRepository gitHubRepo = (GitHubRepository)repository;
@@ -93,6 +111,11 @@ public class GitHubGateway implements APIManager {
         }
     }
 
+    /**
+     * Clone a repository
+     * 
+     * @param repository 
+     */
     @Override
     public void cloneRepository(Repository repository) {
         GitHubRepository gitHubRepo = (GitHubRepository)repository;
@@ -141,6 +164,12 @@ public class GitHubGateway implements APIManager {
         }
     }
 
+    /**
+     * Get Repository ReadMe
+     * 
+     * @param repo
+     * @return a String which is the ReadMe or "No README.md"
+     */
     public static String getReadMe(org.eclipse.egit.github.core.Repository repo){
         try {
             ContentsService contents = new ContentsService();
