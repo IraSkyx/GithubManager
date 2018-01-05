@@ -7,7 +7,7 @@
      <string>adrien.lenoir@etu.uca.fr</string>
     </void>
     <void property="password">
-     <string>mdp</string>
+     <string>motdepasse</string>
     </void>
     <void id="Category0" property="userFollow">
      <void property="listOfFollows">
@@ -1316,6 +1316,32 @@ Feel free to push, commit and fork. :)# SokobanMaster
     </void>
     <void property="username">
      <string>Fabien Simonet</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="business_logic.persistance.xml.XMLUser">
+    <void property="email">
+     <string>adrien.lenoir@etu.uca.f</string>
+    </void>
+    <void property="password">
+     <string>mdp</string>
+    </void>
+    <void property="username">
+     <string>Adrien Lenoir</string>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="business_logic.persistance.xml.XMLUser">
+    <void property="email">
+     <string>adrien.lenoir@etu.uca</string>
+    </void>
+    <void property="password">
+     <string>mdp</string>
+    </void>
+    <void property="username">
+     <string>Adrien Lenoir</string>
     </void>
    </object>
   </void>

@@ -12,27 +12,17 @@
 <?import javafx.geometry.*?>
 
 
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OptionsController">
+<BorderPane fx:id="rootPane" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OptionsController">
     <top>
-        <BorderPane>
-            <padding>
-                <Insets top="10" right="10" bottom="10" left="10"/>
-            </padding>
-            <left>
-                <Button text="Back" onAction="#GoOnlineMode"/>
-            </left>
-            <center>
-                <VBox alignment="CENTER" BorderPane.alignment="CENTER">
-                    <children>
-                        <HeaderController/>
-                        <Label id="h2" text="Change your user information" />
-                    </children>
-                </VBox>
-            </center>
-        </BorderPane>
+        <VBox alignment="CENTER" BorderPane.alignment="CENTER">
+            <children>
+                <HeaderController/>
+                <Label id="h2" text="Change your user information" />
+            </children>
+        </VBox>
     </top>
     <center>
-        <VBox alignment="CENTER" BorderPane.alignment="CENTER">
+        <VBox alignment="CENTER" BorderPane.alignment="CENTER" spacing="5">
             <children>
                 <Label id="h2" text="Username" />
                 <TextField fx:id="username" maxWidth="200" />
@@ -40,13 +30,13 @@
                 <TextField fx:id="email" maxWidth="200" />
                 <Label id="h2" text="Password" />
                 <PasswordField fx:id="password" maxWidth="200" /> 
-                <Label fx:id="error" visible="false" text="Email already exists" />
-                <Label fx:id="noError" visible="false" text="Changes have been done" />
-                <FlowPane alignment="CENTER">
+                <Label fx:id="error"/>
+                <HBox alignment="CENTER" spacing="5">
                     <children>
-                        <Button text="Submit" onAction="#submitUserChanges" />
+                        <Button text="Back" onAction="#goOnlineMode"/>
+                        <Button text="Submit" onAction="#submit"/>
                     </children>
-                </FlowPane>
+                </HBox>
             </children>            
         </VBox>
     </center>

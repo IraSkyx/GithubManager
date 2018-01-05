@@ -3,23 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/fsimo/Desktop/githubmanager/Application/src/business_logic/persistance/DataManager.java</file>
-            <file>file:/C:/Users/fsimo/Desktop/githubmanager/Application/src/business_logic/user/IUser.java</file>
-            <file>file:/C:/Users/fsimo/Desktop/githubmanager/Application/src/controller/OnlineModeController.java</file>
-            <file>file:/C:/Users/fsimo/Desktop/githubmanager/Application/src/business_logic/persistance/stub/StubUsers.java</file>
-            <file>file:/C:/Users/fsimo/Desktop/githubmanager/Application/src/business_logic/cellFactory/ListViewRepositoryCell.java</file>
-            <file>file:/C:/Users/fsimo/Desktop/githubmanager/Application/src/resources/imgs/categIcon.png</file>
-            <file>file:/C:/Users/fsimo/Desktop/githubmanager/Application/src/controller/OptionsController.java</file>
-            <file>file:/C:/Users/fsimo/Desktop/githubmanager/Application/src/ihm/Header.fxml</file>
-            <file>file:/C:/Users/fsimo/Desktop/githubmanager/Application/src/business_logic/user/User.java</file>
-            <file>file:/C:/Users/fsimo/Desktop/githubmanager/Application/src/launch/Main.java</file>
-            <file>file:/C:/Users/fsimo/Desktop/githubmanager/Application/src/resources/imgs/repoIcon.png</file>
-            <file>file:/C:/Users/fsimo/Desktop/githubmanager/Application/src/ihm/application.css</file>
-            <file>file:/C:/Users/fsimo/Desktop/githubmanager/Application/src/controller/Manageable.java</file>
-            <file>file:/C:/Users/fsimo/Desktop/githubmanager/Application/src/controller/FrontController.java</file>
-            <file>file:/C:/Users/fsimo/Desktop/githubmanager/Application/src/controller/SignInController.java</file>
-            <file>file:/C:/Users/fsimo/Desktop/githubmanager/Application/src/ihm/OnlineMode.fxml</file>
-            <file>file:/C:/Users/fsimo/Desktop/githubmanager/Application/src/business_logic/user/UsersManager.java</file>
+            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/controller/OptionsController.java</file>
+            <file>file:/C:/Users/adria/Desktop/githubmanager/Application/src/ihm/Options.fxml</file>
         </group>
     </open-files>
 </project-private>

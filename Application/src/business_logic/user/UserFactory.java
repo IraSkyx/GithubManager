@@ -67,7 +67,6 @@ public class UserFactory {
             throw new InvalidParameterException("Email already used");
 
         User user = new User(username, password, email);
-        UsersManager.getAllUsers().add(user);
         return user;
     }
 

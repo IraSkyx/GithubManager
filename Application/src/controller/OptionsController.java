@@ -1,13 +1,17 @@
 package controller;
 
 import business_logic.gateways.GitHubGateway;
+import business_logic.user.UserFactory;
 import business_logic.user.UsersManager;
+import java.security.InvalidParameterException;
+import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.util.Duration;
 
 /**
  * FXML Controller class : OptionsController : Controller of Options.fxml
@@ -15,83 +19,54 @@ import javafx.scene.layout.BorderPane;
  * @author Adrien LENOIR and Fabien SIMONET
  */
 public class OptionsController extends BorderPane {
-
+    
+    @FXML BorderPane rootPane;
     @FXML TextField username;
     @FXML TextField email;
     @FXML TextField password;
     @FXML Label error;
-    @FXML Label noError;
+    
+    private final PauseTransition visiblePause = new PauseTransition(Duration.seconds(2));
     
     /**
-     * Intermediary email property to display the current email without directly modify its value
+     * Go to the OnlineMode page
      */
-    StringProperty intermediaryEmailProperty = new SimpleStringProperty(UsersManager.getCurrentUser().getEmail());
+    @FXML private void goOnlineMode() {FrontController.setScene("/ihm/OnlineMode.fxml", new GitHubGateway());} 
+    
     /**
-     * Intermediary username property to display the current username without directly modify its value
+     * Submit changes
      */
-    StringProperty intermediaryUsernameProperty = new SimpleStringProperty(UsersManager.getCurrentUser().getUsername());
-    /**
-     * Intermediary password property to display the current password without directly modify its value
-     */
-    StringProperty intermediaryPasswordProperty = new SimpleStringProperty(UsersManager.getCurrentUser().getPassword());
+    @FXML 
+    private void submit() {
+        try {
+            if(!email.getText().equals(UsersManager.getCurrentUser().getEmail()))
+                UsersManager.setCurrentUser(UserFactory.create(username.getText(), email.getText(), password.getText()));
+            else {
+                if(username.getText().length() < 5 || password.getText().length() < 5)
+                    throw new InvalidParameterException("Username or password too short (at least 5)");
+                UsersManager.getCurrentUser().setUsername(username.getText());
+                UsersManager.getCurrentUser().setPassword(password.getText());
+            }
+            goOnlineMode();
+        }
+        catch(InvalidParameterException ex) {
+            error.setText(ex.getMessage());
+            error.setVisible(true);
+            visiblePause.play();
+        }
+    }
     
     /**
      * Initializes the controller class.
      */   
     public void initialize() {
-        bindUsername();
-        bindPassword();
-        bindEmail();
-    }    
-    
-    /**
-     * Go to the OnlineMode page
-     */
-    @FXML private void GoOnlineMode() {FrontController.setScene("/ihm/OnlineMode.fxml", new GitHubGateway());} 
-    
-    /**
-     * Create a bidirectional binding which allow the current user to update his username
-     */
-    private void bindUsername() {
-        username.textProperty().bindBidirectional(intermediaryUsernameProperty);
-    }
-    
-    /**
-     * Create a bidirectional binding which allow the current user to update his password
-     */
-    private void bindPassword() {
-        password.textProperty().bindBidirectional(intermediaryPasswordProperty);
-    }
-     
-    /**
-     * Create a bidirectional binding which allow the current user to update his email in an intermediary property
-     * This property is then checked in an other method before updating the value of the current user email property
-     */
-    private void bindEmail() {
-        email.textProperty().bindBidirectional(intermediaryEmailProperty); 
-    }
-       
-    /**
-     * Check if the email is not already used by an other User and apply changes or display error
-     */
-    @FXML
-    private void submitUserChanges() {
-        if(UsersManager.exists(email.textProperty().get()) && !email.textProperty().get().equals(UsersManager.getCurrentUser().getEmail())) {
-            error.setVisible(true); 
-            noError.setVisible(false);
-            email.textProperty().set(UsersManager.getCurrentUser().getEmail());
-            username.textProperty().set(UsersManager.getCurrentUser().getUsername());
-            password.textProperty().set(UsersManager.getCurrentUser().getPassword());
-        }
-        else { 
-            error.setVisible(false);
-            noError.setVisible(true);
-            UsersManager.getCurrentUser().emailProperty().bindBidirectional(intermediaryEmailProperty);
-            UsersManager.getCurrentUser().emailProperty().unbind();
-            UsersManager.getCurrentUser().usernameProperty().bindBidirectional(intermediaryUsernameProperty);
-            UsersManager.getCurrentUser().usernameProperty().unbind();
-            UsersManager.getCurrentUser().passwordProperty().bindBidirectional(intermediaryPasswordProperty);
-            UsersManager.getCurrentUser().passwordProperty().unbind();
-        }
+        visiblePause.setOnFinished(e -> error.setVisible(false));
+        rootPane.setOnKeyPressed((KeyEvent event) -> {
+            if(event.getCode() == KeyCode.ENTER)
+                submit();
+        });
+        username.setText(UsersManager.getCurrentUser().getUsername());
+        email.setText(UsersManager.getCurrentUser().getEmail());
+        password.setText(UsersManager.getCurrentUser().getPassword());
     }
 }
