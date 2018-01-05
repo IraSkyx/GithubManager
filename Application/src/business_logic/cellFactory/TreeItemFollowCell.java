@@ -15,8 +15,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 
 /**
- *
- * @author Adrien
+ * Business logic class for cellFactory management : TreeItemFollowCell : Manage Tree Item cells with Follows
+ * 
+ * @author Adrien LENOIR and Fabien SIMONET
  */
 public class TreeItemFollowCell extends TreeCell<Follow> {
 

@@ -4,8 +4,9 @@ import business_logic.user.IUser;
 import java.util.List;
 
 /**
- * Interface for data persistence class
- * @author fasimonet
+ * Business interface for persistence management : API for serialisation
+ * 
+ * @author Adrien LENOIR and Fabien SIMONET
  */
 public interface DataManager {
     

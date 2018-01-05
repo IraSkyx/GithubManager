@@ -8,8 +8,9 @@ import javafx.scene.control.ListView;
 import javafx.util.Callback;
 
 /**
- *
- * @author Adrien
+ * Business logic class for cellFactory management : ComboBoxChoiceFactory : Create combobox choices 
+ * 
+ * @author Adrien LENOIR and Fabien SIMONET
  */
 public class ComboBoxChoiceFactory implements Callback<ListView<String>,ListCell<String>> {
     

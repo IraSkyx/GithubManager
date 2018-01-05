@@ -13,9 +13,9 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 /**
- * FXML Controller class
+ * FXML Controller class : RenameCategoryController : Controller of RenameCategory.fxml
  *
- * @author Adrien
+ * @author Adrien LENOIR and Fabien SIMONET
  */
 public class RenameCategoryController extends VBox { 
 

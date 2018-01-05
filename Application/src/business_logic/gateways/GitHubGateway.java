@@ -29,8 +29,9 @@ import org.eclipse.egit.github.core.service.ContentsService;
 import org.eclipse.egit.github.core.service.RepositoryService;
 
 /**
- * Gateway to GitHub Java API
- * @author Adrien
+ * Business class for gateways management : GitHubGateway : Gateway between business part of the application and GitHubAPI
+ * 
+ * @author Adrien LENOIR and Fabien SIMONET
  */
 public class GitHubGateway implements APIManager {
     

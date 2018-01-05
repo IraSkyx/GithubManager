@@ -4,8 +4,9 @@ import business_logic.repository.Repository;
 import javafx.collections.ObservableList;
 
 /**
- *
- * @author Adrien
+ * Business interface for gateways management : APIManager : API for gateways
+ * 
+ * @author Adrien LENOIR and Fabien SIMONET
  */
 public interface APIManager {
     public ObservableList<Repository> getRepositoriesByName(String input);

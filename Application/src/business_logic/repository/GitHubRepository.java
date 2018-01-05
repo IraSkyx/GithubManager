@@ -7,8 +7,9 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 /**
- * Adapter for org.eclipse.egit.github.core.Repository class
- * @author Adrien
+ * Business class for Repository management : GitHubRepository : Adapter for org.eclipse.egit.github.core.Repository class
+ * 
+ * @author Adrien LENOIR and Fabien SIMONET
  */
 public class GitHubRepository extends Repository implements Serializable {
     

@@ -3,8 +3,9 @@ package business_logic.repository;
 import java.util.Date;
 
 /**
- * API for Repository
- * @author Adrien
+ * Business class for Repository management : Repository : API for Repository, child class in a composite pattern to make a treelike structure
+ * 
+ * @author Adrien LENOIR and Fabien SIMONET
  */
 public abstract class Repository extends Follow {
 

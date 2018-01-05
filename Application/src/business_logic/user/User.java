@@ -7,6 +7,11 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+/**
+ * Business class : User
+ * 
+ * @author Adrien LENOIR and Fabien SIMONET
+ */
 class User implements IUser {
 
     /**

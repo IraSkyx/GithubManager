@@ -4,7 +4,7 @@ import java.util.function.Predicate;
 
 /**
  *
- * @author Adrien
+ * @author Adrien LENOIR and Fabien SIMONET
  * @param <T>
  */
 @FunctionalInterface

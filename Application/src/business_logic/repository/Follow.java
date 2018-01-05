@@ -1,8 +1,9 @@
 package business_logic.repository;
 
 /**
- * Abstract Class Follow : mother class in a composite pattern to make a treelike structure
- * @author Adrien
+ * Business class for Repository management : Abstract Class Follow : mother class in a composite pattern to make a treelike structure
+ * 
+ * @author Adrien LENOIR and Fabien SIMONET
  */
 public abstract class Follow {
     

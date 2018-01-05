@@ -6,8 +6,9 @@ import javafx.scene.control.ListView;
 import javafx.util.Callback;
 
 /**
- *
- * @author Adrien
+ * Business logic class for cellFactory management : ListViewRepositoryFactory : Create ListView with Repositories
+ * 
+ * @author Adrien LENOIR and Fabien SIMONET
  */
 public class ListViewRepositoryFactory implements Callback<ListView<Repository>,ListCell<Repository>> {
     @Override

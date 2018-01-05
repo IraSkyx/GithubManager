@@ -9,8 +9,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 
 /**
- *
- * @author Adrien
+ * Business logic class for cellFactory management : ListViewRepositoryCell : Manage ListView Repository cells
+ * 
+ * @author Adrien LENOIR and Fabien SIMONET
  */
 public class ListViewRepositoryCell extends ListCell<Repository> { 
     

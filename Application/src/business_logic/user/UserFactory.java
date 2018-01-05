@@ -4,8 +4,9 @@ import java.security.InvalidParameterException;
 import java.util.regex.Pattern;
 
 /**
- *
- * @author Adrien
+ * Business class : UserFactory : Factory to create IUser
+ * 
+ * @author Adrien LENOIR and Fabien SIMONET
  */
 public class UserFactory {
 

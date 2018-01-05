@@ -15,8 +15,9 @@ import java.util.stream.Collectors;
 import launch.Main;
 
 /**
- *
- * @author fsimo
+ * Business class for XML persistance management : DataManager to manager XML persistance
+ * 
+ * @author Adrien LENOIR and Fabien SIMONET
  */
 public class XMLDataManager implements DataManager {  
     @Override

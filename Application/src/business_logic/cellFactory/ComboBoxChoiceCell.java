@@ -3,8 +3,9 @@ package business_logic.cellFactory;
 import javafx.scene.control.ListCell;
 
 /**
- *
- * @author Adrien
+ * Business logic class for cellFactory management : ComboBoxChoiceCell : Manage choice of Combobox cell
+ * 
+ * @author Adrien LENOIR and Fabien SIMONET
  */
 public class ComboBoxChoiceCell extends ListCell<String> {
     

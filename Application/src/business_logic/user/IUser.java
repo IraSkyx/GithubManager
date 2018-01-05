@@ -5,8 +5,9 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.StringProperty;
 
 /**
- * API for User
- * @author Adrien
+ * Business interface : IUser : API for User
+ * 
+ * @author Adrien LENOIR and Fabien SIMONET
  */
 public interface IUser {
     

@@ -10,9 +10,9 @@ import javafx.beans.property.StringProperty;
 import javafx.scene.layout.BorderPane;
 
 /**
- * FXML Controller class
+ * FXML Controller class : OptionsController : Controller of Options.fxml
  *
- * @author fsimo
+ * @author Adrien LENOIR and Fabien SIMONET
  */
 public class OptionsController extends BorderPane {
 

@@ -12,8 +12,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 /**
- *
- * @author Adrien
+ * Business class for Repository management : Category : child class in a composite pattern to make a treelike structure
+ * 
+ * @author Adrien LENOIR and Fabien SIMONET
  */
 public class Category extends Follow implements CompositeUtils<Follow>, Serializable {
 

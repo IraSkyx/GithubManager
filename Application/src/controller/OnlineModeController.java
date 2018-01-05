@@ -38,9 +38,9 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 /**
- * FXML Controller class
+ * FXML Controller class : OnlineModeController : Controller of OnlineMode.fxml
  *
- * @author Adrien
+ * @author Adrien LENOIR and Fabien SIMONET
  */
 public class OnlineModeController extends BorderPane implements Manageable {
     

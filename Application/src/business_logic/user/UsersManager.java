@@ -7,8 +7,9 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 
 /**
- *
- * @author Adrien
+ * Business class : UsersManager : Manager to manage User 
+ * 
+ * @author Adrien LENOIR and Fabien SIMONET
  */
 public class UsersManager {
 

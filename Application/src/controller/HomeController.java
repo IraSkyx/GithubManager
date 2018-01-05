@@ -12,6 +12,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 
+/**
+ * FXML Controller class : AddCategoryController : Controller of Home.fxml
+ * 
+ * @author Adrien LENOIR and Fabien SIMONET
+ */
 public class HomeController extends BorderPane {
       
     @FXML TextField input;

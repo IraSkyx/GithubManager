@@ -11,8 +11,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 /**
+ * FXML Controller class : FrontController : Control of scene and stage creation
  * 
- * @author Adrien
+ * @author Adrien LENOIR and Fabien SIMONET
  */
 public class FrontController {
     

@@ -10,8 +10,9 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 /**
- *
- * @author fasimonet
+ * Business class for XML persistance management : Serialisable User used as a proxy to serialise IUser
+ * 
+ * @author Adrien LENOIR and Fabien SIMONET
  */
 public class XMLUser implements IUser, Serializable {
     public XMLUser(){

@@ -3,8 +3,9 @@ package converters;
 import javafx.util.StringConverter;
 
 /**
- *
- * @author Adrien
+ * Converter : Object to String
+ * 
+ * @author Adrien LENOIR and Fabien SIMONET
  */
 public class PropertyStringConverter extends StringConverter {
 

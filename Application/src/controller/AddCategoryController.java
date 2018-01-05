@@ -14,9 +14,9 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 /**
- * FXML Controller class
+ * FXML Controller class : AddCategoryController : Controller of AddCategory.fxml
  *
- * @author Adrien
+ * @author Adrien LENOIR and Fabien SIMONET
  */
 public class AddCategoryController extends VBox {  
     

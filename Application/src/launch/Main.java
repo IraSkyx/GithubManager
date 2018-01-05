@@ -10,6 +10,11 @@ import javafx.geometry.Rectangle2D;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
+/**
+ * Launch class : Main : Launch the application
+ * 
+ * @author Adrien LENOIR and Fabien SIMONET
+ */
 public class Main extends Application {
         
     @Override

@@ -11,8 +11,9 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * StubUsers : Initialisation of the datas which refers to Users
- * @author adlenoir
+ * Business class for stub management : StubUsers : Initialisation of the datas which refers to Users
+ * 
+ * @author Adrien LENOIR and Fabien SIMONET
  */
 public class StubUsers implements DataManager {
 

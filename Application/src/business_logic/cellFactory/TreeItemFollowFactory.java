@@ -7,8 +7,9 @@ import javafx.scene.control.TreeView;
 import javafx.util.Callback;
 
 /**
- *
- * @author Adrien
+ * Business logic class for cellFactory management : TreeItemFollowFactory : Create TreeItem with Follows
+ * 
+ * @author Adrien LENOIR and Fabien SIMONET
  */
 public class TreeItemFollowFactory implements Callback<TreeView<Follow>,TreeCell<Follow>> {
     

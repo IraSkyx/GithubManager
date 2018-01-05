@@ -4,9 +4,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ProgressBar;
 
 /**
- * FXML Controller class
+ * FXML Controller class : CloneStateController : Controller of CloneState.fxml
  *
- * @author Adrien
+ * @author Adrien LENOIR and Fabien SIMONET
  */
 public class CloneStateController {  
     @FXML ProgressBar progress;

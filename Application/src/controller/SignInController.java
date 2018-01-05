@@ -13,9 +13,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.util.Duration;
 
 /**
- * FXML Controller class
+ * FXML Controller class : SignInController : Controller of SignIn.fxml
  *
- * @author Adrien
+ * @author Adrien LENOIR and Fabien SIMONET
  */
 public class SignInController extends BorderPane {
     
