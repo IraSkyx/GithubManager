@@ -26,7 +26,7 @@ public class TreeItemFollowFactory implements Callback<TreeView<Follow>,TreeCell
         /**
          * Set the Follow selected by drag and drop
          * 
-         * @param selectedDaD 
+         * @param selectedDaD the Follow selected by drag and drop 
          */
         public static void setSelectedDaD(Follow selectedDaD) { TreeItemFollowFactory.selectedDaD = selectedDaD; }
     

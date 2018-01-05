@@ -28,7 +28,7 @@ public interface APIManager {
     /**
      * Clone a repository
      * 
-     * @param repository the Repository to clone
+     * @param repo the Repository to clone
      */
     public void cloneRepository(Repository repo);
     
