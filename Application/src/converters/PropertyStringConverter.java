@@ -12,7 +12,7 @@ public class PropertyStringConverter extends StringConverter {
     /**
      * Object to String converter
      * 
-     * @param object
+     * @param object Object to convert into String
      * @return a String 
      */
     @Override
@@ -23,7 +23,7 @@ public class PropertyStringConverter extends StringConverter {
     /**
      * String to Object converter : not implemented
      * 
-     * @param string
+     * @param string String to convert into Object
      * @return an Object
      */
     @Override

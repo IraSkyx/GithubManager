@@ -7,24 +7,47 @@ package business_logic.repository;
  */
 public abstract class Follow {
     
+    /**
+     * Parent Follow
+     */
     private Follow parent;
+        /**
+         * Get the parent
+         * 
+         * @return parent Follow 
+         */
         public Follow getParent(){return parent;}
+        /**
+         * Set the parent
+         * 
+         * @param value the Follow to set as a parent
+         */
         public void setParent(Follow value){parent = value;}
     
+    /**
+     * Get the name of the Follow
+     * 
+     * @return the String which corresponds to the name of the Follow 
+     */
     abstract public String getName();
+    /**
+     * Set the name of the Follow
+     * 
+     * @param value the String to set as the name of the Follow 
+     */
     abstract public void setName(String value);
 
     /**
      * Add a follow : not implemented
      * 
-     * @param follow 
+     * @param follow the Follow to add
      */
     public void addFollow(Follow follow) { throw new UnsupportedOperationException("OperationNotSupportedException"); }
     
     /**
      * Delete a follow : not implemented
      * 
-     * @param follow 
+     * @param follow the Follow to delete
      */
     public void deleteFollow(Follow follow) { throw new UnsupportedOperationException("OperationNotSupportedException"); }
     
@@ -44,7 +67,7 @@ public abstract class Follow {
     /**
      * Test if one Object is equal to a Follow
      * 
-     * @param o
+     * @param o the Object to compare
      * @return true if they are equals, false otherwise
      */
     @Override 

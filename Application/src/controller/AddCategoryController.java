@@ -25,6 +25,11 @@ public class AddCategoryController extends VBox {
     @FXML Label error;    
     
     private Follow selected;
+        /**
+         * Set selected Follow
+         * 
+         * @param selected Follow to set
+         */
         public void setSelected(Follow selected) { this.selected=selected;}
     
     private final PauseTransition visiblePause = new PauseTransition(Duration.seconds(2));

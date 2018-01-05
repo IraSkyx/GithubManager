@@ -14,7 +14,7 @@ public class CloneStateController {
     /**
      * Set value to a progress bar
      * 
-     * @param value 
+     * @param value the value to insert in the progress bar
      */
     public void setProgress(double value){
         progress.setProgress(value);

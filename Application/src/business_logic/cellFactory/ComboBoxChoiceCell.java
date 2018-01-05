@@ -12,8 +12,8 @@ public class ComboBoxChoiceCell extends ListCell<String> {
     /**
      * Update the item in the combobox
      * 
-     * @param item
-     * @param isEmpty 
+     * @param item the item to update
+     * @param isEmpty a boolean to know if we reinit the item
      */
     @Override
     protected void updateItem(String item, boolean isEmpty) {

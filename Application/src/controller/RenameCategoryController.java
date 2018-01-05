@@ -27,9 +27,9 @@ public class RenameCategoryController extends VBox {
     private final PauseTransition visiblePause = new PauseTransition(Duration.seconds(2));     
 
     /**
-     * Set the old value of the Category (to make do/undo)
+     * Set the old value of the Category 
      * 
-     * @param oldValue 
+     * @param oldValue the old value necessary to make do/undo
      */
     void setOldValue(Category oldValue) {
         this.oldValue = oldValue;

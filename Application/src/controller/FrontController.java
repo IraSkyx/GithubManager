@@ -20,11 +20,22 @@ public class FrontController {
     private static final String CSSPATH = "/ihm/application.css";
     
     private static Stage stage;
+        /**
+         * Set a Stage
+         * 
+         * @param stage to be set
+         */
         public static void setStage(Stage stage) {FrontController.stage = stage;}   
+        /**
+         * Get a Stage
+         * 
+         * @return the Stage
+         */
         public static Stage getStage() {return stage;}
     
     /**
      * Get a scene
+     * 
      * @return a scene
      */
     public static Scene getScene(){
@@ -34,8 +45,8 @@ public class FrontController {
     /**
      * Initialize a Stage
      * 
-     * @param stage
-     * @param path
+     * @param stage the stage to initialize
+     * @param path the path of the FXML page
      * @return a FMXLLoader
      */
     public static FXMLLoader setContentStage(Stage stage, String path) {
@@ -49,8 +60,8 @@ public class FrontController {
     /**
      * Set scene in a stage
      * 
-     * @param myStage
-     * @param path
+     * @param myStage the stage to add set a scene
+     * @param path the path of the FXML page
      * @return a FXMLLoader 
      */
     public static FXMLLoader setScene(Stage myStage, String path) {
@@ -69,8 +80,8 @@ public class FrontController {
     /**
      * Set scene in a stage and fix an APIManager
      * 
-     * @param path
-     * @param apiManager
+     * @param path the path of the FXML page
+     * @param apiManager the APIManager
      * @return a FXMLLoader
      */
     public static FXMLLoader setScene(String path, APIManager apiManager) {

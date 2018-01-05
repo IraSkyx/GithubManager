@@ -22,7 +22,7 @@ public class StubUsers implements DataManager {
     /**
      * Constructor : Set the APIManager to the Stub
      * 
-     * @param apiManager 
+     * @param apiManager APIManager whitch has to be set
      */
     public StubUsers(APIManager apiManager) {
         this.apiManager = apiManager;
@@ -31,7 +31,7 @@ public class StubUsers implements DataManager {
     /**
      * Set the APIManager
      * 
-     * @param apiManager 
+     * @param apiManager APIManager whitch has to be set 
      */
     public void setApiManager(APIManager apiManager) {
         this.apiManager = apiManager;
@@ -68,7 +68,7 @@ public class StubUsers implements DataManager {
     /**
      * Save Users : not implemented
      * 
-     * @param user 
+     * @param user the List of IUsers to save 
      */
     @Override
     public void saveUsers(List<IUser> user) {

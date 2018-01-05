@@ -12,7 +12,7 @@ public class HeaderController extends VBox {
     /**
      * Contructor by default : initialize a FXMLLoader
      * 
-     * @throws IOException 
+     * @throws IOException Exception thrown because of an error in an IO operation
      */
     public HeaderController() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ihm/Header.fxml"));

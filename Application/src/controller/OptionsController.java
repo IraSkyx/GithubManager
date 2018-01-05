@@ -22,8 +22,17 @@ public class OptionsController extends BorderPane {
     @FXML Label error;
     @FXML Label noError;
     
+    /**
+     * Intermediary email property to display the current email without directly modify its value
+     */
     StringProperty intermediaryEmailProperty = new SimpleStringProperty(UsersManager.getCurrentUser().getEmail());
+    /**
+     * Intermediary username property to display the current username without directly modify its value
+     */
     StringProperty intermediaryUsernameProperty = new SimpleStringProperty(UsersManager.getCurrentUser().getUsername());
+    /**
+     * Intermediary password property to display the current password without directly modify its value
+     */
     StringProperty intermediaryPasswordProperty = new SimpleStringProperty(UsersManager.getCurrentUser().getPassword());
     
     /**

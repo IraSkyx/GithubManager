@@ -60,16 +60,54 @@ public class OnlineModeController extends BorderPane implements Manageable {
     @FXML TreeItem root;
  
     private APIManager apiManager;
+        /**
+         * Set APIManager 
+         * 
+         * @param apiManager APIManager to be set
+         */
         @Override public void setApiManager(APIManager apiManager) {this.apiManager = apiManager;}
     
+    /**
+     * isLoggedIn BooleanProperty
+     */
     private final BooleanProperty isLoggedIn = new SimpleBooleanProperty();   
+        /**
+         * Get isLoggedIn
+         * 
+         * @return the boolean which correspond to isLoggedIn
+         */
         public final Boolean getIsLoggedIn() { return isLoggedIn.get(); }
+        /**
+         * set isLoggedIn
+         * 
+         * @param value the boolean to be set as isLoggedIn
+         */
         public final void setIsLoggedIn(Boolean value) { isLoggedIn.set(value); }
+        /**
+         * Get isLoggedIn BooleanProperty
+         * 
+         * @return the BooleanProperty which correspond to isLoggedIn
+         */
         public BooleanProperty isLoggedInProperty(){return isLoggedIn;}; 
         
     private final ObjectProperty<Follow> selectedFollow = new SimpleObjectProperty();   
+        /**
+         * Get selectedFollow
+         * 
+         * @return the Follow which correspond to isLoggedIn selectedFollow
+         */
         public final Follow getSelectedFollow() { return selectedFollow.get(); }
+        /**
+         * Set selectedFollow
+         * 
+         * @param value the Follow to be set as selectedFollow
+         */
         public final void setSelectedFollow(Follow value) { selectedFollow.set(value); }
+        /**
+         * Get selectedFollow ObjectProperty of Follows
+         * 
+         * @return the Object Property as selectedFollow
+         */
         public ObjectProperty<Follow> selectedFollowProperty(){return selectedFollow;};         
      
     /**
@@ -158,8 +196,8 @@ public class OnlineModeController extends BorderPane implements Manageable {
     /**
      * Manage combobox choice
      * 
-     * @param input
-     * @param choice 
+     * @param input item to set
+     * @param choice user's research choice 
      */
     public void setItems(String input, String choice) {
         if(apiManager != null){
@@ -226,7 +264,8 @@ public class OnlineModeController extends BorderPane implements Manageable {
     
     /**
      * Wrap the search result placeholder in a label
-     * @param text
+     * 
+     * @param text text to insert in the label
     */
     public void setPlaceholderSearchResults(String text) {
         Label placeholder = new Label(text);
@@ -234,6 +273,11 @@ public class OnlineModeController extends BorderPane implements Manageable {
         searchResults.setPlaceholder(placeholder);
     }
     
+    /**
+     * Update a TreeView 
+     * 
+     * @param root the TreeItem to update
+     */
     public void updateTreeView(TreeItem<Follow> root) {
         ((Category)root.getValue()).getListOfFollows().stream().forEach(x -> {           
             TreeItem<Follow> item = new TreeItem<>(x);     
@@ -243,6 +287,11 @@ public class OnlineModeController extends BorderPane implements Manageable {
         });
     }
 
+    /**
+     * Add a listener on a Category
+     * 
+     * @param categ the category on whitch we want to add a listener
+     */
     private void initializeListeners(Category categ) {
         categ.getListOfFollows().addListener(new ListChangeListener(){       
             @Override

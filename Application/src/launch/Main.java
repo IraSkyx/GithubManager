@@ -20,7 +20,7 @@ public class Main extends Application {
     /**
      * Executed at application starting : load Users with the chosen serialisation type and display home page
      * 
-     * @param stage 
+     * @param stage the Stage to start
      */
     @Override
     public void start(Stage stage) {
@@ -42,7 +42,7 @@ public class Main extends Application {
     /**
      * Launch the application
      * 
-     * @param args 
+     * @param args the args to launch
      */
     public static void main(String[] args) {           
         launch(args);

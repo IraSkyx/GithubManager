@@ -18,14 +18,50 @@ import javafx.collections.ObservableList;
  */
 public class Category extends Follow implements CompositeUtils<Follow>, Serializable {
 
+    /**
+     * StringProperty of the name of the Category
+     */
     private transient final StringProperty name = new SimpleStringProperty();
+        /**
+         * Get name of the StringProperty 
+         * 
+         * @return a String which corresponds to the name in the Stringproperty 
+         */
         @Override public String getName() {return name.get();}
+        /**
+         * Set name in the StringProperty 
+         * 
+         * @param value the String to set 
+         */
         @Override public void setName(String value) {name.set(value);}
+        /**
+         * Get the StringProperty 
+         * 
+         * @return a StringProperty which correspond to name
+         */
         public StringProperty nameProperty() {return name;}
 
+    /**
+     * ListProperty of Follow of the Category
+     */
     private final ListProperty<Follow> listOfFollows = new SimpleListProperty<>();
+        /**
+         * Get the list of Follows
+         * 
+         * @return an ObservableList which corresponds to a list of Follows
+         */
         public final ObservableList<Follow> getListOfFollows() { return listOfFollows.get(); }
+        /**
+         * Set the list of Follows
+         * 
+         * @param value the ObservableList to set to the list of Follows
+         */
         public final void setListOfFollows(ObservableList<Follow> value) { listOfFollows.set(value); }
+        /**
+         * Get the ListProperty of the list of Follows
+         * 
+         * @return a ListProperty listOfFollows 
+         */
         public ListProperty listOfFollowsProperty(){return listOfFollows;};
 
     /**
@@ -38,7 +74,7 @@ public class Category extends Follow implements CompositeUtils<Follow>, Serializ
     /**
      * Constructor with a name
      * 
-     * @param name name of the new Category
+     * @param name the name of the new Category
      */
     public Category(String name) {
         setName(name);
@@ -48,7 +84,7 @@ public class Category extends Follow implements CompositeUtils<Follow>, Serializ
     /**
      * Test if a Follow is in the list of Follows
      * 
-     * @param action
+     * @param action Predicate to evaluate, here a Follow
      * @return true if the Follow is containing by the list, false otherwise
      */
     @Override
@@ -67,7 +103,7 @@ public class Category extends Follow implements CompositeUtils<Follow>, Serializ
     /**
      * Add a Follow to the list of Follows
      * 
-     * @param follow follow to add 
+     * @param follow the Follow to add 
      */
     @Override
     public void addFollow(Follow follow) {
@@ -88,7 +124,7 @@ public class Category extends Follow implements CompositeUtils<Follow>, Serializ
     /**
      * Delete a follow of the list of Follows
      * 
-     * @param follow 
+     * @param follow the Follow to remove
      */
     @Override
     public void deleteFollow(Follow follow) {

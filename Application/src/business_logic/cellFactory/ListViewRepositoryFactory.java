@@ -14,7 +14,7 @@ public class ListViewRepositoryFactory implements Callback<ListView<Repository>,
     /**
      * Create a listView item
      * 
-     * @param param
+     * @param param a ListView param of Repositories
      * @return a ListViewRepositoryCell whitch is a ListView item
      */
     @Override

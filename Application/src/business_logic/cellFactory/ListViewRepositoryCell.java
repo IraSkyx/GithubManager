@@ -34,8 +34,8 @@ public class ListViewRepositoryCell extends ListCell<Repository> {
     /**
      * Update the ListView
      * 
-     * @param item
-     * @param isEmpty 
+     * @param item an item to update
+     * @param isEmpty a boolean to know if the item must be reinit
      */
     @Override
     protected void updateItem(Repository item, boolean isEmpty) {

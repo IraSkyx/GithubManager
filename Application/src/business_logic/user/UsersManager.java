@@ -60,8 +60,8 @@ public class UsersManager {
     /**
      * Return a user in the list of allUsers
      * 
-     * @param email
-     * @param password
+     * @param email the email of the IUser
+     * @param password the password of the IUser
      * @return User an instance of user or null
      */
     public static IUser getUser(String email, String password){
@@ -78,8 +78,8 @@ public class UsersManager {
     /**
      * Verify the user is valid and set the current user
      * 
-     * @param email
-     * @param password
+     * @param email the email of the IUser
+     * @param password the password of the IUser
      * @return true if connection succeeded, false otherwise
      *
      */
@@ -95,7 +95,7 @@ public class UsersManager {
     /**
      * Verify the email exists in the list
      * 
-     * @param email
+     * @param email the email of the IUser
      * @return True if yes, false otherwise
      */
     public static boolean exists(String email) {

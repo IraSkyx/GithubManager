@@ -20,6 +20,11 @@ import launch.Main;
  * @author Adrien LENOIR and Fabien SIMONET
  */
 public class XMLDataManager implements DataManager {  
+    /**
+     * Load all the IUsers
+     * 
+     * @return the list of IUsers loaded
+     */
     @Override
     public List<IUser> loadUsers() {
         List<IUser> result = null;
@@ -35,7 +40,7 @@ public class XMLDataManager implements DataManager {
     /**
      * Save users using XML serialization
      * 
-     * @param users All the users to serialize
+     * @param users all the IUsers to serialize
      */
     @Override
     public void saveUsers(List<IUser> users) {

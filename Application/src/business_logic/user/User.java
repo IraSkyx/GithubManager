@@ -15,18 +15,47 @@ import javafx.beans.property.StringProperty;
 class User implements IUser {
 
     /**
-     * User properties
+     * User username property
      */
     private final StringProperty username = new SimpleStringProperty();
+        /**
+         * Get User username property
+         * 
+         * @return the StringProperty which corresponds to the user username
+         */
         @Override public StringProperty usernameProperty() {return username;}
-
+    
+    /**
+     * User password property
+     */
     private final StringProperty password = new SimpleStringProperty();
+        /**
+         * Get User password property
+         * 
+         * @return the StringProperty which corresponds to the user password
+         */
         @Override public StringProperty passwordProperty() {return password;}
 
+    /**
+     * User email property
+     */
     private final StringProperty email = new SimpleStringProperty();
+        /**
+         * Get User email property
+         * 
+         * @return the StringProperty which corresponds to the email password
+         */
         @Override public StringProperty emailProperty() {return email;}
 
+    /**
+     * User user Follow property
+     */
     private final ObjectProperty<Follow> userFollow = new SimpleObjectProperty<>();
+        /**
+         * Get User userFollow property
+         * 
+         * @return the ObjectProperty which corresponds to the email password
+         */
         @Override public ObjectProperty<Follow> userFollowProperty() {return userFollow;}
 
     /**
@@ -42,9 +71,9 @@ class User implements IUser {
     /**
      * Constructor : set attributes at the values of parameters
      * 
-     * @param username
-     * @param password
-     * @param email 
+     * @param username username of the User
+     * @param password password of the User
+     * @param email email of the User
      */
 
     User(String username, String password, String email) {
@@ -56,8 +85,8 @@ class User implements IUser {
 
     /**
      * toString method
-     * 
-     * @return username 
+     *                                                                      
+     * @return username the username of the User
      */
     @Override
     public String toString() {

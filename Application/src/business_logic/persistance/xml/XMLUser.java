@@ -25,7 +25,7 @@ public class XMLUser implements IUser, Serializable {
     /**
      * Create a XMLUser using an IUser
      * 
-     * @param model 
+     * @param model the IUser to convert in XMLUser
      */
     public XMLUser(IUser model) {
         this.model = model;
@@ -37,6 +37,11 @@ public class XMLUser implements IUser, Serializable {
             
     private transient IUser model;  
 
+    /**
+     * Get IUser whitch corresponds to the XMLUser
+     * 
+     * @return the IUser used as model to create the XMLUser
+     */
     public IUser getModel() {
         return model;
     }

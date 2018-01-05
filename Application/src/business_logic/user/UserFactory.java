@@ -15,12 +15,12 @@ public class UserFactory {
     /**
      * Create IUser with verified password in parameters
      * 
-     * @param username
-     * @param email
-     * @param password
-     * @param verifPassword
+     * @param username the username of the IUser
+     * @param email the email of the IUser
+     * @param password the password of the IUser
+     * @param verifPassword the verified password
      * @return the created IUser
-     * @throws InvalidParameterException 
+     * @throws InvalidParameterException the exception throws if parameters are not valid
      */
     public static IUser create(String username, String email, String password, String verifPassword) throws InvalidParameterException {
 
@@ -47,9 +47,9 @@ public class UserFactory {
     /**
      * Create IUser without verified password in parameters
      * 
-     * @param username
-     * @param email
-     * @param password
+     * @param username the username of the IUser
+     * @param email the email of the IUser
+     * @param password the password of the IUser
      * @return the created IUser
      */
     public static IUser create(String username, String email, String password) {

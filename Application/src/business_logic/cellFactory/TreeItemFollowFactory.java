@@ -13,14 +13,27 @@ import javafx.util.Callback;
  */
 public class TreeItemFollowFactory implements Callback<TreeView<Follow>,TreeCell<Follow>> {
     
+    /**
+     * Follow selected by drag and drop
+     */
     private static transient Follow selectedDaD;
+        /**
+         * Get the Follow selected by drag and drop
+         * 
+         * @return the Follow selected by drag and drop 
+         */
         public static Follow getSelectedDaD() { return selectedDaD; }
+        /**
+         * Set the Follow selected by drag and drop
+         * 
+         * @param selectedDaD 
+         */
         public static void setSelectedDaD(Follow selectedDaD) { TreeItemFollowFactory.selectedDaD = selectedDaD; }
     
     /**
      * Create a TreeItem element
      * 
-     * @param param
+     * @param param a TreeView item of Follows
      * @return a TreeItemFollowCell whitch is a TreeItem
      */
     @Override

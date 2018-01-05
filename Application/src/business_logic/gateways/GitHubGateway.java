@@ -40,7 +40,7 @@ public class GitHubGateway implements APIManager {
     /**
      * Get a list of Repositories with a research by name
      * 
-     * @param input
+     * @param input String research
      * @return a list of Repositories whitch correspond to a research by name
      */
     @Override
@@ -70,7 +70,7 @@ public class GitHubGateway implements APIManager {
     /**
      * Get a list of Repositories by a research by username
      * 
-     * @param input
+     * @param input String research
      * @return a list of Repositories whitch correspond ro a research by username
      */
     @Override
@@ -92,7 +92,7 @@ public class GitHubGateway implements APIManager {
     /**
      * Test if a Repository has new commits 
      * 
-     * @param repository
+     * @param repository the Repository that we want to know if it has new commits
      * @return true if this Repository has new commits, false otherwise
      */
     @Override
@@ -114,7 +114,7 @@ public class GitHubGateway implements APIManager {
     /**
      * Clone a repository
      * 
-     * @param repository 
+     * @param repository the Repository to clone
      */
     @Override
     public void cloneRepository(Repository repository) {
@@ -167,7 +167,7 @@ public class GitHubGateway implements APIManager {
     /**
      * Get Repository ReadMe
      * 
-     * @param repo
+     * @param repo a GitHub API Repository
      * @return a String which is the ReadMe or "No README.md"
      */
     public static String getReadMe(org.eclipse.egit.github.core.Repository repo){

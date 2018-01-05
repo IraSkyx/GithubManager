@@ -14,6 +14,9 @@ import javafx.util.Callback;
  */
 public class ComboBoxChoiceFactory implements Callback<ListView<String>,ListCell<String>> {
     
+    /**
+     * Observable list of String list with all the choices in the comboList 
+     */
     public static ObservableList<String> comboList = FXCollections.observableArrayList(Arrays.asList(
         "By name",
         "By user's name"
@@ -22,8 +25,8 @@ public class ComboBoxChoiceFactory implements Callback<ListView<String>,ListCell
     /**
      * Create a ListCell
      * 
-     * @param param
-     * @return 
+     * @param param a ListView item of String
+     * @return a ListCell
      */
     @Override
     public ListCell<String> call(ListView<String> param) {
