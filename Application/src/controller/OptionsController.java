@@ -61,26 +61,8 @@ public class OptionsController extends BorderPane {
     private void bindEmail() {
         email.textProperty().bindBidirectional(intermediaryEmailProperty); 
     }
-    
-    /**
-     * Check if the email changed by the user is not already used
-     * Update the value of the current user email if it is free
-     * Display an error message and replace by the older value of email if it is not
-     */
+        
     @FXML
-    private void validateEmailChanges() {
-        if(UsersManager.exists(email.textProperty().get()) && !email.textProperty().get().equals(UsersManager.getCurrentUser().emailProperty())) {
-            error.setVisible(true); 
-            email.textProperty().set(intermediaryEmailProperty.get());
-        }
-        else { 
-            error.setVisible(false);
-            UsersManager.getCurrentUser().emailProperty().bindBidirectional(intermediaryEmailProperty);
-            UsersManager.getCurrentUser().emailProperty().unbind();
-        }
-    }
-    
-        @FXML
     private void submitUserChanges() {
         if(UsersManager.exists(email.textProperty().get()) && !email.textProperty().get().equals(UsersManager.getCurrentUser().getEmail())) {
             error.setVisible(true); 
