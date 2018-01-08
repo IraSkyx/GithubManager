@@ -3,7 +3,6 @@ package business_logic.persistance.stub;
 import business_logic.gateways.APIManager;
 import business_logic.persistance.DataManager;
 import business_logic.repository.Category;
-import business_logic.repository.Repository;
 import business_logic.user.IUser;
 import business_logic.user.UserFactory;
 import java.util.ArrayList;

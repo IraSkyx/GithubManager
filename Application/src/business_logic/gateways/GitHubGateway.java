@@ -11,7 +11,6 @@ import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.stage.DirectoryChooser;
-import launch.Main;
 import org.apache.commons.io.FileUtils;
 import org.eclipse.egit.github.core.RepositoryContents;
 import org.eclipse.egit.github.core.RepositoryId;
@@ -29,9 +28,10 @@ public class GitHubGateway implements APIManager {
 
     /**
      * Get a list of Repositories with a research by name
+     * (Not quite functional, it is not searching for repos by name but username and name + read me)
      * 
      * @param input String research
-     * @return a list of Repositories whitch correspond to a research by name
+     * @return a list of Repositories which corresponds to a research by name
      */
     @Override
     public ObservableList<Repository> getRepositoriesByName(String input){
@@ -51,7 +51,7 @@ public class GitHubGateway implements APIManager {
             });
         }
         catch (IOException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
         }
     
         return list;
@@ -127,7 +127,7 @@ public class GitHubGateway implements APIManager {
             }
         }
         catch(IOException e){
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
         }
     }
 
